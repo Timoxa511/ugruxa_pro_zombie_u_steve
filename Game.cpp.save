@@ -78,16 +78,11 @@ int main()
 void GameProcces (const Textures *textures)
     {
 
-    Hero Mouse  ("Mouse", Image (),    Vec (),   Vec (), Hero::MOUSE, MouseControl);
-    Hero Steve  ("Steve",  textures->Steve,  Vec (500, 500), Vec (0, 0), Hero::CHARACTER, GeneralControl, &Mouse);
-    Hero Zombie ("Zombie", textures->Zombie, Vec (700, 700), Vec (0, 0), Hero::NPC, GeneralControl, &Steve);
+    Hero Mouse  ("Mouse", Image (),    Vec (),   Vec (), 0, Hero::MOUSE, MouseControl);
+    Hero Steve  ("Steve",  textures->Steve,  Vec (500, 500), Vec (0, 0), 0, Hero::CHARACTER, GeneralControl, &Mouse);
+    Hero Zombie ("Zombie", textures->Zombie, Vec (700, 700), Vec (0, 0), 0, Hero::CHARACTER, GeneralControl, &Steve);
 
-    $ (Steve.Type_); $n;
-    $ (Zombie.Type_); $n;
-    $ (Mouse.Type_); $n;
-    //txSleep (0);
-    //getch ();
-    //return;
+
     COLORREF PrevClr = -1;
     while (!GetAsyncKeyState (VK_ESCAPE))
         {
@@ -140,6 +135,27 @@ void SteveAnimationNumber_and_Moving_Connecting (Hero *Steve)
 
 
     }
+
+//-----------------------------------------------------------------------------
+void ControlSteve (Hero *Steve, int KeyStopMove)
+    {
+                                        //Vec MousePos (Global_Mouse.Pos()); поидее конструктор это функция и выглядит так
+                                        //но конструктор от одного параметра можно вызывать так как ниже ----> Vec MousePos = Global_Mouse.Pos();
+
+    Vec VDistBetweenTheHeroAndAMouseClick = Global_Mouse.GetClickPos() - Steve->pos_;     // "-" синтаксический сахар
+
+    if (VDistBetweenTheHeroAndAMouseClick.Len() > 10)
+        {
+        Vec shortVector = VDistBetweenTheHeroAndAMouseClick.Normalize () * 15;     //V_ = !(Vec (txMousePos()) - pos_) * 15   | где ! - оператор нормализации
+        Steve->V_ = shortVector;
+        }
+    else
+        Steve->V_ = Vec (0, 0);
+
+
+    if (GetAsyncKeyState ( KeyStopMove ))
+        Steve->V_ = Vec (0, 0);
+    }
 //-----------------------------------------------------------------------------
 void GeneralControl (Hero *object, int KeyStopMove)
     {
@@ -147,8 +163,7 @@ void GeneralControl (Hero *object, int KeyStopMove)
 
     if (VDist.Len() > 10)
         {
-        $ (object->Type_); $n;
-        Vec shortVector = VDist.Normalize () * ((object->Type_ == Hero::NPC)? 10 : 15);     //  V_ = !(Vec (txMousePos()) - pos_) * 15   | где ! - оператор нормализации
+        Vec shortVector = VDist.Normalize () * (object->Type_ == CHARACTER)? :10;     //  V_ = !(Vec (txMousePos()) - pos_) * 15   | где ! - оператор нормализации
         object->V_ = shortVector;
         }
     else
@@ -157,6 +172,23 @@ void GeneralControl (Hero *object, int KeyStopMove)
 
     if (GetAsyncKeyState ( KeyStopMove ))
         object->V_ = Vec (0, 0);
+    }
+//-----------------------------------------------------------------------------
+void ControlZombie (Hero *Zombie, int KeyStopMove)
+    {
+    Vec VDistBetweenTheHeroAndAVictim = Zombie->victim_->pos_  - Zombie->pos_;
+
+    if (VDistBetweenTheHeroAndAVictim.Len() > 10)
+        {
+        Vec shortVector = VDistBetweenTheHeroAndAVictim.Normalize () * 10;     //  V_ = !(Vec (txMousePos()) - pos_) * 15   | где ! - оператор нормализации
+        Zombie->V_ = shortVector;
+        }
+    else
+        Zombie->V_ = Vec (0, 0);
+
+
+    if (GetAsyncKeyState ( KeyStopMove ))
+        Zombie->V_ = Vec (0, 0);
     }
 //-----------------------------------------------------------------------------
 void MouseControl (Hero *Mouse, int KeyStopMove)

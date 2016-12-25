@@ -39,7 +39,7 @@ class Image
     //------------------------------------------
 
     public:
-    explicit Image (const char FilePictureName [], Vector <int> nFrames = Vector <int> (1, 1)); //explicit - запрещяет неявный вызов конструктора с одним параметром (ибо если не защищать то могут пойти оч сложные ошибки)
+    explicit Image (const char FilePictureName [], Vector <int> nFrames = Vector <int> (1, 1)); //explicit - это 
     Image ();
 
     Vector <int> nFramesReturn () const;
@@ -78,8 +78,8 @@ class Hero
     //---------------------
 
     Hero ();
-    Hero (const char *Name, Image Picture, Vec pos, Vec V, int Type,
-          void (*ControlHeroFunction) (Hero *patient, int KeyStopMove) = DefControl, Hero *victim = NULL, int AnimationNumber = 0);
+    Hero (const char *Name, Image Picture, Vec pos, Vec V, int Type, int AnimationNumber = 0,
+          void (*ControlHeroFunction) (Hero *patient, int KeyStopMove) = DefControl, Hero *victim = NULL);
 
     Vec GetV () const;
 
@@ -172,8 +172,8 @@ Hero::Hero () :
 
 //-----------------------------------------------------------------------------
 
-Hero::Hero (const char *Name, Image Picture, Vec pos, Vec V, int Type,
-            void (*ControlHeroFunction) (Hero *patient, int KeyStopMove), Hero *victim, int AnimationNumber) :
+Hero::Hero (const char *Name, Image Picture, Vec pos, Vec V, int Type, int AnimationNumber,
+            void (*ControlHeroFunction) (Hero *patient, int KeyStopMove), Hero *victim) :
 
     Name_ (Name),
     Picture_ (Picture),
@@ -184,8 +184,6 @@ Hero::Hero (const char *Name, Image Picture, Vec pos, Vec V, int Type,
     ControlHeroFunction_  (ControlHeroFunction),
     victim_ (victim)
     {
-    $ (Type_); $n;
-    $ (Type); $n;
     }
 
 

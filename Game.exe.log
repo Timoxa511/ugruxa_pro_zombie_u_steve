@@ -1,0 +1,73 @@
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: \\vmware-host\Shared Folders\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve\Game.exe, файл: \\vmware-host\shared folders\Desktop\TX\TXLib.h, строка: 10249, функция: HDC__* {anonymous}::TX::txLoadImage(const char*, unsigned int, unsigned int),
+
+Сообщение: ВНЕЗАПНО: Логическая ошибка: Неверно, что "filename && *filename".
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004F62C0 (32-bit), Flags: CMdRE0, Thread: 0x1220 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x0041DD76 in \\vmware-host\Shared Folders\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve\Game.exe!txLoadImage at //vmware-host/shared folders/Desktop/TX/TXLib.h (10249)
+
+# 1 0x00425B8A in \\vmware-host\Shared Folders\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve\Game.exe at //vmware-host/Shared Folders/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve/TimaXLIbJustOneFunction.h (267):
+
+    265: 
+    266: Image::Image (const char FilePictureName [], Vector <int> nFrames) :
+=>  267:     Texture_ (txLoadImage (FilePictureName)),
+    268:     Len_     (),
+    269:     nFrames_ (nFrames)
+
+# 2 0x004262B7 in \\vmware-host\Shared Folders\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve\Game.exe!GameProcces at //vmware-host/Shared Folders/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve/Game.cpp (78):
+
+     76:     {
+     77: 
+=>   78:     Hero Mouse  ("Mouse", NULL, Vec (), Vec (), 0, Hero::MOUSE, MouseControl);
+     79:     Hero Steve  ("Steve",  textures->Steve,  Vec (500, 500), Vec (0, 0), 0, Hero::CHARACTER, ControlSteve,  &Mouse);
+     80:     Hero Zombie ("Zombie", textures->Zombie, Vec (700, 700), Vec (0, 0), 0, Hero::CHARACTER, ControlZombie, &Steve);
+
+# 3 0x004261DD in \\vmware-host\Shared Folders\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve\Game.exe!main at //vmware-host/Shared Folders/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve/Game.cpp (57):
+
+     55:     Textures textures = {Image ("steve.bmp", {4, 18}), Image ("Zombie.bmp", {3, 2})};
+     56: 
+=>   57:     GameProcces (&textures);
+     58: 
+     59:     textures.Map.DeleteTex();
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in HDC__* {anonymous}::TX::txLoadImage(const char*, unsigned int, unsigned int) at \\vmware-host\shared folders\Desktop\TX\TXLib.h (10249):
+
+  10247:     {
+  10248: $1  _TX_IF_TXWINDOW_FAILED                         return NULL;
+=>10249: $   _TX_IF_ARGUMENT_FAILED (filename && *filename) return NULL;
+  10250: 
+  10251: $   HBITMAP image = (HBITMAP) Win32::LoadImage ((loadFlags & LR_LOADFROMFILE)? NULL : GetModuleHandle (NULL),
+
+# 1 in Image::Image(const char*, Vector<int>) at \\vmware-host\Shared Folders\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve\TimaXLIbJustOneFunction.h (267):
+
+    265: 
+    266: Image::Image (const char FilePictureName [], Vector <int> nFrames) :
+=>  267:     Texture_ (txLoadImage (FilePictureName)),
+    268:     Len_     (),
+    269:     nFrames_ (nFrames)
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	\\vmware-host\shared folders\Desktop\TX\TXLib.h
+Compiled:	Dec 25 2016 20:35:25, DEBUG, GNU g++ 4.8.1, std=201103L
+Started:	Dec 25 2016 20:35:30
+
+Run file:	\\vmware-host\Shared Folders\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve\Game.exe
+Directory:	\\vmware-host\Shared Folders\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve
+
+--------------------------------------------------
