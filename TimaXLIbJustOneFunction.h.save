@@ -1,9 +1,10 @@
 #include "TXlib.h"
 
 enum {NO = false, YES = true};
+const double DT = 1.0;
 
+//-----------------------------------------------------------------------------
 template <typename T = double>
-
 class Vector
     {
     public:
@@ -25,7 +26,6 @@ class Vector
     Vector <T> operator / (T divider) const;
     Vector <T> operator * (T multiplier) const;
     };
-
 typedef Vector <> Vec;     //typedef какой-то_тип пробел название_синонима_к_этому_типу                      Vec = Vector <>
 
 class Image
@@ -39,7 +39,7 @@ class Image
     //------------------------------------------
 
     public:
-    explicit Image (const char FilePictureName [], Vector <int> nFrames = Vector <int> (1, 1)); //explicit - это 
+    explicit Image (const char FilePictureName [], Vector <int> nFrames = Vector <int> (1, 1)); //explicit - запрещ€ет не€вный вызов конструктора с одним параметром (ибо если не защищать то могут пойти оч сложные ошибки)
     Image ();
 
     Vector <int> nFramesReturn () const;
@@ -50,9 +50,9 @@ class Image
     void  DeleteTex ();
 
     };
-class Hero;              // € обь€вд€ю класс (еще не целиком) что бы defcontrol работал так как он работает с классом геро€ и в классе геро€ же используетс€ => что бы можно было бы указывать defcontrol  в конструкторе
-void DefControl (Hero *Def, int KeyStopMove);
 
+class Hero;              // € обь€вд€ю класс (еще не целиком) что бы defcontrol работал так как он работает с классом геро€
+                         // и в классе геро€ же используетс€ => что бы можно было бы указывать defcontrol  в конструкторе
 class Hero
     {
 
@@ -66,29 +66,29 @@ class Hero
     int AnimationNumber_;
     int Type_;
 
-    void (*ControlHeroFunction_) (Hero *patient, int KeyStopMove);
-    Hero *victim_;
+
+    const Hero *victim_;
 
     //--------------------------------
     public:
 
 
-    enum {NPC, CHARACTER, MOUSE};
+    enum {NPC, CHARACTER, MOUSE, PICTURE, FIRSTUSERTYPE};
 
     //---------------------
 
     Hero ();
-    Hero (const char *Name, Image Picture, Vec pos, Vec V, int Type, int AnimationNumber = 0,
-          void (*ControlHeroFunction) (Hero *patient, int KeyStopMove) = DefControl, Hero *victim = NULL);
+    Hero (const char *Name, Image Picture, Vec pos, Vec V, int Type,
+          const Hero *victim = NULL, int AnimationNumber = 0);
 
     Vec GetV () const;
 
     bool SetAnimation (int AnimationNumber);
-    void CircleAnimation () const;
-    void PolarAnimation () const;
     void Move (double dt);
-    void Control (int KeyStopMove = VK_SPACE);
 
+
+    virtual void Control   (int KeyStopMove = VK_SPACE);
+    virtual void doAnimation () const;
     };
 
 class Mouse
@@ -96,6 +96,7 @@ class Mouse
     public:
     Vec pos_;
     Vec LastClickPos_;
+    int LastClickButtons_;
 
     //-----------------------
 
@@ -104,6 +105,7 @@ class Mouse
     Vec  GetPos();
     int  GetButtons();
     Vec  GetClickPos();
+    int  GetClickButtons();
     void Update();
     };
 
@@ -118,8 +120,44 @@ class Time
     void Update();
     };
 
-int DoubleCompareWithZero (double number);
+struct Animation : public Hero
+    {
+    Animation (Image Picture, Vec pos);
+    virtual void doAnimation () const override;
+    virtual void Control   (int KeyStopMove = VK_SPACE) override;
+    };
 
+//-----------------------------------------------------------------------------
+
+
+const int N_OBJECTS = 4000;
+
+class Engine
+    {
+    private:
+    Hero* objects_[N_OBJECTS];
+    int freePlace_;
+    //--------------------------------------
+    public:
+    Engine ();
+
+    int   GetObjectNumber (const char *name) const;
+    int   GetObjNum (const Hero *object) const;
+    Hero* GetObject (int num) const;
+    int   Get_KolBo_OfObjects () const;
+    int   Get_KolBo_TypeObjects (int Type) const;
+
+    Hero** Get_AllObjects_ofThe_Type (Hero* gmTypePointers [], int Type);
+
+    void  FindAndRemove (const Hero *obj);
+    void  remoov (int numspace);
+    void  add    (Hero *object);
+    void  Run ();
+    };
+
+
+int DoubleCompareWithZero (double number);
+double HeroHypot (const Hero *first, const Hero *Second);
 
 //-----------------------------------------------------------------------------
 
@@ -145,11 +183,127 @@ int DoubleCompareWithZero (double number);
  //
  //
  //                                                                  Bill
+                                                                                  //                | имеетс€   hero | имеетс€ hero
+                                                                                  //                | в форме обьекта| в форме указател€
+
+                                                                                  // нужен в        |  hero          | *hero
+                                                                                  // форме обьекта  |                |
+//{ Engine::
+
+Engine::Engine () :                                                               // нужен в        |  &hero         | hero                         |
+    objects_  ({}),                                                               // форме указател€|
+    freePlace_ (N_OBJECTS)
+    {
+    }
+//-----------------------------------------------------------------------------
+
+int Engine::GetObjectNumber (const char *name) const
+    {
+    assert (name != NULL);
+
+    for (int i = 0; i < N_OBJECTS; i++)
+        {
+        assert (objects_[i]->Name_ != NULL);
+
+        if (strcmp (name, objects_[i]->Name_) == 0)
+            {
+            return i;
+            }
+        }
+    return -1;
+    }
+
+//-----------------------------------------------------------------------------
+
+Hero* Engine::GetObject (int num) const
+    {
+    assert (0 <= num && num < N_OBJECTS);
+    return objects_[num];
+    }
+
+//-----------------------------------------------------------------------------
+int Engine::GetObjNum (const Hero *object) const
+    {
+    for (int i = 0; i < Get_KolBo_OfObjects(); i++)
+        {
+        if (objects_[i] == object) return i;
+        }
+    return -1;
+    }
+//-----------------------------------------------------------------------------
+
+int Engine::Get_KolBo_OfObjects () const
+    {
+    return (N_OBJECTS - freePlace_);
+    }
+//-----------------------------------------------------------------------------
+int Engine::Get_KolBo_TypeObjects (int Type) const
+    {
+    int Kol_Bo_ofTypeObjects = 0;
+    for (int i = 0; i < Get_KolBo_OfObjects(); i++)
+        {
+        if (GetObject(i)->Type_ == Type)
+            Kol_Bo_ofTypeObjects++;
+        }
+    return Kol_Bo_ofTypeObjects;
+    }
+//-----------------------------------------------------------------------------
+Hero** Engine::Get_AllObjects_ofThe_Type (Hero* gmTypePointers [], int Type)
+    {
+    int nObjects = 0;
+    for (int i = 0; i < Get_KolBo_OfObjects(); i++)
+        {
+        Hero* obj = GetObject(i);
+        if (obj->Type_ == Type)
+            {
+            gmTypePointers[nObjects++] = obj;
+            }
+        }
+    return gmTypePointers;
+    }
+//-----------------------------------------------------------------------------
+
+void Engine::add (Hero *object)
+    {
+
+    assert (0 <= (Get_KolBo_OfObjects()) && (Get_KolBo_OfObjects()) < N_OBJECTS);
+    objects_ [Get_KolBo_OfObjects()] = object;
+    freePlace_--;
+    }
+
+//-----------------------------------------------------------------------------
+void Engine::FindAndRemove (const Hero *obj)
+    {
+    remoov (GetObjNum (obj));
+    }
+//-----------------------------------------------------------------------------
+void Engine::remoov (int numObj)
+    {
+    assert (0 <= numObj && numObj < Get_KolBo_OfObjects());
 
 
 
+    objects_[numObj] = objects_[Get_KolBo_OfObjects() - 1];
+    objects_[Get_KolBo_OfObjects() - 1] = NULL;
+    freePlace_ ++;
+    }
+//-----------------------------------------------------------------------------
 
+void Engine::Run ()
+    {
+    txClear ();
+    for (int i = 0; i < (N_OBJECTS - freePlace_); i++)
+        {
+        assert (0 <= i && i < (N_OBJECTS - freePlace_));
+        objects_[i]->Control ();
+        objects_[i]->Move (DT);
+        objects_[i]->doAnimation ();
+        }
+    }
+//}
+//-----------------------------------------------------------------------------
 
+//{ otherClasses
 
 
 //{ Hero::
@@ -164,16 +318,15 @@ Hero::Hero () :
     AnimationNumber_ (0),
     Type_ (0),
 
-    //!!!
-    ControlHeroFunction_ (DefControl),
+
     victim_ (NULL)
     {
     }
 
 //-----------------------------------------------------------------------------
 
-Hero::Hero (const char *Name, Image Picture, Vec pos, Vec V, int Type, int AnimationNumber,
-            void (*ControlHeroFunction) (Hero *patient, int KeyStopMove), Hero *victim) :
+Hero::Hero (const char *Name, Image Picture, Vec pos, Vec V, int Type,
+            const Hero *victim, int AnimationNumber) :
 
     Name_ (Name),
     Picture_ (Picture),
@@ -181,7 +334,6 @@ Hero::Hero (const char *Name, Image Picture, Vec pos, Vec V, int Type, int Anima
     V_ (V),
     AnimationNumber_ (AnimationNumber),
     Type_ (Type),
-    ControlHeroFunction_  (ControlHeroFunction),
     victim_ (victim)
     {
     }
@@ -202,7 +354,7 @@ void Hero::Move (double dt)
 //-----------------------------------------------------------------------------
 void Hero::Control (int KeyStopMove)
     {
-    ControlHeroFunction_ (this, KeyStopMove);          //ControlHeroFunction_  - переменна€ указатель на функцию
+
     }
 //-----------------------------------------------------------------------------
 
@@ -222,35 +374,38 @@ bool Hero::SetAnimation (int AnimationNumber)
     }
 
 //-----------------------------------------------------------------------------
-void Hero::CircleAnimation () const
+void Hero::doAnimation () const
     {
-    if (DoubleCompareWithZero (V_.x) != 0 && DoubleCompareWithZero (V_.y) != 0)
+    if (Picture_.GetTexture() != NULL)
         {
-        int t = Global_Timer.GetTime()/4;
-
-        Picture_.Draw (pos_, AnimationNumber_, t);
+        $ (Name_); $n;
+        Picture_.Draw (pos_, 0, 0);
         }
-
-    else
-        Picture_.Draw (pos_, AnimationNumber_, 0);
-
-    }
-
-//-----------------------------------------------------------------------------
-void Hero::PolarAnimation () const
-    {
-    int t = Global_Timer.GetTime()/4;
-    int ActiveDirection = (V_.x >= 0)?  1 : 0;
-
-    Picture_.Draw (pos_, ActiveDirection, t);
-
     }
 
 //}
 //-----------------------------------------------------------------------------
 
 
+//{ Animation::
 
+Animation::Animation (Image Picture, Vec pos) :
+    Hero ("Picture", Picture, pos, Vec (), PICTURE)
+    {}
+//-----------------------------------------------------------------------------
+
+void Animation::doAnimation () const
+    {
+    int t = Global_Timer.GetTime()/3;
+    Picture_.Draw (pos_, 0, t);
+    }
+
+//-----------------------------------------------------------------------------
+void Animation::Control (int KeyStopMove)
+    {
+    }
+//}
+//-----------------------------------------------------------------------------
 
 
 //{ Image::
@@ -327,8 +482,7 @@ void Image::Draw (Vec pos, int AnimationNumber, int t) const
 
 
 
-
-//{Vector::
+//{ Vector::
 
 template <typename T>
 Vector <T>::Vector () :
@@ -439,9 +593,10 @@ double Vector <T>::Angle () const
 
 
 
-
-//{Mouse::
-Mouse::Mouse ()                                 //если что-то по дефолту это можно не указывать => в данном случае указывать нужно Ќ»„≈√ќ хы
+//{ Mouse::
+Mouse::Mouse () :
+    pos_ (),
+    LastClickPos_ ()
     {}
 
 
@@ -463,12 +618,18 @@ Vec Mouse::GetClickPos()
     return LastClickPos_;
     }
 
-
+//-----------------------------------------------------------------------------
+int  Mouse::GetClickButtons()
+    {
+    return LastClickButtons_;
+    }
 //-----------------------------------------------------------------------------
 void Mouse::Update()
     {
     if (Global_Mouse.GetButtons() == 1)
         LastClickPos_ = GetPos();
+
+    LastClickButtons_ = txMouseButtons ();
     }
 
 //-----------------------------------------------------------------------------
@@ -478,13 +639,10 @@ void Mouse::Update()
 
 
 
-
-//{Time
-
+//{ Time
 Time::Time () :
     t_ (0)
     {}
-
 //-----------------------------------------------------------------------------
 
 int Time::GetTime()
@@ -498,16 +656,15 @@ void Time::Update()
     {
     t_++;
     }
-
-
-//-----------------------------------------------------------------------------
-
-
 //}
 //-----------------------------------------------------------------------------
 
 
-//----------------'''------------------''----------------''---------------''-----------------'''--------------'''---------------'''--------------
+//}
+//-------------------------------------------------------------------------------------------------
+//-------------------------------------------------------------------------------------------------
+//-------------------------------------------------------------------------------------------------
+
 
 
 int DoubleCompareWithZero (double number)
@@ -520,12 +677,52 @@ int DoubleCompareWithZero (double number)
                                                           // DCWZ (-0.01) = -1
     }
 
-
+//-----------------------------------------------------------------------------
+double HeroHypot (const Hero *first, const Hero *Second)
+    {
+    return hypot (first->pos_.x - Second->pos_.x,
+                  first->pos_.y - Second->pos_.y);
+    }
 
 //-----------------------------------------------------------------------------
-void DefControl (Hero *Def, int KeyStopMove)
+int GetObjArrayNum (const Hero *object, const Hero* Array [], int ArraySize)
     {
-    printf ("ama %s the Default Fish, boub, i cant moooove\n", Def->Name_);
+    for (int i = 0; i < ArraySize; i++)
+        {
+        if (Array[i] == object) return i;
+        }
+    return -1;
+    }
+
+//-----------------------------------------------------------------------------
+void DeleteFromArray (int objNum, const Hero* Array [], int ArraySize)
+    {
+    assert (0 <= objNum && objNum < ArraySize);
+
+    Array[objNum] = Array[ArraySize - 1];
+    Array[ArraySize - 1] = NULL;
+    freePlace_ ++;
     }
 //-----------------------------------------------------------------------------
+void DeleteObjFronArray (const Hero *object, const Hero* Array [], int ArraySize)
+    {
+    DeleteFromArray (GetObjArrayNum (object, Array, ArraySize), Array, ArraySize);
+    }
+//-----------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

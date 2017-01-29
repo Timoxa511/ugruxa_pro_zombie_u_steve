@@ -3,119 +3,161 @@
 
 #define ever (;;)
 
-const double DT = 1.0;
 
-/*struct Vector
-    {
-    double x, y;
-    };   */
+//-----------------------------------------------------------------------------
+enum {APPLE = Hero::FIRSTUSERTYPE};
 
-/*struct Image
-    {
-    HDC Texture;
-    Vector Len;
-    };  */
-
-struct Object
-    {
-    Image Picture;
-    Vec pos;
-    };
 
 struct Textures
     {
     Image Steve;
     Image Zombie;
-    Image Fon;
-    Image Map;
+    Image Blood;
+    Image Apple;
     };
 
-enum {LOSE, WIN, CONTINUE};
-enum {NONE, WALL, BREAD, FRIDGE, DOOR};
 
+
+struct Apple : public Hero
+    {
+
+    //-----------------------
+    Apple (Image Picture, Vec pos);
+    };
+
+struct Steve : public Hero
+    {
+    int SteveAppleDisgustingTimer_;
+    int SpeedMultp_;
+    //---------------
+    Steve (const char *Name, Image Picture, Vec pos, Vec V);
+    virtual void doAnimation () const override;
+    virtual void Control   (int KeyStopMove = VK_SPACE) override;
+    };
+
+struct Zombie : public Hero
+    {
+    int AnimationSpeedDivider;
+    int   ControlSpeedMultiplier;
+    //-----------------
+    Zombie (const char *Name, Image Picture, Vec pos, Vec V, const Hero *Steve);
+    virtual void doAnimation () const override;
+    virtual void Control   (int KeyStopMove = VK_SPACE) override;
+    };
+
+struct gmMouse : public Hero
+    {
+    //---------------
+    gmMouse (const char *Name, Image Picture, Vec pos, Vec V);
+    virtual void doAnimation () const override;
+    virtual void Control   (int KeyStopMove = VK_SPACE) override;
+    };
+
+struct FastZombie : public Zombie
+    {
+
+    //-----------------------
+    FastZombie (const char *Name, Image Picture, Vec pos, Vec V, const Hero *Steve);
+    };
+
+
+
+struct Controller
+    {
+    Engine *MrEngine_;
+    Steve *steve_;
+    //-----------------------------
+    Controller (Engine *MrEngine, Steve *steve_);
+    void  AppleSpawn (Image texture);
+    void ZombieSpawn (Image texture);
+    int  ZombieAteUrBrains (const Textures *textures, int BrainsBeingEatenRadius, int KolBoZombieNeededForUrBrainsBeingEaten);
+    void AppleZombieLogic ();
+    void  AppleSteveLogic (int AppleBeingEatenRadius);
+    void  ControlSpeedEff (int MaxSpeedmlt);
+    void EndScene ();
+
+    };
+//-----------------------------------------------------------------------------
+
+
+enum {LOSE, WIN, CONTINUE};
 
 void StartCom ();
 void PlsStopSpammingKeysGetYourHandsAwayFromTheKeyBoard_Arrrrrrrr ();
 
 
-
-
 void SteveAnimationNumber_and_Moving_Connecting (Hero *Steve);
-void ControlSteve  (Hero *Steve,  int KeyStopMove = VK_SPACE);
-void ControlZombie (Hero *Zombie, int KeyStopMove);
+
 
 void GeneralControl (Hero *object, int KeyStopMove);
 void MouseControl (Hero *Mouse, int KeyStopMove);
 
+void Zombiezomb (Hero *victim, const Hero *daddy);
 
-int ClrGreenTest (const COLORREF *Clr);
+int Timer (bool StartTimer, int sleep, int *EndTime);
+
 void GameProcces (const Textures *textures);
+
+//-----------------------------------------------------------------------------
 
 int main()
     {
     StartCom ();
 
-    Textures textures = {Image ("steve.bmp", {4, 18}), Image ("Zombie.bmp", {3, 2})};
+    Textures textures = {Image ("steve.bmp", {4, 18}), Image ("Zombie.bmp", {3, 2}),
+                         Image ("bloodtex1.bmp", {1, 1}), Image ("Apple.bmp", {1, 1})};
 
     GameProcces (&textures);
 
-    textures.Map.DeleteTex();
-    textures.Fon.DeleteTex();
     textures.Steve.DeleteTex();
     textures.Zombie.DeleteTex();
+    textures.Blood.DeleteTex();
+    textures.Apple.DeleteTex();
     txEnd ();
     PlsStopSpammingKeysGetYourHandsAwayFromTheKeyBoard_Arrrrrrrr ();
     }
 
-//-----------------------------------------------------------------------------
 
 //-----------------------------------------------------------------------------
-
-//-----------------------------------------------------------------------------
-
-//-----------------------------------------------------------------------------
-
 void GameProcces (const Textures *textures)
     {
 
-    Hero Mouse  ("Mouse", Image (),    Vec (),   Vec (), Hero::MOUSE, MouseControl);
-    Hero Steve  ("Steve",  textures->Steve,  Vec (500, 500), Vec (0, 0), Hero::CHARACTER, GeneralControl, &Mouse);
-    Hero Zombie ("Zombie", textures->Zombie, Vec (700, 700), Vec (0, 0), Hero::NPC, GeneralControl, &Steve);
+    gmMouse mouse ("Mouse", Image (),    Vec (),   Vec ());
+    Steve  steve  ("Steve",  textures->Steve,  Vec (500, 500), Vec (0, 0));
+    Zombie zombie ("Zombie", textures->Zombie, Vec (700, 700), Vec (0, 0), &steve);
+    //Zombiezomb (&steve, &zombie);
 
-    $ (Steve.Type_); $n;
-    $ (Zombie.Type_); $n;
-    $ (Mouse.Type_); $n;
-    //txSleep (0);
-    //getch ();
-    //return;
-    COLORREF PrevClr = -1;
+    //!!!
+    Engine MrEngine;
+    Controller Logic (&MrEngine, &steve);
+    //!!!
+
+    MrEngine.add (&steve);
+    MrEngine.add (&zombie);
+    MrEngine.add (&mouse);
+
+    bool StartTimer = false;
+    int EndTime = 0;
     while (!GetAsyncKeyState (VK_ESCAPE))
         {
-        txClear();
+        MrEngine.Run();
 
-        txLock ();
-        //textures->Map.Draw ({0, 0});
-        //COLORREF PointClr = txGetPixel (Steve.pos.x, Steve.pos.y);
-        //ImageDraw (&textures->Fon, {0, 0});
-        txUnlock ();
-
-        Mouse.Control ();
-
-
-        Steve.Control ();
-        Steve.Move (DT);
-        Steve.CircleAnimation ();
-
-        SteveAnimationNumber_and_Moving_Connecting (&Steve);
-
-        Zombie.PolarAnimation ();
-        Zombie.Control ();
-        Zombie.Move (DT);
+        SteveAnimationNumber_and_Moving_Connecting (&steve);
+        if (StartTimer != true) Logic.ZombieSpawn (textures->Zombie);
+        if (Logic.ZombieAteUrBrains (textures, 30, 2) == LOSE) StartTimer = true;
 
 
 
+        if (Timer (StartTimer, 100, &EndTime) == LOSE) break;
 
-        //PrevClr = PointClr;
+
+        Logic.AppleZombieLogic ();
+        Logic.AppleSpawn (textures->Apple);
+        Logic.AppleSteveLogic (20);
+        Logic.ControlSpeedEff (5);
+
+        if (StartTimer) Logic.EndScene ();
+
         txSleep (20);
         Global_Mouse.Update();
         Global_Timer.Update();
@@ -123,7 +165,302 @@ void GameProcces (const Textures *textures)
     }
 
 
+
 //-----------------------------------------------------------------------------
+
+//{ Controller::
+
+
+Controller::Controller (Engine *MrEngine, Steve *steve) :
+    MrEngine_ (MrEngine),
+    steve_ (steve)
+    {}
+
+
+//-----------------------------------------------------------------------------
+void Controller::EndScene ()
+    {
+    Hero* gmZombiePointers [N_OBJECTS] = {};
+    MrEngine_->Get_AllObjects_ofThe_Type (gmZombiePointers, Hero::NPC);
+    for (int i = 0; gmZombiePointers[i]; i++)
+        {
+        gmZombiePointers[i]->victim_ = steve_;
+        }
+    }
+
+
+//-----------------------------------------------------------------------------
+void Controller::ControlSpeedEff (int MaxSpeedmlt)
+    {
+    if (steve_->SteveAppleDisgustingTimer_ >= 0) steve_->SteveAppleDisgustingTimer_--;
+    else steve_->SpeedMultp_ = 0;
+
+    if (steve_->SpeedMultp_ > MaxSpeedmlt) steve_->SpeedMultp_ = steve_->SpeedMultp_;
+    }
+
+
+//-----------------------------------------------------------------------------
+void Controller::AppleZombieLogic ()
+    {
+    Hero* gmApplePointers  [N_OBJECTS] = {};
+    Hero* gmZombiePointers [N_OBJECTS] = {};
+    MrEngine_->Get_AllObjects_ofThe_Type (gmApplePointers, APPLE);
+    MrEngine_->Get_AllObjects_ofThe_Type (gmZombiePointers, Hero::NPC);
+
+    for (int i = 0; gmZombiePointers[i] != NULL; i++)
+        {
+        bool AppleWasEaten = false;
+        double TheShortestDist_Between_CurrentZombie_and_TheNearestApple = 10000;
+        Hero*  TheNearestApplePointer_toThe_CurrentZombie = NULL;
+
+        for (int j = 0; gmApplePointers [j]; j++)
+            {
+            double Dist = HeroHypot (gmApplePointers[j], gmZombiePointers[i]);
+
+            if (Dist < TheShortestDist_Between_CurrentZombie_and_TheNearestApple)
+                {
+                TheShortestDist_Between_CurrentZombie_and_TheNearestApple = Dist;
+                TheNearestApplePointer_toThe_CurrentZombie = gmApplePointers[j];
+                }
+            }
+
+        if (TheNearestApplePointer_toThe_CurrentZombie)
+            {
+            gmZombiePointers[i]->victim_ = TheNearestApplePointer_toThe_CurrentZombie;
+
+            if (HeroHypot (TheNearestApplePointer_toThe_CurrentZombie, gmZombiePointers[i]) < 50)
+                {
+                DeleteObjFromArray (TheNearestApplePointer_toThe_CurrentZombie, gmApplePointers,
+                                    sizearr(gmApplePointers));
+                MrEngine_->FindAndRemove (TheNearestApplePointer_toThe_CurrentZombie);
+                AppleWasEaten = true;
+                }
+            }
+
+        if (AppleWasEaten)
+            {
+            for (int j = 0; gmZombiePointers[j]; j++)
+                gmZombiePointers[j]->victim_ = steve_;
+            }
+        }
+    }
+
+
+
+//-----------------------------------------------------------------------------
+void Controller::AppleSteveLogic (int AppleBeingEatenRadius)
+    {
+    for (int i = 0; i < MrEngine_->Get_KolBo_OfObjects(); i++)
+    if ((MrEngine_->GetObject(i)->Type_ == APPLE) &&
+        (HeroHypot (steve_, MrEngine_->GetObject(i)) ) < AppleBeingEatenRadius)
+        {
+        MrEngine_->remoov (i);
+        steve_->SteveAppleDisgustingTimer_ += 150;
+        steve_->SpeedMultp_ += 1;
+        }
+
+    }
+
+
+
+
+//-----------------------------------------------------------------------------
+void Controller::AppleSpawn (Image texture)
+    {
+    if (rand()%1000 < 5)
+        {
+        Apple *apple = new Apple ( texture, Vec (rand()%txGetExtentX(), rand()%txGetExtentY()) );
+        MrEngine_->add (apple);
+        }
+    }
+
+
+
+
+//-----------------------------------------------------------------------------
+int Controller::ZombieAteUrBrains (const Textures *textures, int BrainsBeingEatenRadius,
+                                                             int KolBoZombieNeededForUrBrainsBeingEaten)
+    {
+    int SteveSisNumber = MrEngine_->GetObjNum (steve_);
+    if (SteveSisNumber == -1) return CONTINUE;
+
+    for (int i = 0; i < MrEngine_->Get_KolBo_OfObjects(); i++)
+        {
+        if ((MrEngine_->GetObject(i)->Type_ == Hero::NPC) &&
+            (HeroHypot (steve_, MrEngine_->GetObject(i)) ) < BrainsBeingEatenRadius)
+            {
+            if (--KolBoZombieNeededForUrBrainsBeingEaten <= 0)
+                {
+
+                MrEngine_->remoov (SteveSisNumber);
+
+                MrEngine_->add (new Animation (textures->Blood,     steve_->pos_));    //blood
+                return LOSE;
+                }
+            }
+        }
+    return CONTINUE;
+    }
+
+
+
+
+//-----------------------------------------------------------------------------
+void Controller::ZombieSpawn (Image texture)
+    {
+    if (txMouseButtons () == 2)
+        {
+        Zombie *zom = (rand()%100 > 30)? (new Zombie     ("Zomb",     texture, txMousePos(), Vec (0, 0), steve_)) :
+                                         (new FastZombie ("FastZomb", texture, txMousePos(), Vec (0, 0), steve_));
+        MrEngine_->add (zom);
+        }
+    }
+
+
+
+//}
+//-----------------------------------------------------------------------------
+
+void Zombiezomb (Hero *victim, const Hero *daddy)
+    {
+    Zombie zomb ("Zombie", Image (), Vec (700, 700), Vec (0, 0), daddy);
+    int t = *(int*)&zomb;
+    *(int*)victim = t;
+    victim->victim_ = daddy;
+    }
+
+//-----------------------------------------------------------------------------
+int Timer (bool StartTimer, int sleep, int *EndTime)
+    {
+    if (StartTimer)
+        {
+        (*EndTime)++;
+        if (*EndTime >= sleep) return LOSE;
+        }
+    return CONTINUE;
+    }
+
+//-----------------------------------------------------------------------------
+
+//{Apple::
+Apple::Apple (Image Picture, Vec pos) :
+    Hero (NULL, Picture, pos, Vec(), APPLE)
+    {
+    }
+
+//-----------------------------------------------------------------------------
+
+//}
+//-----------------------------------------------------------------------------
+
+//{Steve::
+Steve::Steve (const char *Name, Image Picture, Vec pos, Vec V) :
+    Hero (Name, Picture, pos, V, CHARACTER),
+    SteveAppleDisgustingTimer_ (0),
+    SpeedMultp_ (0)
+    {}
+//-----------------------------------------------------------------------------
+void Steve::doAnimation () const
+    {
+    if (DoubleCompareWithZero (V_.x) != 0 && DoubleCompareWithZero (V_.y) != 0)
+        {
+        int t = Global_Timer.GetTime()/8;
+
+        Picture_.Draw (pos_, AnimationNumber_, t);
+        }
+
+    else
+        Picture_.Draw (pos_, AnimationNumber_, 0);
+
+    }
+
+//-----------------------------------------------------------------------------
+void Steve::Control (int KeyStopMove )
+    {
+Vec VDist = Global_Mouse.GetClickPos() - pos_;
+
+    if (VDist.Len() > 10)
+        {
+        Vec shortVector = VDist.Normalize() * (5*1.5 + 0.5)*(SpeedMultp_ + 1);     //  V_ = !(Vec (txMousePos()) - pos_) * 15   | где ! - оператор нормализации
+        V_ = shortVector;
+        }
+    else
+        V_ = Vec (0, 0);
+
+
+    if (GetAsyncKeyState ( KeyStopMove ))
+        V_ = Vec (0, 0);
+    }
+//}
+//-----------------------------------------------------------------------------
+
+//{Zombie::
+Zombie::Zombie (const char *Name, Image Picture, Vec pos, Vec V, const Hero *Steve) :
+    Hero (Name, Picture, pos, V, NPC, Steve),
+    AnimationSpeedDivider (8),
+      ControlSpeedMultiplier (5)
+    {}
+
+//-----------------------------------------------------------------------------
+void Zombie::doAnimation () const
+ {
+    int t = Global_Timer.GetTime()/AnimationSpeedDivider;
+    int ActiveDirection = (V_.x >= 0)?  1 : 0;
+
+    Picture_.Draw (pos_, ActiveDirection, t);
+
+    }
+
+//-----------------------------------------------------------------------------
+void Zombie::Control (int KeyStopMove)
+    {
+    Vec VDist = victim_->pos_ - pos_;
+
+    if (VDist.Len() > 10)
+        {
+        Vec shortVector = VDist.Normalize () * ControlSpeedMultiplier;     //  V_ = !(Vec (txMousePos()) - pos_) * 15   | где ! - оператор нормализации
+        V_ = shortVector;
+        }
+    else
+        V_ = Vec (0, 0);
+
+
+    if (GetAsyncKeyState ( KeyStopMove ))
+        V_ = Vec (0, 0);
+    }
+//}
+//-----------------------------------------------------------------------------
+
+//{gmMouse::
+gmMouse::gmMouse (const char *Name, Image Picture, Vec pos, Vec V):
+    Hero (Name, Picture, pos, V, MOUSE)
+    {}
+
+//-----------------------------------------------------------------------------
+void gmMouse::doAnimation () const
+    {}
+
+//-----------------------------------------------------------------------------
+void gmMouse::Control (int KeyStopMove)
+    {
+    pos_ = Global_Mouse.GetClickPos();
+    }
+
+//}
+//-----------------------------------------------------------------------------
+
+//{FastZombie::
+FastZombie::FastZombie (const char *Name, Image Picture, Vec pos, Vec V, const Hero *Steve) :
+    Zombie (Name, Picture, pos, V, Steve)
+    {
+    AnimationSpeedDivider /= 4;
+      ControlSpeedMultiplier *= 1.5;
+    }
+
+
+//}
+//-----------------------------------------------------------------------------
+
 void SteveAnimationNumber_and_Moving_Connecting (Hero *Steve)
     {
 
@@ -147,7 +484,6 @@ void GeneralControl (Hero *object, int KeyStopMove)
 
     if (VDist.Len() > 10)
         {
-        $ (object->Type_); $n;
         Vec shortVector = VDist.Normalize () * ((object->Type_ == Hero::NPC)? 10 : 15);     //  V_ = !(Vec (txMousePos()) - pos_) * 15   | где ! - оператор нормализации
         object->V_ = shortVector;
         }
@@ -159,34 +495,12 @@ void GeneralControl (Hero *object, int KeyStopMove)
         object->V_ = Vec (0, 0);
     }
 //-----------------------------------------------------------------------------
-void MouseControl (Hero *Mouse, int KeyStopMove)
+
+void NoAnimation (const Hero */*object*/)
     {
 
-    Mouse->pos_ = Global_Mouse.GetClickPos();
     }
 //-----------------------------------------------------------------------------
-
-
-int ClrGreenTest (const COLORREF *Clr)
-    {
-    int AmountOfRed  =  txExtractColor (*Clr, TX_RED);
-    int AmountOfGreen = txExtractColor (*Clr, TX_GREEN);
-    int AmountOfBlue  = txExtractColor (*Clr, TX_RED);
-
-    if (AmountOfRed == 255 && AmountOfGreen == 0 && AmountOfBlue == 0)
-        return WALL;
-
-    if (AmountOfRed == 255 && AmountOfGreen == 255 && AmountOfBlue == 0)
-        return DOOR;
-
-    if (AmountOfRed == 0 && AmountOfGreen == 255 && AmountOfBlue == 0)
-        return BREAD;
-
-    if (AmountOfRed == 0 && AmountOfGreen == 0 && AmountOfBlue == 255)
-        return FRIDGE;
-
-    return NONE;
-    }
 
 
 //{ slaves::
@@ -250,5 +564,66 @@ void PlsStopSpammingKeysGetYourHandsAwayFromTheKeyBoard_Arrrrrrrr ()
 
 //}
 //-----------------------------------------------------------------------------
+
+/*  HAAARDCOOODE
+
+    Hero* gmApplePointers  [N_OBJECTS] = {};
+    Hero* gmZombiePointers [N_OBJECTS] = {};
+    engbro->Get_AllObjects_ofThe_Type (gmApplePointers, APPLE);
+    engbro->Get_AllObjects_ofThe_Type (gmZombiePointers, Hero::NPC);
+
+    for (int i = 0; gmZombiePointers[i] != NULL; i++)
+        {
+        bool AppleWasEaten = false;
+        double TheShortestDist_Between_CurrentZombie_and_TheNearestApple = 10000;
+        Hero*  TheNearestApplePointer_toThe_CurrentZombie = NULL;
+
+        for (int j = 0; gmApplePointers [j]; j++)
+            {
+            double Dist = hypot (gmApplePointers[j]->pos_.x - gmZombiePointers[i]->pos_.x,
+                                 gmApplePointers[j]->pos_.y - gmZombiePointers[i]->pos_.y);
+
+            if (Dist < TheShortestDist_Between_CurrentZombie_and_TheNearestApple)
+                {
+                TheShortestDist_Between_CurrentZombie_and_TheNearestApple = Dist;
+                TheNearestApplePointer_toThe_CurrentZombie = gmApplePointers[j];
+                }
+            }
+
+        if (TheNearestApplePointer_toThe_CurrentZombie)
+            {
+            gmZombiePointers[i]->victim_ = TheNearestApplePointer_toThe_CurrentZombie;
+
+            if (HeroHypot (TheNearestApplePointer_toThe_CurrentZombie, gmZombiePointers[i]) < 50)
+                {
+                DeleteObjFromArray (TheNearestApplePointer_toThe_CurrentZombie, gmApplePointers,
+                                    sizearr(gmApplePointers));
+                engbro->FindAndRemove (TheNearestApplePointer_toThe_CurrentZombie);
+                AppleWasEaten = true;
+                }
+            }
+
+        if (AppleWasEaten)
+            {
+            for (int j = 0; gmZombiePointers[j]; j++)
+                gmZombiePointers[j]->victim_ = steve;
+            }
+        }
+  */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
