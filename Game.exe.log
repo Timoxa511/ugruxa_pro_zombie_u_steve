@@ -1671,3 +1671,1052 @@ Run file:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie
 Directory:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0
 
 --------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe,
+
+ВНЕЗАПНО: signal (11, 0x00): SIGSEGV: Доступ по неверному указателю. Ставьте ассерты! 
+
+Нарушение доступа к памяти.
+
+Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x004268AE в функции HeroHypot в файле C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/TimaXLIbJustOneFunction.h на строке 694. Попытка прочесть данные по адресу 0x00000030. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004F92C0 (32-bit), Flags: CMdRE0, Thread: 0xCB8 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x004268AE in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe!HeroHypot at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/TimaXLIbJustOneFunction.h (694):
+
+    692:     {
+    693:     return hypot (first->pos_.x - Second->pos_.x,
+=>  694:                   first->pos_.y - Second->pos_.y);
+    695:     }
+    696: 
+
+# 1 0x00427256 in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe!AppleZombieLogic at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (224):
+
+    222:                 }
+    223:             }
+=>  224:         $ (HeroHypot (TheNearestApplePointer_toThe_CurrentZombie, gmZombiePointers[i])); $n;
+    225:         if (TheNearestApplePointer_toThe_CurrentZombie)
+    226:             {
+
+# 2 0x00426F9C in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe!GameProcces at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (162):
+
+    160: 
+    161:         Hero* EatenApple = Logic.AppleSteveLogic (20);
+=>  162:         Logic.AppleZombieLogic (EatenApple);
+    163:         Logic.AppleSpawn (textures->Apple);
+    164: 
+
+# 3 0x00426B40 in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe!main at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (117):
+
+    115:                          Image ("bloodtex1.bmp", {1, 1}), Image ("Apple.bmp", {1, 1})};
+    116: 
+=>  117:     GameProcces (&textures);
+    118: 
+    119:     textures.Steve.DeleteTex();
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in void Controller::ZombieSpawn(Image) at C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.cpp (320):
+
+    318: void Controller::ZombieSpawn (Image texture)
+    319:     {
+=>  320:     if (txMouseButtons () == 2)
+    321:         {
+    322:         Zombie *zom = (rand()%100 > 30)? (new Zombie     ("Zomb",     texture, txMousePos(), Vec (0, 0), steve_)) :
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Program Files (x86)\TX\TXLib.h
+Compiled:	Jan 29 2017 21:48:12, DEBUG, GNU g++ 4.8.1, std=201103L
+Started:	Jan 29 2017 21:48:18
+
+Run file:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe
+Directory:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe,
+
+ВНЕЗАПНО: signal (11, 0x00): SIGSEGV: Доступ по неверному указателю. Ставьте ассерты! 
+
+Нарушение доступа к памяти.
+
+Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x004268E4 в функции HeroHypot2 в файле C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/TimaXLIbJustOneFunction.h на строке 740. Попытка прочесть данные по адресу 0x00000030. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004F92C0 (32-bit), Flags: CMdRE0, Thread: 0x12E4 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x004268E4 in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe!HeroHypot2 at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/TimaXLIbJustOneFunction.h (740):
+
+    738:     {
+    739:     return hypot2 (first->pos_.x - Second->pos_.x,
+=>  740:                   first->pos_.y - Second->pos_.y);
+    741:     }
+    742: 
+
+# 1 0x00427FAB in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe!BulletsZombieLogic at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (377):
+
+    375:         for (int i = 0; gmZombiePointers[i]; i++)
+    376:             {
+=>  377:             if (HeroHypot2 (gmBulletPointers[j], gmZombiePointers[i])  <  30*30)
+    378:                 {
+    379:                 MrEngine_->FindAndRemove (gmBulletPointers[j]);
+
+# 2 0x00427119 in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe!GameProcces at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (175):
+
+    173:         Logic.AppleZombieLogic (EatenApple);
+    174:         Logic.AppleSpawn (textures->Apple);
+=>  175:         Logic.BulletsZombieLogic ();
+    176: 
+    177: 
+
+# 3 0x00426B9E in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe!main at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (130):
+
+    128:                          Image ("bloodtex1.bmp", {1, 1}), Image ("Apple.bmp", {1, 1})};
+    129: 
+=>  130:     GameProcces (&textures);
+    131: 
+    132:     textures.Steve.DeleteTex();
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in void Controller::ZombieSpawn(Image) at C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.cpp (339):
+
+    337: void Controller::ZombieSpawn (Image texture)
+    338:     {
+=>  339:     if (txMouseButtons () == 2)
+    340:         {
+    341:         Zombie *zom = (rand()%100 > 30)? (new Zombie     ("Zomb",     texture, txMousePos(), Vec (0, 0), steve_)) :
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Program Files (x86)\TX\TXLib.h
+Compiled:	Feb  5 2017 21:23:48, DEBUG, GNU g++ 4.8.1, std=201103L
+Started:	Feb 05 2017 21:23:54
+
+Run file:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe
+Directory:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe, файл: C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\TimaXLIbJustOneFunction.h, строка: 317, функция: void Engine::remoov(int),
+
+Сообщение: ВНЕЗАПНО: Логическая ошибка: Неверно, что "0 <= numObj && numObj < Get_KolBo_OfObjects()".
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004F92C0 (32-bit), Flags: CMdRE0, Thread: 0x1218 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00425BB9 in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe!remoov at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/TimaXLIbJustOneFunction.h (317):
+
+    315: void Engine::remoov (int numObj)
+    316:     {
+=>  317:     assert (0 <= numObj && numObj < Get_KolBo_OfObjects());
+    318: 
+    319: 
+
+# 1 0x00425B5F in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe!FindAndRemove at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/TimaXLIbJustOneFunction.h (310):
+
+    308: void Engine::FindAndRemove (const Hero *obj)
+    309:     {
+=>  310:     remoov (GetObjNum (obj));
+    311:     }
+    312: 
+
+# 2 0x00427F7E in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe!BulletsZombieLogic at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (381):
+
+    379:                 {
+    380:                 MrEngine_->FindAndRemove (gmBulletPointers[j]);
+=>  381:                 MrEngine_->FindAndRemove (gmZombiePointers[i]);
+    382:                 }
+    383:             }
+
+# 3 0x00427119 in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe!GameProcces at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (176):
+
+    174:         Logic.AppleZombieLogic (EatenApple);
+    175:         Logic.AppleSpawn (textures->Apple);
+=>  176:         Logic.BulletsZombieLogic ();
+    177:         Logic.BulletsSpawn ()   ;
+    178: 
+
+# 4 0x00426B9E in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe!main at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (131):
+
+    129:                          Image ("bloodtex1.bmp", {1, 1}), Image ("Apple.bmp", {1, 1})};
+    130: 
+=>  131:     GameProcces (&textures);
+    132: 
+    133:     textures.Steve.DeleteTex();
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Program Files (x86)\TX\TXLib.h
+Compiled:	Feb  5 2017 21:38:39, DEBUG, GNU g++ 4.8.1, std=201103L
+Started:	Feb 05 2017 21:38:45
+
+Run file:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe
+Directory:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe, файл: C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\TimaXLIbJustOneFunction.h, строка: 319, функция: void Engine::remoov(int),
+
+Сообщение: ВНЕЗАПНО: Логическая ошибка: Неверно, что "0 <= numObj && numObj < Get_KolBo_OfObjects()".
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004F92C0 (32-bit), Flags: CMdRE0, Thread: 0xB1C (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00425BC5 in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe!remoov at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/TimaXLIbJustOneFunction.h (319):
+
+    317: void Engine::remoov (int numObj)
+    318:     {
+=>  319:     assert (0 <= numObj && numObj < Get_KolBo_OfObjects());
+    320: 
+    321: 
+
+# 1 0x00425B6B in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe!FindAndRemove at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/TimaXLIbJustOneFunction.h (312):
+
+    310:     int num = GetObjNum (obj);
+    311:     if (num)
+=>  312:         remoov (num);
+    313:     }
+    314: 
+
+# 2 0x00427F6A in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe!BulletsZombieLogic at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (380):
+
+    378:             if (HeroHypot2 (gmBulletPointers[j], gmZombiePointers[i])  <  30*30)
+    379:                 {
+=>  380:                 MrEngine_->FindAndRemove (gmBulletPointers[j]);
+    381:                 MrEngine_->FindAndRemove (gmZombiePointers[i]);
+    382:                 }
+
+# 3 0x00427125 in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe!GameProcces at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (176):
+
+    174:         Logic.AppleZombieLogic (EatenApple);
+    175:         Logic.AppleSpawn (textures->Apple);
+=>  176:         Logic.BulletsZombieLogic ();
+    177:         Logic.BulletsSpawn ()   ;
+    178: 
+
+# 4 0x00426BAA in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe!main at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (131):
+
+    129:                          Image ("bloodtex1.bmp", {1, 1}), Image ("Apple.bmp", {1, 1})};
+    130: 
+=>  131:     GameProcces (&textures);
+    132: 
+    133:     textures.Steve.DeleteTex();
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Program Files (x86)\TX\TXLib.h
+Compiled:	Feb  5 2017 21:43:38, DEBUG, GNU g++ 4.8.1, std=201103L
+Started:	Feb 05 2017 21:43:44
+
+Run file:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe
+Directory:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe,
+
+ВНЕЗАПНО: signal (11, 0x00): SIGSEGV: Доступ по неверному указателю. Ставьте ассерты! 
+
+Нарушение доступа к памяти.
+
+Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x004291A5 в функции shoot в файле C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp на строке 648. Попытка прочесть данные по адресу 0x0802F6D2. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FA2C0 (32-bit), Flags: CMdRE0, Thread: 0x550 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x004291A5 in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe!shoot at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (648):
+
+    646: void Gun::shoot ()
+    647:     {
+=>  648:     Vec BulletDirection = steve_->V_ + (MrMouse_->pos_ - steve_->pos_).Normalize()*7;
+    649: 
+    650:     if (CurrentModeOfGun_ == PISTOL)
+
+# 1 0x00427332 in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe!GameProcces at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (205):
+
+    203:         Logic.GunZombieLogic ();
+    204: 
+=>  205:         if (/*!StartTimer && */GetAsyncKeyState(VK_TAB)) steve->pushka_->shoot ();
+    206: 
+    207:         if (StartTimer) Logic.EndScene ();
+
+# 2 0x00426D83 in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe!main at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (156):
+
+    154:                          Image ("bloodtex1.bmp", {1, 1}), Image ("Apple.bmp", {1, 1})};
+    155: 
+=>  156:     GameProcces (&textures);
+    157: 
+    158:     textures.Steve.DeleteTex();
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in void Mouse::Update() at C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\TimaXLIbJustOneFunction.h (713):
+
+    711:         LastClickPos_ = GetPos();
+    712: 
+=>  713:     LastClickButtons_ = txMouseButtons ();
+    714:     }
+    715: 
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Program Files (x86)\TX\TXLib.h
+Compiled:	Feb  8 2017 21:48:36, DEBUG, GNU g++ 4.8.1, std=201103L
+Started:	Feb 08 2017 21:48:42
+
+Run file:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe
+Directory:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe,
+
+ВНЕЗАПНО: signal (11, 0x00): SIGSEGV: Доступ по неверному указателю. Ставьте ассерты! 
+
+Нарушение доступа к памяти.
+
+Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x004291A5 в функции shoot в файле C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp на строке 648. Попытка прочесть данные по адресу 0x0802535E. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FA2C0 (32-bit), Flags: CMdRE0, Thread: 0xD4C (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x004291A5 in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe!shoot at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (648):
+
+    646: void Gun::shoot ()
+    647:     {
+=>  648:     Vec BulletDirection = steve_->V_ + (MrMouse_->pos_ - steve_->pos_).Normalize()*7;
+    649: 
+    650:     if (CurrentModeOfGun_ == PISTOL)
+
+# 1 0x00427332 in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe!GameProcces at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (205):
+
+    203:         Logic.GunZombieLogic ();
+    204: 
+=>  205:         if (/*!StartTimer && */GetAsyncKeyState(VK_TAB)) steve->pushka_->shoot ();
+    206: 
+    207:         if (StartTimer) Logic.EndScene ();
+
+# 2 0x00426D83 in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe!main at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (156):
+
+    154:                          Image ("bloodtex1.bmp", {1, 1}), Image ("Apple.bmp", {1, 1})};
+    155: 
+=>  156:     GameProcces (&textures);
+    157: 
+    158:     textures.Steve.DeleteTex();
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in void Mouse::Update() at C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\TimaXLIbJustOneFunction.h (713):
+
+    711:         LastClickPos_ = GetPos();
+    712: 
+=>  713:     LastClickButtons_ = txMouseButtons ();
+    714:     }
+    715: 
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Program Files (x86)\TX\TXLib.h
+Compiled:	Feb  8 2017 21:49:21, DEBUG, GNU g++ 4.8.1, std=201103L
+Started:	Feb 08 2017 21:49:28
+
+Run file:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe
+Directory:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe,
+
+ВНЕЗАПНО: signal (11, 0x00): SIGSEGV: Доступ по неверному указателю. Ставьте ассерты! 
+
+Нарушение доступа к памяти.
+
+Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x004291A5 в функции shoot в файле C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp на строке 648. Попытка прочесть данные по адресу 0x080264F6. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FA2C0 (32-bit), Flags: CMdRE0, Thread: 0xB44 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x004291A5 in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe!shoot at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (648):
+
+    646: void Gun::shoot ()
+    647:     {
+=>  648:     Vec BulletDirection = steve_->V_ + (MrMouse_->pos_ - steve_->pos_).Normalize()*7;
+    649: 
+    650:     if (CurrentModeOfGun_ == PISTOL)
+
+# 1 0x00427332 in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe!GameProcces at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (205):
+
+    203:         Logic.GunZombieLogic ();
+    204: 
+=>  205:         if (/*!StartTimer && */GetAsyncKeyState(VK_TAB)) steve->pushka_->shoot ();
+    206: 
+    207:         if (StartTimer) Logic.EndScene ();
+
+# 2 0x00426D83 in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe!main at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (156):
+
+    154:                          Image ("bloodtex1.bmp", {1, 1}), Image ("Apple.bmp", {1, 1})};
+    155: 
+=>  156:     GameProcces (&textures);
+    157: 
+    158:     textures.Steve.DeleteTex();
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in void Mouse::Update() at C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\TimaXLIbJustOneFunction.h (713):
+
+    711:         LastClickPos_ = GetPos();
+    712: 
+=>  713:     LastClickButtons_ = txMouseButtons ();
+    714:     }
+    715: 
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Program Files (x86)\TX\TXLib.h
+Compiled:	Feb  8 2017 21:49:40, DEBUG, GNU g++ 4.8.1, std=201103L
+Started:	Feb 08 2017 21:49:47
+
+Run file:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe
+Directory:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe,
+
+ВНЕЗАПНО: signal (11, 0x00): SIGSEGV: Доступ по неверному указателю. Ставьте ассерты! 
+
+Нарушение доступа к памяти.
+
+Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x004291A5 в функции shoot в файле C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp на строке 648. Попытка прочесть данные по адресу 0x08028505. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FA2C0 (32-bit), Flags: CMdRE0, Thread: 0xF64 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x004291A5 in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe!shoot at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (648):
+
+    646: void Gun::shoot ()
+    647:     {
+=>  648:     Vec BulletDirection = steve_->V_ + (MrMouse_->pos_ - steve_->pos_).Normalize()*7;
+    649: 
+    650:     if (CurrentModeOfGun_ == PISTOL)
+
+# 1 0x00427332 in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe!GameProcces at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (205):
+
+    203:         Logic.GunZombieLogic ();
+    204: 
+=>  205:         if (/*!StartTimer && */GetAsyncKeyState(VK_TAB)) steve->pushka_->shoot ();
+    206: 
+    207:         if (StartTimer) Logic.EndScene ();
+
+# 2 0x00426D83 in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe!main at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (156):
+
+    154:                          Image ("bloodtex1.bmp", {1, 1}), Image ("Apple.bmp", {1, 1})};
+    155: 
+=>  156:     GameProcces (&textures);
+    157: 
+    158:     textures.Steve.DeleteTex();
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in void Controller::ZombieSpawn(Image) at C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.cpp (366):
+
+    364: void Controller::ZombieSpawn (Image texture)
+    365:     {
+=>  366:     if (txMouseButtons () == 2)
+    367:         {
+    368:         Zombie *zom = (rand()%100 > 30)? (new Zombie     ("Zomb",     texture, txMousePos(), Vec (0, 0), steve_)) :
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Program Files (x86)\TX\TXLib.h
+Compiled:	Feb  8 2017 21:52:13, DEBUG, GNU g++ 4.8.1, std=201103L
+Started:	Feb 08 2017 21:52:20
+
+Run file:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe
+Directory:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe,
+
+ВНЕЗАПНО: signal (11, 0x00): SIGSEGV: Доступ по неверному указателю. Ставьте ассерты! 
+
+Нарушение доступа к памяти.
+
+Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x004291DB в функции shoot в файле C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp на строке 651. Попытка прочесть данные по адресу 0x0802E941. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FA2C0 (32-bit), Flags: CMdRE0, Thread: 0x9B8 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x004291DB in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe!shoot at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (651):
+
+    649: void Gun::shoot ()
+    650:     {
+=>  651:     Vec BulletDirection = steve_->V_ + (MrMouse_->pos_ - steve_->pos_).Normalize()*7;
+    652: 
+    653:     if (CurrentModeOfGun_ == PISTOL)
+
+# 1 0x00427345 in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe!GameProcces at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (207):
+
+    205:         steve->pushka_->Logic();
+    206: 
+=>  207:         if (/*!StartTimer && */GetAsyncKeyState(VK_TAB)) steve->pushka_->shoot ();
+    208: 
+    209:         if (StartTimer) Logic.EndScene ();
+
+# 2 0x00426D89 in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe!main at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (156):
+
+    154:                          Image ("bloodtex1.bmp", {1, 1}), Image ("Apple.bmp", {1, 1})};
+    155: 
+=>  156:     GameProcces (&textures);
+    157: 
+    158:     textures.Steve.DeleteTex();
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in void Controller::ZombieSpawn(Image) at C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.cpp (368):
+
+    366: void Controller::ZombieSpawn (Image texture)
+    367:     {
+=>  368:     if (txMouseButtons () == 2)
+    369:         {
+    370:         Zombie *zom = (rand()%100 > 30)? (new Zombie     ("Zomb",     texture, txMousePos(), Vec (0, 0), steve_)) :
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Program Files (x86)\TX\TXLib.h
+Compiled:	Feb  8 2017 22:15:54, DEBUG, GNU g++ 4.8.1, std=201103L
+Started:	Feb 08 2017 22:16:00
+
+Run file:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe
+Directory:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe,
+
+ВНЕЗАПНО: signal (11, 0x00): SIGSEGV: Доступ по неверному указателю. Ставьте ассерты! 
+
+Нарушение доступа к памяти.
+
+Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x004291DB в функции shoot в файле C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp на строке 651. Попытка прочесть данные по адресу 0x0802C483. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FA2C0 (32-bit), Flags: CMdRE0, Thread: 0x1FC (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x004291DB in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe!shoot at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (651):
+
+    649: void Gun::shoot ()
+    650:     {
+=>  651:     Vec BulletDirection = steve_->V_ + (MrMouse_->pos_ - steve_->pos_).Normalize()*7;
+    652: 
+    653:     if (CurrentModeOfGun_ == PISTOL)
+
+# 1 0x00427345 in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe!GameProcces at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (207):
+
+    205:         steve->pushka_->Logic();
+    206: 
+=>  207:         if (/*!StartTimer && */GetAsyncKeyState(VK_TAB)) steve->pushka_->shoot ();
+    208: 
+    209:         if (StartTimer) Logic.EndScene ();
+
+# 2 0x00426D89 in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe!main at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (156):
+
+    154:                          Image ("bloodtex1.bmp", {1, 1}), Image ("Apple.bmp", {1, 1})};
+    155: 
+=>  156:     GameProcces (&textures);
+    157: 
+    158:     textures.Steve.DeleteTex();
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in void Mouse::Update() at C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\TimaXLIbJustOneFunction.h (713):
+
+    711:         LastClickPos_ = GetPos();
+    712: 
+=>  713:     LastClickButtons_ = txMouseButtons ();
+    714:     }
+    715: 
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Program Files (x86)\TX\TXLib.h
+Compiled:	Feb  8 2017 22:20:15, DEBUG, GNU g++ 4.8.1, std=201103L
+Started:	Feb 08 2017 22:20:21
+
+Run file:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe
+Directory:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe,
+
+ВНЕЗАПНО: signal (11, 0x00): SIGSEGV: Доступ по неверному указателю. Ставьте ассерты! 
+
+Нарушение доступа к памяти.
+
+Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x004291DB в функции shoot в файле C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp на строке 651. Попытка прочесть данные по адресу 0x080293C9. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FA2C0 (32-bit), Flags: CMdRE0, Thread: 0xF74 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x004291DB in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe!shoot at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (651):
+
+    649: void Gun::shoot ()
+    650:     {
+=>  651:     Vec BulletDirection = steve_->V_ + (MrMouse_->pos_ - steve_->pos_).Normalize()*7;
+    652: 
+    653:     if (CurrentModeOfGun_ == PISTOL)
+
+# 1 0x00427345 in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe!GameProcces at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (207):
+
+    205:         steve->pushka_->Logic();
+    206: 
+=>  207:         if (/*!StartTimer && */GetAsyncKeyState(VK_TAB)) steve->pushka_->shoot ();
+    208: 
+    209:         if (StartTimer) Logic.EndScene ();
+
+# 2 0x00426D89 in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe!main at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (156):
+
+    154:                          Image ("bloodtex1.bmp", {1, 1}), Image ("Apple.bmp", {1, 1})};
+    155: 
+=>  156:     GameProcces (&textures);
+    157: 
+    158:     textures.Steve.DeleteTex();
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in void Mouse::Update() at C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\TimaXLIbJustOneFunction.h (713):
+
+    711:         LastClickPos_ = GetPos();
+    712: 
+=>  713:     LastClickButtons_ = txMouseButtons ();
+    714:     }
+    715: 
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Program Files (x86)\TX\TXLib.h
+Compiled:	Feb  8 2017 22:20:37, DEBUG, GNU g++ 4.8.1, std=201103L
+Started:	Feb 08 2017 22:20:44
+
+Run file:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe
+Directory:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe,
+
+ВНЕЗАПНО: signal (11, 0x00): SIGSEGV: Доступ по неверному указателю. Ставьте ассерты! 
+
+Нарушение доступа к памяти.
+
+Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x004291EA в функции shoot в файле C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp на строке 654. Попытка прочесть данные по адресу 0x08022D8C. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FA2C0 (32-bit), Flags: CMdRE0, Thread: 0xAC4 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x004291EA in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe!shoot at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (654):
+
+    652:         return;
+    653: 
+=>  654:     Vec BulletDirection = steve_->V_ + (MrMouse_->pos_ - steve_->pos_).Normalize()*7;
+    655: 
+    656:     if (CurrentModeOfGun_ == PISTOL)
+
+# 1 0x00427345 in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe!GameProcces at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (207):
+
+    205:         steve->pushka_->Logic();
+    206: 
+=>  207:         if (/*!StartTimer && */GetAsyncKeyState(VK_TAB)) steve->pushka_->shoot ();
+    208: 
+    209:         if (StartTimer) Logic.EndScene ();
+
+# 2 0x00426D89 in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe!main at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (156):
+
+    154:                          Image ("bloodtex1.bmp", {1, 1}), Image ("Apple.bmp", {1, 1})};
+    155: 
+=>  156:     GameProcces (&textures);
+    157: 
+    158:     textures.Steve.DeleteTex();
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in void Mouse::Update() at C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\TimaXLIbJustOneFunction.h (713):
+
+    711:         LastClickPos_ = GetPos();
+    712: 
+=>  713:     LastClickButtons_ = txMouseButtons ();
+    714:     }
+    715: 
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Program Files (x86)\TX\TXLib.h
+Compiled:	Feb  8 2017 22:22:47, DEBUG, GNU g++ 4.8.1, std=201103L
+Started:	Feb 08 2017 22:22:54
+
+Run file:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe
+Directory:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe,
+
+ВНЕЗАПНО: signal (11, 0x00): SIGSEGV: Доступ по неверному указателю. Ставьте ассерты! 
+
+Нарушение доступа к памяти.
+
+Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x00429256 в функции shoot в файле C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp на строке 655. Попытка прочесть данные по адресу 0x08020D46. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FA2C0 (32-bit), Flags: CMdRE0, Thread: 0xA10 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00429256 in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe!shoot at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (655):
+
+    653:         return;
+    654: 
+=>  655:     Vec BulletDirection = steve_->V_ + (MrMouse_->pos_ - steve_->pos_).Normalize()*7;
+    656: 
+    657:     if (CurrentModeOfGun_ == PISTOL)
+
+# 1 0x00427345 in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe!GameProcces at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (207):
+
+    205:         steve->pushka_->Logic();
+    206: 
+=>  207:         if (/*!StartTimer && */GetAsyncKeyState(VK_TAB)) steve->pushka_->shoot ();
+    208: 
+    209:         if (StartTimer) Logic.EndScene ();
+
+# 2 0x00426D89 in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe!main at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (156):
+
+    154:                          Image ("bloodtex1.bmp", {1, 1}), Image ("Apple.bmp", {1, 1})};
+    155: 
+=>  156:     GameProcces (&textures);
+    157: 
+    158:     textures.Steve.DeleteTex();
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in void Mouse::Update() at C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\TimaXLIbJustOneFunction.h (713):
+
+    711:         LastClickPos_ = GetPos();
+    712: 
+=>  713:     LastClickButtons_ = txMouseButtons ();
+    714:     }
+    715: 
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Program Files (x86)\TX\TXLib.h
+Compiled:	Feb  8 2017 22:26:07, DEBUG, GNU g++ 4.8.1, std=201103L
+Started:	Feb 08 2017 22:26:14
+
+Run file:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe
+Directory:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe,
+
+ВНЕЗАПНО: signal (11, 0x00): SIGSEGV: Доступ по неверному указателю. Ставьте ассерты! 
+
+Нарушение доступа к памяти.
+
+Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x00429256 в функции shoot в файле C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp на строке 655. Попытка прочесть данные по адресу 0x08025BEB. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FA2C0 (32-bit), Flags: CMdRE0, Thread: 0xDE8 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00429256 in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe!shoot at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (655):
+
+    653:         return;
+    654: 
+=>  655:     Vec BulletDirection = steve_->V_ + (MrMouse_->pos_ - steve_->pos_).Normalize()*7;
+    656: 
+    657:     if (CurrentModeOfGun_ == PISTOL)
+
+# 1 0x00427345 in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe!GameProcces at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (207):
+
+    205:         steve->pushka_->Logic();
+    206: 
+=>  207:         if (/*!StartTimer && */GetAsyncKeyState(VK_TAB)) steve->pushka_->shoot ();
+    208: 
+    209:         if (StartTimer) Logic.EndScene ();
+
+# 2 0x00426D89 in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe!main at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (156):
+
+    154:                          Image ("bloodtex1.bmp", {1, 1}), Image ("Apple.bmp", {1, 1})};
+    155: 
+=>  156:     GameProcces (&textures);
+    157: 
+    158:     textures.Steve.DeleteTex();
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in void Mouse::Update() at C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\TimaXLIbJustOneFunction.h (713):
+
+    711:         LastClickPos_ = GetPos();
+    712: 
+=>  713:     LastClickButtons_ = txMouseButtons ();
+    714:     }
+    715: 
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Program Files (x86)\TX\TXLib.h
+Compiled:	Feb  8 2017 22:28:17, DEBUG, GNU g++ 4.8.1, std=201103L
+Started:	Feb 08 2017 22:28:24
+
+Run file:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe
+Directory:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe,
+
+ВНЕЗАПНО: signal (11, 0x00): SIGSEGV: Доступ по неверному указателю. Ставьте ассерты! 
+
+Нарушение доступа к памяти.
+
+Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x004292D6 в функции shoot в файле C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp на строке 662. Попытка прочесть данные по адресу 0x080215ED. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FA2C0 (32-bit), Flags: CMdRE0, Thread: 0xCE8 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x004292D6 in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe!shoot at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (662):
+
+    660: 
+    661: 
+=>  662:     Vec BulletDirection = steve_->V_ + (MrMouse_->pos_ - steve_->pos_).Normalize()*7;
+    663: 
+    664:     if (CurrentModeOfGun_ == PISTOL)
+
+# 1 0x00427345 in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe!GameProcces at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (207):
+
+    205:         steve->pushka_->Logic();
+    206: 
+=>  207:         if (/*!StartTimer && */GetAsyncKeyState(VK_TAB)) steve->pushka_->shoot ();
+    208: 
+    209:         if (StartTimer) Logic.EndScene ();
+
+# 2 0x00426D89 in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe!main at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (156):
+
+    154:                          Image ("bloodtex1.bmp", {1, 1}), Image ("Apple.bmp", {1, 1})};
+    155: 
+=>  156:     GameProcces (&textures);
+    157: 
+    158:     textures.Steve.DeleteTex();
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in void Mouse::Update() at C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\TimaXLIbJustOneFunction.h (713):
+
+    711:         LastClickPos_ = GetPos();
+    712: 
+=>  713:     LastClickButtons_ = txMouseButtons ();
+    714:     }
+    715: 
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Program Files (x86)\TX\TXLib.h
+Compiled:	Feb  8 2017 22:30:59, DEBUG, GNU g++ 4.8.1, std=201103L
+Started:	Feb 08 2017 22:31:05
+
+Run file:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe
+Directory:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0
+
+--------------------------------------------------

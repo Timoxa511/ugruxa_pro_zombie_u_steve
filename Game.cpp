@@ -5,7 +5,7 @@
 
 
 //-----------------------------------------------------------------------------
-enum {APPLE = Hero::FIRSTUSERTYPE};
+enum {APPLE = Hero::FIRSTUSERTYPE, BULLET, MINA};
 
 
 struct Textures
@@ -25,24 +25,36 @@ struct Apple : public Hero
     Apple (Image Picture, Vec pos);
     };
 
+struct Gun;
+
 struct Steve : public Hero
     {
-    int SteveAppleDisgustingTimer_;
+    int AppleDisgustingTimer_;
     int SpeedMultp_;
+    int MaxSpeedmlt_;
+    Gun *pushka_;
     //---------------
-    Steve (const char *Name, Image Picture, Vec pos, Vec V);
+    Steve (const char *Name, Image Picture, Vec pos, Vec V, Engine* MrEngine);
     virtual void doAnimation () const override;
     virtual void Control   (int KeyStopMove = VK_SPACE) override;
+    virtual void Logic () override;
     };
 
 struct Zombie : public Hero
     {
     int AnimationSpeedDivider;
     int   ControlSpeedMultiplier;
+
+    int AppleDisgustingTimer_;
+    int SpeedMultp_;
+    int MaxSpeedmlt_;
     //-----------------
     Zombie (const char *Name, Image Picture, Vec pos, Vec V, const Hero *Steve);
     virtual void doAnimation () const override;
     virtual void Control   (int KeyStopMove = VK_SPACE) override;
+    virtual void Logic () override;
+
+    void SpeedEff ();
     };
 
 struct gmMouse : public Hero
@@ -60,21 +72,55 @@ struct FastZombie : public Zombie
     FastZombie (const char *Name, Image Picture, Vec pos, Vec V, const Hero *Steve);
     };
 
+struct Bullet : public Hero
+    {
+
+    //--------------------------------
+    Bullet (Vec pos, Vec V);
+    virtual void doAnimation () const override;
+    };
+
+struct Mina : public Hero
+    {
+
+    //---------------------------
+    Mina (Vec pos);
+    virtual void doAnimation () const override;
+    };
+
+struct Gun
+    {
+    enum GunMode {DISABLED, PISTOL, BAZOOKA};
+    GunMode CurrentModeOfGun_;
+
+    Engine*  MrEngine_;
+    gmMouse* MrMouse_;
+    Steve*   steve_;
+    //-----------------------
+    Gun (Engine* MrEngine, GunMode CurrentModeOfGun, Steve* steve);
+    void shoot ();
+    void Logic ();
+    };
 
 
 struct Controller
     {
+    gmMouse *MrMouse_;
     Engine *MrEngine_;
     Steve *steve_;
     //-----------------------------
-    Controller (Engine *MrEngine, Steve *steve_);
-    void  AppleSpawn (Image texture);
-    void ZombieSpawn (Image texture);
-    int  ZombieAteUrBrains (const Textures *textures, int BrainsBeingEatenRadius, int KolBoZombieNeededForUrBrainsBeingEaten);
-    void AppleZombieLogic ();
-    void  AppleSteveLogic (int AppleBeingEatenRadius);
+    Controller (Engine *MrEngine, Steve *steve_, gmMouse *MrMouse);
+    void   AppleSpawn (Image texture);
+    void  ZombieSpawn (Image texture);
+
+    int   ZombieAteUrBrains (const Textures *textures, int BrainsBeingEatenRadius, int KolBoZombieNeededForUrBrainsBeingEaten);
+
+    void  AppleZombieLogic (const Hero* EatenApple);
+    Hero* AppleSteveLogic (int AppleBeingEatenRadius);
+    void  GunZombieLogic ();
+
     void  ControlSpeedEff (int MaxSpeedmlt);
-    void EndScene ();
+    void  EndScene ();
 
     };
 //-----------------------------------------------------------------------------
@@ -121,28 +167,28 @@ int main()
 //-----------------------------------------------------------------------------
 void GameProcces (const Textures *textures)
     {
+    gmMouse* mouse =  new gmMouse ("Mouse", Image (), Vec (),  Vec ());
+    Engine MrEngine (mouse);
 
-    gmMouse mouse ("Mouse", Image (),    Vec (),   Vec ());
-    Steve  steve  ("Steve",  textures->Steve,  Vec (500, 500), Vec (0, 0));
-    Zombie zombie ("Zombie", textures->Zombie, Vec (700, 700), Vec (0, 0), &steve);
+    Steve* steve   =  new Steve   ("Steve", textures->Steve,  Vec (500, 500), Vec (0, 0), &MrEngine);
+
     //Zombiezomb (&steve, &zombie);
 
-    //!!!
-    Engine MrEngine;
-    Controller Logic (&MrEngine, &steve);
-    //!!!
 
-    MrEngine.add (&steve);
-    MrEngine.add (&zombie);
-    MrEngine.add (&mouse);
+    MrEngine.add (mouse);
+    MrEngine.add (steve);
+    MrEngine.add (new Zombie ("Zombie", textures->Zombie, Vec (700, 700), Vec (0, 0), steve));
+
+
+    Controller Logic (&MrEngine, steve, mouse);
+
 
     bool StartTimer = false;
     int EndTime = 0;
     while (!GetAsyncKeyState (VK_ESCAPE))
         {
         MrEngine.Run();
-
-        SteveAnimationNumber_and_Moving_Connecting (&steve);
+        SteveAnimationNumber_and_Moving_Connecting (steve);
         if (StartTimer != true) Logic.ZombieSpawn (textures->Zombie);
         if (Logic.ZombieAteUrBrains (textures, 30, 2) == LOSE) StartTimer = true;
 
@@ -151,17 +197,23 @@ void GameProcces (const Textures *textures)
         if (Timer (StartTimer, 100, &EndTime) == LOSE) break;
 
 
-        Logic.AppleZombieLogic ();
+        Hero* EatenApple = Logic.AppleSteveLogic (20);
+        Logic.AppleZombieLogic (EatenApple);
         Logic.AppleSpawn (textures->Apple);
-        Logic.AppleSteveLogic (20);
-        Logic.ControlSpeedEff (5);
+        Logic.GunZombieLogic ();
+
+        steve->pushka_->Logic();
+
+        if (/*!StartTimer && */GetAsyncKeyState(VK_TAB)) steve->pushka_->shoot ();
 
         if (StartTimer) Logic.EndScene ();
 
-        txSleep (20);
-        Global_Mouse.Update();
-        Global_Timer.Update();
+
         }
+
+
+
+    MrEngine.Destruct ();
     }
 
 
@@ -171,9 +223,10 @@ void GameProcces (const Textures *textures)
 //{ Controller::
 
 
-Controller::Controller (Engine *MrEngine, Steve *steve) :
+Controller::Controller (Engine *MrEngine, Steve *steve, gmMouse *MrMouse) :
     MrEngine_ (MrEngine),
-    steve_ (steve)
+    steve_ (steve),
+    MrMouse_ (MrMouse)
     {}
 
 
@@ -189,18 +242,9 @@ void Controller::EndScene ()
     }
 
 
-//-----------------------------------------------------------------------------
-void Controller::ControlSpeedEff (int MaxSpeedmlt)
-    {
-    if (steve_->SteveAppleDisgustingTimer_ >= 0) steve_->SteveAppleDisgustingTimer_--;
-    else steve_->SpeedMultp_ = 0;
-
-    if (steve_->SpeedMultp_ > MaxSpeedmlt) steve_->SpeedMultp_ = steve_->SpeedMultp_;
-    }
-
 
 //-----------------------------------------------------------------------------
-void Controller::AppleZombieLogic ()
+void Controller::AppleZombieLogic (const Hero* EatenApple)
     {
     Hero* gmApplePointers  [N_OBJECTS] = {};
     Hero* gmZombiePointers [N_OBJECTS] = {};
@@ -210,16 +254,16 @@ void Controller::AppleZombieLogic ()
     for (int i = 0; gmZombiePointers[i] != NULL; i++)
         {
         bool AppleWasEaten = false;
-        double TheShortestDist_Between_CurrentZombie_and_TheNearestApple = 10000;
+        double TheShortestDist_Between_CurrentZombie_and_TheNearestApple2 = 1e4*1e4;
         Hero*  TheNearestApplePointer_toThe_CurrentZombie = NULL;
 
         for (int j = 0; gmApplePointers [j]; j++)
             {
-            double Dist = HeroHypot (gmApplePointers[j], gmZombiePointers[i]);
+            double Dist2 = HeroHypot2 (gmApplePointers[j], gmZombiePointers[i]);
 
-            if (Dist < TheShortestDist_Between_CurrentZombie_and_TheNearestApple)
+            if (Dist2 < TheShortestDist_Between_CurrentZombie_and_TheNearestApple2)
                 {
-                TheShortestDist_Between_CurrentZombie_and_TheNearestApple = Dist;
+                TheShortestDist_Between_CurrentZombie_and_TheNearestApple2 = Dist2;
                 TheNearestApplePointer_toThe_CurrentZombie = gmApplePointers[j];
                 }
             }
@@ -228,14 +272,20 @@ void Controller::AppleZombieLogic ()
             {
             gmZombiePointers[i]->victim_ = TheNearestApplePointer_toThe_CurrentZombie;
 
-            if (HeroHypot (TheNearestApplePointer_toThe_CurrentZombie, gmZombiePointers[i]) < 50)
+            if (HeroHypot2 (TheNearestApplePointer_toThe_CurrentZombie, gmZombiePointers[i]) < 50*50)
                 {
                 DeleteObjFromArray (TheNearestApplePointer_toThe_CurrentZombie, gmApplePointers,
                                     sizearr(gmApplePointers));
                 MrEngine_->FindAndRemove (TheNearestApplePointer_toThe_CurrentZombie);
+
+                Zombie* current = dynamic_cast <Zombie*> (gmZombiePointers[i]);
+                if (current) current->SpeedEff();
+
                 AppleWasEaten = true;
                 }
             }
+        if (gmZombiePointers[i]->victim_ == EatenApple && EatenApple)
+            AppleWasEaten = true;
 
         if (AppleWasEaten)
             {
@@ -248,17 +298,24 @@ void Controller::AppleZombieLogic ()
 
 
 //-----------------------------------------------------------------------------
-void Controller::AppleSteveLogic (int AppleBeingEatenRadius)
+Hero* Controller::AppleSteveLogic (int AppleBeingEatenRadius)
     {
+    Hero* obj = NULL;
+    Hero* eatenApple = NULL;
     for (int i = 0; i < MrEngine_->Get_KolBo_OfObjects(); i++)
-    if ((MrEngine_->GetObject(i)->Type_ == APPLE) &&
-        (HeroHypot (steve_, MrEngine_->GetObject(i)) ) < AppleBeingEatenRadius)
         {
-        MrEngine_->remoov (i);
-        steve_->SteveAppleDisgustingTimer_ += 150;
-        steve_->SpeedMultp_ += 1;
-        }
+        Hero* obj = MrEngine_->GetObject(i);
 
+        if ((obj->Type_ == APPLE) &&
+            (HeroHypot (steve_, obj) ) < AppleBeingEatenRadius)
+            {
+            MrEngine_->remoov (i);
+            steve_->AppleDisgustingTimer_ += 150;
+            steve_->SpeedMultp_ += 1;
+            eatenApple = obj;
+            }
+        }
+    return eatenApple;
     }
 
 
@@ -318,6 +375,37 @@ void Controller::ZombieSpawn (Image texture)
 
 
 
+
+
+//-----------------------------------------------------------------------------
+void Controller::GunZombieLogic ()
+    {
+    Hero* gmBulletPointers [N_OBJECTS] = {};
+    Hero* gmZombiePointers [N_OBJECTS] = {};
+
+    int nFilledobj = MrEngine_->Get_AllObjects_ofThe_Type (gmBulletPointers, BULLET);
+    MrEngine_->Get_AllObjects_ofThe_Type (gmBulletPointers, MINA, nFilledobj);
+
+    MrEngine_->Get_AllObjects_ofThe_Type (gmZombiePointers, Hero::NPC);
+
+    for (int j = 0; gmBulletPointers[j]; j++)
+        {
+        for (int i = 0; gmZombiePointers[i]; i++)
+            {
+            int explodeR2 = (gmBulletPointers[j]->Type_ == MINA)? 50*50 : 13*13;
+            if (HeroHypot2 (gmZombiePointers[i], gmBulletPointers[j])  <  explodeR2)
+                {
+                MrEngine_->FindAndRemove (gmBulletPointers[j]);
+                MrEngine_->FindAndRemove (gmZombiePointers[i]);
+                }
+            }
+        }
+    }
+
+
+
+
+
 //}
 //-----------------------------------------------------------------------------
 
@@ -354,11 +442,15 @@ Apple::Apple (Image Picture, Vec pos) :
 //-----------------------------------------------------------------------------
 
 //{Steve::
-Steve::Steve (const char *Name, Image Picture, Vec pos, Vec V) :
+Steve::Steve (const char *Name, Image Picture, Vec pos, Vec V, Engine* MrEngine) :
     Hero (Name, Picture, pos, V, CHARACTER),
-    SteveAppleDisgustingTimer_ (0),
-    SpeedMultp_ (0)
+    AppleDisgustingTimer_ (0),
+    SpeedMultp_ (0),
+    MaxSpeedmlt_ (5),
+    pushka_ (new Gun (MrEngine, Gun::DISABLED, this))
     {}
+
+
 //-----------------------------------------------------------------------------
 void Steve::doAnimation () const
     {
@@ -373,6 +465,9 @@ void Steve::doAnimation () const
         Picture_.Draw (pos_, AnimationNumber_, 0);
 
     }
+
+
+
 
 //-----------------------------------------------------------------------------
 void Steve::Control (int KeyStopMove )
@@ -391,6 +486,24 @@ Vec VDist = Global_Mouse.GetClickPos() - pos_;
     if (GetAsyncKeyState ( KeyStopMove ))
         V_ = Vec (0, 0);
     }
+
+
+
+
+//-----------------------------------------------------------------------------
+void Steve::Logic ()
+    {
+    if (AppleDisgustingTimer_ >= 0) AppleDisgustingTimer_--;
+    else SpeedMultp_ = 0;
+
+    if (SpeedMultp_ > MaxSpeedmlt_) SpeedMultp_ = SpeedMultp_;
+
+
+    }
+
+
+
+
 //}
 //-----------------------------------------------------------------------------
 
@@ -398,8 +511,12 @@ Vec VDist = Global_Mouse.GetClickPos() - pos_;
 Zombie::Zombie (const char *Name, Image Picture, Vec pos, Vec V, const Hero *Steve) :
     Hero (Name, Picture, pos, V, NPC, Steve),
     AnimationSpeedDivider (8),
-      ControlSpeedMultiplier (5)
+    ControlSpeedMultiplier (5),
+    AppleDisgustingTimer_ (0),
+    SpeedMultp_ (0),
+    MaxSpeedmlt_ (2)
     {}
+
 
 //-----------------------------------------------------------------------------
 void Zombie::doAnimation () const
@@ -411,6 +528,9 @@ void Zombie::doAnimation () const
 
     }
 
+
+
+
 //-----------------------------------------------------------------------------
 void Zombie::Control (int KeyStopMove)
     {
@@ -418,7 +538,7 @@ void Zombie::Control (int KeyStopMove)
 
     if (VDist.Len() > 10)
         {
-        Vec shortVector = VDist.Normalize () * ControlSpeedMultiplier;     //  V_ = !(Vec (txMousePos()) - pos_) * 15   | где ! - оператор нормализации
+        Vec shortVector = VDist.Normalize() * (ControlSpeedMultiplier)*(SpeedMultp_ + 1);     //  V_ = !(Vec (txMousePos()) - pos_) * 15   | где ! - оператор нормализации
         V_ = shortVector;
         }
     else
@@ -427,6 +547,27 @@ void Zombie::Control (int KeyStopMove)
 
     if (GetAsyncKeyState ( KeyStopMove ))
         V_ = Vec (0, 0);
+    }
+
+
+
+
+//-----------------------------------------------------------------------------
+void Zombie::Logic ()
+    {
+    if (AppleDisgustingTimer_ >= 0) AppleDisgustingTimer_--;
+    else SpeedMultp_ = 0;
+
+    if (SpeedMultp_ > MaxSpeedmlt_) SpeedMultp_ = SpeedMultp_;
+    }
+
+
+
+//-----------------------------------------------------------------------------
+void Zombie::SpeedEff ()
+    {
+    AppleDisgustingTimer_ += 150;
+    SpeedMultp_ += 1;
     }
 //}
 //-----------------------------------------------------------------------------
@@ -454,12 +595,98 @@ FastZombie::FastZombie (const char *Name, Image Picture, Vec pos, Vec V, const H
     Zombie (Name, Picture, pos, V, Steve)
     {
     AnimationSpeedDivider /= 4;
-      ControlSpeedMultiplier *= 1.5;
+    ControlSpeedMultiplier *= 1.5;
     }
 
 
 //}
 //-----------------------------------------------------------------------------
+
+//{Bullet::
+Bullet::Bullet (Vec pos, Vec V) :
+    Hero ("Bullet", Image (), pos, V, BULLET)
+    {}
+
+//-----------------------------------------------------------------------------
+void Bullet::doAnimation () const
+    {
+    txSetColor (TX_BLACK);
+    txSetFillColor (TX_GRAY);
+    txCircle (pos_.x, pos_.y, 10);
+    }
+
+//}
+//-----------------------------------------------------------------------------
+
+//{Mina::
+
+Mina::Mina (Vec pos) :
+    Hero ("Mina", Image (), pos, Vec (0, 0), MINA)
+    {}
+
+
+//-----------------------------------------------------------------------------
+void Mina::doAnimation () const
+    {
+    txSetColor (TX_GREEN);
+    txSetFillColor (TX_GREEN);
+    txRectangle (pos_.x - 13, pos_.y - 10, pos_.x + 13, pos_.y + 10);
+    }
+
+//}
+//-----------------------------------------------------------------------------
+
+//{Gun::
+Gun::Gun (Engine* MrEngine, GunMode CurrentModeOfGun, Steve* steve) :
+    MrEngine_ (MrEngine),
+    CurrentModeOfGun_ (CurrentModeOfGun),
+    MrMouse_ (dynamic_cast <gmMouse*> (MrEngine->GetMouse()) ),
+    steve_(steve)
+    {}
+
+//-----------------------------------------------------------------------------
+
+void Gun::shoot ()
+    {
+    assert (MrMouse_);
+    if (!steve_)
+        return;
+
+
+
+    $(steve_); $n;
+    $(MrMouse_); $n;
+
+
+
+    Vec BulletDirection = steve_->V_ + (MrMouse_->pos_ - steve_->pos_).Normalize()*7;
+
+    if (CurrentModeOfGun_ == PISTOL)
+        MrEngine_->add  (new Bullet (steve_->pos_, BulletDirection));
+
+    if (CurrentModeOfGun_ == BAZOOKA)
+        MrEngine_->add (new Mina (steve_->pos_));
+
+    }
+
+
+//-----------------------------------------------------------------------------
+void Gun::Logic ()
+    {
+    if (GetAsyncKeyState ('1'))
+        CurrentModeOfGun_ = PISTOL;
+    if (GetAsyncKeyState ('2'))
+        CurrentModeOfGun_ = BAZOOKA;
+
+    if (!steve_)
+        CurrentModeOfGun_ = DISABLED;
+    }
+
+
+
+//}
+//-----------------------------------------------------------------------------
+
 
 void SteveAnimationNumber_and_Moving_Connecting (Hero *Steve)
     {
