@@ -86,6 +86,7 @@ class Hero
           const Hero *victim = NULL, int AnimationNumber = 0);
 
     void Tag (LifeStatus status);
+    void die ();
 
     Vec GetV () const;
 
@@ -157,6 +158,10 @@ class Engine
     Hero* objects_[N_OBJECTS];
     int freePlace_;
     Hero* Mouse_;
+
+    //--------------------------------------
+    void  KillTheTagged ();
+    void  remoov (int numObj);
     //--------------------------------------
     public:
     Engine (Hero* Mouse = NULL);
@@ -169,11 +174,10 @@ class Engine
     int   Get_KolBo_TypeObjects (int Type) const;
     int   Get_AllObjects_ofThe_Type (Hero* gmTypePointers [], int Type, int Start = 0);
 
-    void  FindAndRemove (const Hero *obj);
-    void  remooov (int numspace);
     void  add    (Hero *object);
 
-    void  KillTheTagged ();
+
+
     void  Destruct ();
     void  Run ();
     };
@@ -281,12 +285,14 @@ int Engine::GetObjNum (const Hero *object) const
 
 
 
+
 //-----------------------------------------------------------------------------
 
 int Engine::Get_KolBo_OfObjects () const
     {
     return (N_OBJECTS - freePlace_);
     }
+
 
 
 
@@ -301,6 +307,8 @@ int Engine::Get_KolBo_TypeObjects (int Type) const
         }
     return Kol_Bo_ofTypeObjects;
     }
+
+
 
 
 //-----------------------------------------------------------------------------
@@ -338,12 +346,32 @@ void Engine::add (Hero *object)
 
 
 
+//-----------------------------------------------------------------------------
+void Engine::remoov (int numObj)
+    {
+    assert (0 <= numObj && numObj < Get_KolBo_OfObjects());
+
+
+    delete objects_[numObj];
+
+    objects_[numObj] = objects_[Get_KolBo_OfObjects() - 1];
+    objects_[Get_KolBo_OfObjects() - 1] = NULL;
+    freePlace_ ++;
+    }
+
+
+
+
 
 void Engine::Destruct ()
     {
     for (int i = 0; i < N_OBJECTS; i++)
         delete objects_[i];
     }
+
+
+
+
 //-----------------------------------------------------------------------------
 void Engine::Run ()
     {
@@ -364,6 +392,9 @@ void Engine::Run ()
     Global_Timer.Update();
     }
 
+
+
+
 //-----------------------------------------------------------------------------
 
 void Engine::KillTheTagged ()
@@ -379,6 +410,8 @@ void Engine::KillTheTagged ()
             }
         }
     }
+
+
 
 //}
 
@@ -400,9 +433,9 @@ Hero::Hero () :
     AnimationNumber_ (0),
     Type_ (0),
 
+    status_ (ALIVE),
+    victim_ (NULL)
 
-    victim_ (NULL),
-    status_ (ALIVE)
     {
     }
 
@@ -432,6 +465,13 @@ void Hero::Tag (LifeStatus status)
 
 
 //-----------------------------------------------------------------------------
+void Hero::die ()
+    {
+    Tag (DEAD);
+    }
+
+
+//-----------------------------------------------------------------------------
 Vec Hero::GetV () const
     {
     return V_;
@@ -444,7 +484,7 @@ void Hero::Move (double dt)
     }
 
 //-----------------------------------------------------------------------------
-void Hero::Control (int KeyStopMove)
+void Hero::Control (int /*KeyStopMove*/)
     {
 
     }
@@ -850,6 +890,7 @@ void DeleteObjFromArray (Hero *object, Hero* Array [], int ArraySize)
 
 
 //{----kladbizshgzshe
+/*
 void Engine::FindAndRemove (const Hero *obj)
     {
     int num = GetObjNum (obj);
@@ -858,20 +899,9 @@ void Engine::FindAndRemove (const Hero *obj)
     }
 
 
-//-----------------------------------------------------------------------------
-void Engine::remooov (int numObj)
-    {
-    assert (0 <= numObj && numObj < Get_KolBo_OfObjects());
 
 
-    delete objects_[numObj];
-
-    objects_[numObj] = objects_[Get_KolBo_OfObjects() - 1];
-    objects_[Get_KolBo_OfObjects() - 1] = NULL;
-    freePlace_ ++;
-    }
-
-
+  */
 //}
 
 

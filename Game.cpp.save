@@ -208,7 +208,7 @@ void GameProcces (const Textures *textures)
 
         if (StartTimer) Logic.EndScene ();
 
-        
+
         }
 
 
@@ -276,7 +276,7 @@ void Controller::AppleZombieLogic (const Hero* EatenApple)
                 {
                 DeleteObjFromArray (TheNearestApplePointer_toThe_CurrentZombie, gmApplePointers,
                                     sizearr(gmApplePointers));
-                MrEngine_->FindAndRemove (TheNearestApplePointer_toThe_CurrentZombie);
+                TheNearestApplePointer_toThe_CurrentZombie->die();
 
                 Zombie* current = dynamic_cast <Zombie*> (gmZombiePointers[i]);
                 if (current) current->SpeedEff();
@@ -309,7 +309,7 @@ Hero* Controller::AppleSteveLogic (int AppleBeingEatenRadius)
         if ((obj->Type_ == APPLE) &&
             (HeroHypot (steve_, obj) ) < AppleBeingEatenRadius)
             {
-            MrEngine_->remoov (i);
+            obj->die();
             steve_->AppleDisgustingTimer_ += 150;
             steve_->SpeedMultp_ += 1;
             eatenApple = obj;
@@ -349,7 +349,7 @@ int Controller::ZombieAteUrBrains (const Textures *textures, int BrainsBeingEate
             if (--KolBoZombieNeededForUrBrainsBeingEaten <= 0)
                 {
 
-                MrEngine_->remoov (SteveSisNumber);
+                steve_->die();
 
                 MrEngine_->add (new Animation (textures->Blood,     steve_->pos_));    //blood
                 return LOSE;
@@ -395,8 +395,8 @@ void Controller::GunZombieLogic ()
             int explodeR2 = (gmBulletPointers[j]->Type_ == MINA)? 50*50 : 13*13;
             if (HeroHypot2 (gmZombiePointers[i], gmBulletPointers[j])  <  explodeR2)
                 {
-                MrEngine_->FindAndRemove (gmBulletPointers[j]);
-                MrEngine_->FindAndRemove (gmZombiePointers[i]);
+                gmBulletPointers[j]->die();
+                gmZombiePointers[i]->die();
                 }
             }
         }
@@ -659,7 +659,7 @@ void Gun::shoot ()
 
 
 
-    Vec BulletDirection = steve_->V_ + (MrMouse_->pos_ - steve_->pos_).Normalize()*7;
+    Vec BulletDirection = steve_->V_ + (Global_Mouse.GetPos()                                                                                                                                                                                                                                                                                                                                                                    - steve_->pos_).Normalize()*30 ;
 
     if (CurrentModeOfGun_ == PISTOL)
         MrEngine_->add  (new Bullet (steve_->pos_, BulletDirection));
