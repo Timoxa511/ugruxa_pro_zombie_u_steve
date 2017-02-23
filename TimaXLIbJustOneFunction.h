@@ -2,10 +2,17 @@
 
 #define CAP(action) action
 
+FILE* Log = fopen ("Log.txt", "w");//stdout;
+
 enum {NO = false, YES = true};
 const double DT = 1.0;
+const int LFTSPC = 3;
+
+const int INTPOISON = -66666;
+const double DOUBLEPOISON = -666.666666;
 
 //-----------------------------------------------------------------------------
+
 template <typename T = double>
 class Vector
     {
@@ -16,6 +23,7 @@ class Vector
 
     Vector ();
     Vector (T a, T b);
+   ~Vector ();
     Vector (POINT point);
 
 
@@ -30,6 +38,7 @@ class Vector
     };
 typedef Vector <> Vec;     //typedef какой-то_тип пробел название_синонима_к_этому_типу                      Vec = Vector <>
 
+
 class Image
     {
 
@@ -43,6 +52,7 @@ class Image
     public:
     explicit Image (const char FilePictureName [], Vector <int> nFrames = Vector <int> (1, 1)); //explicit - запрещяет неявный вызов конструктора с одним параметром (ибо если не защищать то могут пойти оч сложные ошибки)
     Image ();
+   ~Image ();
 
     Vector <int> nFramesReturn () const;
     Vec GetLen () const;
@@ -82,9 +92,13 @@ class Hero
     //---------------------
 
     Hero ();
+    virtual ~Hero ();
     Hero (const char *Name, Image Picture, Vec pos, Vec V, int Type,
           const Hero *victim = NULL, int AnimationNumber = 0);
 
+    virtual void Dump (int LeftSpace = 0) const;
+
+    virtual bool ifObjectIsReal () const;
     void Tag (LifeStatus status);
     void die ();
 
@@ -166,6 +180,9 @@ class Engine
     public:
     Engine (Hero* Mouse = NULL);
 
+    bool  ifObjectIsReal();
+    void  PrintfAllIncludes();
+
     Hero* GetMouse () const;
     int   GetObjectNumber (const char *name) const;
     int   GetObjNum (const Hero *object) const;
@@ -228,6 +245,50 @@ Engine::Engine (Hero* Mouse) :                                                  
     freePlace_ (N_OBJECTS),
     Mouse_ (Mouse)
     {
+    }
+
+
+
+//-----------------------------------------------------------------------------
+void Engine::PrintfAllIncludes ()
+    {
+    txOutputDebugPrintf ("Engine\n{\n");
+    txOutputDebugPrintf ("freePlace_ = %d\n", freePlace_);
+    txOutputDebugPrintf (" N_OBJECTS = %d\n" , N_OBJECTS);
+    txOutputDebugPrintf ("  objects_ = 0x%p\n", objects_);
+    txOutputDebugPrintf ("    Mouse_ = 0x%p\n", Mouse_);
+    txOutputDebugPrintf ("}\n\n");
+
+    for (int i = 0; i < Get_KolBo_OfObjects (); i++)
+        {
+        txOutputDebugPrintf ("i = %d, pointer = 0x%p\n", i, objects_[i]);
+        if (objects_[i]) objects_[i]->Dump();
+        }
+    }
+
+
+
+//-----------------------------------------------------------------------------
+bool Engine::ifObjectIsReal()
+    {
+
+    if (!(this &&
+          freePlace_ != INTPOISON &&
+          0 < freePlace_ && freePlace_ < N_OBJECTS &&
+          Mouse_ &&
+          Mouse_->ifObjectIsReal() ) ) return false;
+
+    int i = 0;
+    for (; i < Get_KolBo_OfObjects(); i++)
+        {
+        if (!(objects_[i] && objects_[i]->ifObjectIsReal() ) ) return false;
+        }
+    for (; i < N_OBJECTS; i++)
+        {
+        if (objects_[i]) return false;
+        }
+
+    return true;
     }
 
 
@@ -337,6 +398,10 @@ void Engine::add (Hero *object)
 
     objects_ [Get_KolBo_OfObjects()] = object;
 
+    if (object->Type_ == 4)
+                {
+                txOutputDebugPrintf ("%s: %p i=%2d ADD\n",__TX_FUNCTION__, object, Get_KolBo_OfObjects());
+                }
 
     freePlace_--;
 
@@ -375,6 +440,12 @@ void Engine::Destruct ()
 //-----------------------------------------------------------------------------
 void Engine::Run ()
     {
+    if (!ifObjectIsReal())
+        {
+        PrintfAllIncludes();
+        assert (0);
+        }
+
     KillTheTagged();
 
     txSetFillColor (TX_WHITE);
@@ -386,6 +457,7 @@ void Engine::Run ()
         objects_[i]->Move (DT);
         objects_[i]->doAnimation ();
         objects_[i]->Logic ();
+        //objects_[i]->Dump ();
         }
     txSleep (20);
     Global_Mouse.Update();
@@ -405,7 +477,13 @@ void Engine::KillTheTagged ()
 
         if (objects_[i]->status_ == Hero::DEAD)
             {
+            $ (i); $n;
             printf ("я убила хе\n");
+            $ (objects_[i]->Type_); $n;
+            if (objects_[i]->Type_ == 4)
+                {
+                txOutputDebugPrintf ("%p i=%2d DELETE\n", objects_[i],i);
+                }
             remoov (i--);
             }
         }
@@ -454,6 +532,49 @@ Hero::Hero (const char *Name, Image Picture, Vec pos, Vec V, int Type,
     status_ (ALIVE)
     {
     }
+
+
+//-----------------------------------------------------------------------------
+Hero::~Hero ()
+    {
+    Name_ = NULL;
+    AnimationNumber_ = INTPOISON;
+    Type_ = INTPOISON;
+    victim_ = NULL;
+    status_ = (LifeStatus) INTPOISON;
+    }
+
+
+
+//-----------------------------------------------------------------------------
+void Hero::Dump (int LeftSpace) const
+    {
+    bool is_ok = ifObjectIsReal();
+
+    txOutputDebugPrintf ("%*sHero\n"                     , LeftSpace, "");
+    txOutputDebugPrintf ("%*s   {\n"                     , LeftSpace, "");
+    txOutputDebugPrintf ("%*s   %s\n"                    , LeftSpace, "", (is_ok)? "ok" : "ERROR");
+    txOutputDebugPrintf ("%*s   name = %s\n"             , LeftSpace, "", Name_);
+    txOutputDebugPrintf ("%*s   pos  = {%lg, %lg}\n"     , LeftSpace, "", pos_.x, pos_.y);
+    txOutputDebugPrintf ("%*s   v    = {%d, %d}\n"       , LeftSpace, "", V_.x, V_.y);
+    txOutputDebugPrintf ("%*s   AnimationNumber_ = %d\n" , LeftSpace, "", AnimationNumber_);
+    txOutputDebugPrintf ("%*s   Type_   = %d\n"            , LeftSpace, "", Type_);
+    txOutputDebugPrintf ("%*s   status_ = %d\n"          , LeftSpace, "", status_);
+    txOutputDebugPrintf ("%*s   victim  = %p\n"           , LeftSpace, "", victim_);
+    if (victim_) victim_->Dump (LeftSpace + LFTSPC);
+    txOutputDebugPrintf ("%*s   }\n\n"                   , LeftSpace, "");
+
+
+    }
+//-----------------------------------------------------------------------------
+bool Hero::ifObjectIsReal () const
+    {
+    return (this &&
+            Name_ &&
+            AnimationNumber_ != INTPOISON &&
+            status_ != INTPOISON );
+    }
+
 
 
 //-----------------------------------------------------------------------------
@@ -580,6 +701,14 @@ Image::Image (const char FilePictureName [], Vector <int> nFrames) :
     }
 
 //-----------------------------------------------------------------------------
+Image::~Image ()
+    {
+    //TODO Texture. DeleteTex();
+    Len_ = Vec (INTPOISON, INTPOISON);
+    nFrames_ = Vector <int> (INTPOISON, INTPOISON);
+
+    }
+//-----------------------------------------------------------------------------
 Vector <int> Image::nFramesReturn ()   const
     {
     return nFrames_;
@@ -619,6 +748,15 @@ void Image::Draw (Vec pos, int AnimationNumber, int t) const
 
 
 //{ Vector::
+
+template <typename T>
+Vector <T>::~Vector ()
+    {
+    x = INTPOISON;
+    y = INTPOISON;
+    }
+
+//-----------------------------------------------------------------------------
 
 template <typename T>
 Vector <T>::Vector () :

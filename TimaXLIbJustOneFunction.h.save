@@ -2,10 +2,17 @@
 
 #define CAP(action) action
 
+FILE* Log = stdout;//fopen ("Log.txt", "w");
+
 enum {NO = false, YES = true};
 const double DT = 1.0;
+const int LFTSPC = 3;
+
+const int INTPOISON = -66666;
+const double DOUBLEPOISON = -17.903470087374;
 
 //-----------------------------------------------------------------------------
+
 template <typename T = double>
 class Vector
     {
@@ -16,6 +23,7 @@ class Vector
 
     Vector ();
     Vector (T a, T b);
+   ~Vector ();
     Vector (POINT point);
 
 
@@ -30,6 +38,7 @@ class Vector
     };
 typedef Vector <> Vec;     //typedef какой-то_тип пробел название_синонима_к_этому_типу                      Vec = Vector <>
 
+
 class Image
     {
 
@@ -43,6 +52,7 @@ class Image
     public:
     explicit Image (const char FilePictureName [], Vector <int> nFrames = Vector <int> (1, 1)); //explicit - запрещяет неявный вызов конструктора с одним параметром (ибо если не защищать то могут пойти оч сложные ошибки)
     Image ();
+   ~Image ();
 
     Vector <int> nFramesReturn () const;
     Vec GetLen () const;
@@ -82,10 +92,15 @@ class Hero
     //---------------------
 
     Hero ();
+    virtual ~Hero ();
     Hero (const char *Name, Image Picture, Vec pos, Vec V, int Type,
           const Hero *victim = NULL, int AnimationNumber = 0);
 
+    virtual void Dump () const;
+
+    virtual bool ifObjectIsReal () const;
     void Tag (LifeStatus status);
+    void die ();
 
     Vec GetV () const;
 
@@ -157,9 +172,16 @@ class Engine
     Hero* objects_[N_OBJECTS];
     int freePlace_;
     Hero* Mouse_;
+
+    //--------------------------------------
+    void  KillTheTagged ();
+    void  remoov (int numObj);
     //--------------------------------------
     public:
     Engine (Hero* Mouse = NULL);
+
+    bool  ifObjectIsReal();
+    void  PrintfAllIncludes();
 
     Hero* GetMouse () const;
     int   GetObjectNumber (const char *name) const;
@@ -169,11 +191,10 @@ class Engine
     int   Get_KolBo_TypeObjects (int Type) const;
     int   Get_AllObjects_ofThe_Type (Hero* gmTypePointers [], int Type, int Start = 0);
 
-    void  FindAndRemove (const Hero *obj);
-    void  remooov (int numspace);
     void  add    (Hero *object);
 
-    void  KillTheTagged ();
+
+
     void  Destruct ();
     void  Run ();
     };
@@ -224,6 +245,50 @@ Engine::Engine (Hero* Mouse) :                                                  
     freePlace_ (N_OBJECTS),
     Mouse_ (Mouse)
     {
+    }
+
+
+
+//-----------------------------------------------------------------------------
+void Engine::PrintfAllIncludes ()
+    {
+    fprintf (Log, "Engine\n{\n");
+    fprintf (Log,"freePlace_ = %d\n", freePlace_);
+    fprintf (Log," N_OBJECTS = %d\n" , N_OBJECTS);
+    fprintf (Log,"  objects_ = 0x%p\n", objects_);
+    fprintf (Log,"    Mouse_ = 0x%p\n", Mouse_);
+    fprintf (Log,"}\n\n");
+
+    for (int i = 0; i < Get_KolBo_OfObjects (); i++)
+        {
+        fprintf (Log, "i = %d, pointer = 0x%p\n", i, objects_[i]);
+        if (objects_[i]) objects_[i]->Dump();
+        }
+    }
+
+
+
+//-----------------------------------------------------------------------------
+bool Engine::ifObjectIsReal()
+    {
+
+    if (!(this &&
+          freePlace_ != INTPOISON &&
+          0 < freePlace_ && freePlace_ < N_OBJECTS &&
+          Mouse_ &&
+          Mouse_->ifObjectIsReal() ) ) return false;
+
+    int i = 0;
+    for (; i < Get_KolBo_OfObjects(); i++)
+        {
+        if (!(objects_[i] && objects_[i]->ifObjectIsReal() ) ) return false;
+        }
+    for (; i < N_OBJECTS; i++)
+        {
+        if (objects_[i]) return false;
+        }
+
+    return true;
     }
 
 
@@ -281,12 +346,14 @@ int Engine::GetObjNum (const Hero *object) const
 
 
 
+
 //-----------------------------------------------------------------------------
 
 int Engine::Get_KolBo_OfObjects () const
     {
     return (N_OBJECTS - freePlace_);
     }
+
 
 
 
@@ -301,6 +368,8 @@ int Engine::Get_KolBo_TypeObjects (int Type) const
         }
     return Kol_Bo_ofTypeObjects;
     }
+
+
 
 
 //-----------------------------------------------------------------------------
@@ -329,10 +398,30 @@ void Engine::add (Hero *object)
 
     objects_ [Get_KolBo_OfObjects()] = object;
 
+    if (object->Type_ == 4)
+                {
+                fprintf (Log,"%s: %p i=%2d ADD\n",__TX_FUNCTION__, object, Get_KolBo_OfObjects());
+                }
 
     freePlace_--;
 
 
+    }
+
+
+
+
+//-----------------------------------------------------------------------------
+void Engine::remoov (int numObj)
+    {
+    assert (0 <= numObj && numObj < Get_KolBo_OfObjects());
+
+
+    delete objects_[numObj];
+
+    objects_[numObj] = objects_[Get_KolBo_OfObjects() - 1];
+    objects_[Get_KolBo_OfObjects() - 1] = NULL;
+    freePlace_ ++;
     }
 
 
@@ -344,9 +433,19 @@ void Engine::Destruct ()
     for (int i = 0; i < N_OBJECTS; i++)
         delete objects_[i];
     }
+
+
+
+
 //-----------------------------------------------------------------------------
 void Engine::Run ()
     {
+    if (!ifObjectIsReal())
+        {
+        PrintfAllIncludes();
+        assert (0);
+        }
+
     KillTheTagged();
 
     txSetFillColor (TX_WHITE);
@@ -364,6 +463,9 @@ void Engine::Run ()
     Global_Timer.Update();
     }
 
+
+
+
 //-----------------------------------------------------------------------------
 
 void Engine::KillTheTagged ()
@@ -374,11 +476,19 @@ void Engine::KillTheTagged ()
 
         if (objects_[i]->status_ == Hero::DEAD)
             {
+            $ (i); $n;
             printf ("я убила хе\n");
+            $ (objects_[i]->Type_); $n;
+            if (objects_[i]->Type_ == 4)
+                {
+                fprintf (Log,"%p i=%2d DELETE\n", objects_[i],i);
+                }
             remoov (i--);
             }
         }
     }
+
+
 
 //}
 
@@ -400,9 +510,9 @@ Hero::Hero () :
     AnimationNumber_ (0),
     Type_ (0),
 
+    status_ (ALIVE),
+    victim_ (NULL)
 
-    victim_ (NULL),
-    status_ (ALIVE)
     {
     }
 
@@ -424,11 +534,61 @@ Hero::Hero (const char *Name, Image Picture, Vec pos, Vec V, int Type,
 
 
 //-----------------------------------------------------------------------------
+Hero::~Hero ()
+    {
+    Name_ = NULL;
+    AnimationNumber_ = INTPOISON;
+    Type_ = INTPOISON;
+    victim_ = NULL;
+    status_ = (LifeStatus) INTPOISON;
+    }
+
+
+
+//-----------------------------------------------------------------------------
+void Hero::Dump (int LeftSpace) const
+    {
+    bool is_ok = ifObjectIsReal();
+
+    fprintf (Log, "%*sHero\n"
+                  "%*s   {\n"                     , LeftSpace, "",);
+    fprintf (Log, "%*s   %s\n"                    , LeftSpace, "", (is_ok)? "ok" : "ERROR");
+    fprintf (Log, "%*s   name = %s\n"             , LeftSpace, "", Name_);
+    fprintf (Log, "%*s   pos  = {%lg, %lg}\n"     , LeftSpace, "", pos_.x, pos_.y);
+    fprintf (Log, "%*s   v    = {%d, %d}\n"       , LeftSpace, "",  V_.x, V_.y);
+    fprintf (Log, "%*s   AnimationNumber_ = %d\n" , LeftSpace, "", AnimationNumber_);
+    fprintf (Log, "%*s   Type_ = %d\n"            , LeftSpace, "", Type_);
+    fprintf (Log, "%*s   status_ = %d\n"          , LeftSpace, "", status_);
+    fprintf (Log, "%*s   victim = %p\n"           , LeftSpace, ,  victim_);
+    if (victim_) victim_->Dump (LeftSpace + LFTSPC);
+    fprintf (Log, "%*s   }\n\n"                   , LeftSpace, ,);
+
+    fflush (Log);
+    }
+//-----------------------------------------------------------------------------
+bool Hero::ifObjectIsReal () const
+    {
+    return (this &&
+            Name_ &&
+            AnimationNumber_ != INTPOISON &&
+            status_ != INTPOISON );
+    }
+
+
+
+//-----------------------------------------------------------------------------
 void Hero::Tag (LifeStatus status)
     {
     CAP(status_ = status);
     }
 
+
+
+//-----------------------------------------------------------------------------
+void Hero::die ()
+    {
+    Tag (DEAD);
+    }
 
 
 //-----------------------------------------------------------------------------
@@ -444,7 +604,7 @@ void Hero::Move (double dt)
     }
 
 //-----------------------------------------------------------------------------
-void Hero::Control (int KeyStopMove)
+void Hero::Control (int /*KeyStopMove*/)
     {
 
     }
@@ -540,6 +700,14 @@ Image::Image (const char FilePictureName [], Vector <int> nFrames) :
     }
 
 //-----------------------------------------------------------------------------
+Image::~Image ()
+    {
+    //TODO Texture. DeleteTex();
+    Len_ = Vec (INTPOISON, INTPOISON);
+    nFrames_ = Vector <int> (INTPOISON, INTPOISON);
+
+    }
+//-----------------------------------------------------------------------------
 Vector <int> Image::nFramesReturn ()   const
     {
     return nFrames_;
@@ -579,6 +747,15 @@ void Image::Draw (Vec pos, int AnimationNumber, int t) const
 
 
 //{ Vector::
+
+template <typename T>
+Vector <T>::~Vector ()
+    {
+    x = INTPOISON;
+    y = INTPOISON;
+    }
+
+//-----------------------------------------------------------------------------
 
 template <typename T>
 Vector <T>::Vector () :
@@ -849,9 +1026,20 @@ void DeleteObjFromArray (Hero *object, Hero* Array [], int ArraySize)
 
 
 
+//{----kladbizshgzshe
+/*
+void Engine::FindAndRemove (const Hero *obj)
+    {
+    int num = GetObjNum (obj);
+    if (num != -1)
+        remoov (num);
+    }
 
 
 
+
+  */
+//}
 
 
 

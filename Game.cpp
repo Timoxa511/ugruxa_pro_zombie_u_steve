@@ -2,7 +2,16 @@
 
 
 #define ever (;;)
-
+#define ok() ifObjectIsReal()
+#define ASSERT_OK()                                     \
+    if (!ok())                                          \
+        {                                               \
+        txSleep(50);                                    \
+        printf ("\nEEEERRRROOORRRRR\n");                    \
+        Dump ();                                        \
+        txSleep(500);                                   \
+        assert (0);                                     \
+        }
 
 //-----------------------------------------------------------------------------
 enum {APPLE = Hero::FIRSTUSERTYPE, BULLET, MINA};
@@ -35,6 +44,11 @@ struct Steve : public Hero
     Gun *pushka_;
     //---------------
     Steve (const char *Name, Image Picture, Vec pos, Vec V, Engine* MrEngine);
+    virtual ~Steve () override;
+
+    virtual bool ifObjectIsReal () const override;
+
+    virtual void Dump (int LeftSpace = 0) const override;
     virtual void doAnimation () const override;
     virtual void Control   (int KeyStopMove = VK_SPACE) override;
     virtual void Logic () override;
@@ -42,14 +56,16 @@ struct Steve : public Hero
 
 struct Zombie : public Hero
     {
-    int AnimationSpeedDivider;
-    int   ControlSpeedMultiplier;
-
+    int  AnimationSpeedDivider_;
+    int ControlSpeedMultiplier_;
     int AppleDisgustingTimer_;
     int SpeedMultp_;
     int MaxSpeedmlt_;
     //-----------------
     Zombie (const char *Name, Image Picture, Vec pos, Vec V, const Hero *Steve);
+   ~Zombie ();
+    virtual void Dump (int LeftSpace = 0) const override;
+    virtual bool ifObjectIsReal () const override;
     virtual void doAnimation () const override;
     virtual void Control   (int KeyStopMove = VK_SPACE) override;
     virtual void Logic () override;
@@ -97,6 +113,9 @@ struct Gun
     gmMouse* MrMouse_;
     Steve*   steve_;
     //-----------------------
+   ~Gun ();
+    void Dump (int LeftSpace = 0) const;
+    bool ifObjectIsReal() const;
     Gun (Engine* MrEngine, GunMode CurrentModeOfGun, Steve* steve);
     void shoot ();
     void Logic ();
@@ -112,7 +131,7 @@ struct Controller
     Controller (Engine *MrEngine, Steve *steve_, gmMouse *MrMouse);
     void   AppleSpawn (Image texture);
     void  ZombieSpawn (Image texture);
-
+    bool  ifObjectIsReal();
     int   ZombieAteUrBrains (const Textures *textures, int BrainsBeingEatenRadius, int KolBoZombieNeededForUrBrainsBeingEaten);
 
     void  AppleZombieLogic (const Hero* EatenApple);
@@ -194,6 +213,7 @@ void GameProcces (const Textures *textures)
 
 
 
+
         if (Timer (StartTimer, 100, &EndTime) == LOSE) break;
 
 
@@ -228,6 +248,17 @@ Controller::Controller (Engine *MrEngine, Steve *steve, gmMouse *MrMouse) :
     steve_ (steve),
     MrMouse_ (MrMouse)
     {}
+
+
+//-----------------------------------------------------------------------------
+bool Controller::ifObjectIsReal()
+    {
+    return (this &&
+            MrEngine_ && /*MrEngine_->ifObjectIsReal() &&*/
+            steve_    &&    steve_->ifObjectIsReal() &&
+            MrMouse_  &&  MrMouse_->ifObjectIsReal() );
+    }
+
 
 
 //-----------------------------------------------------------------------------
@@ -324,7 +355,7 @@ Hero* Controller::AppleSteveLogic (int AppleBeingEatenRadius)
 //-----------------------------------------------------------------------------
 void Controller::AppleSpawn (Image texture)
     {
-    if (rand()%1000 < 5)
+    if (rand()%1000 < 35)
         {
         Apple *apple = new Apple ( texture, Vec (rand()%txGetExtentX(), rand()%txGetExtentY()) );
         MrEngine_->add (apple);
@@ -432,7 +463,7 @@ int Timer (bool StartTimer, int sleep, int *EndTime)
 
 //{Apple::
 Apple::Apple (Image Picture, Vec pos) :
-    Hero (NULL, Picture, pos, Vec(), APPLE)
+    Hero ("Apple", Picture, pos, Vec(), APPLE)
     {
     }
 
@@ -448,12 +479,63 @@ Steve::Steve (const char *Name, Image Picture, Vec pos, Vec V, Engine* MrEngine)
     SpeedMultp_ (0),
     MaxSpeedmlt_ (5),
     pushka_ (new Gun (MrEngine, Gun::DISABLED, this))
-    {}
+    {
+    ASSERT_OK();
+    }
+
+
+//-----------------------------------------------------------------------------
+Steve::~Steve ()
+    {
+    ASSERT_OK();
+
+    AppleDisgustingTimer_ = INTPOISON;
+    SpeedMultp_ = INTPOISON;
+    MaxSpeedmlt_ = INTPOISON;
+    pushka_ = NULL;
+    }
+
+
+
+//-----------------------------------------------------------------------------
+void Steve::Dump (int LeftSpace) const
+    {
+    bool is_ok = ifObjectIsReal();
+
+
+    txOutputDebugPrintf ("%*sSteve\n"                         , LeftSpace, "");
+    txOutputDebugPrintf ("%*s   {\n"                          , LeftSpace, "");
+    txOutputDebugPrintf ("%*s   %s\n"                         , LeftSpace, "", (is_ok)? "ok" : "ERROR");
+    Hero::Dump (LeftSpace + LFTSPC);
+    txOutputDebugPrintf ("%*s   AppleDisgustingTimer_ = %d\n" , LeftSpace, "", AppleDisgustingTimer_);
+    txOutputDebugPrintf ("%*s   SpeedMultp_  = %d\n"          , LeftSpace, "", SpeedMultp_);
+    txOutputDebugPrintf ("%*s   MaxSpeedmlt_ = %d\n"          , LeftSpace, "", MaxSpeedmlt_);
+    txOutputDebugPrintf ("%*s   *pushka_     = %p\n"          , LeftSpace, "", pushka_);
+    if (pushka_) pushka_->Dump (LeftSpace + LFTSPC);
+    txOutputDebugPrintf ("%*s   }\n\n"                        , LeftSpace, "");
+    }
+
+
+
+//-----------------------------------------------------------------------------
+bool Steve::ifObjectIsReal () const
+    {
+    return (this &&
+            Hero::ifObjectIsReal() &&
+
+            AppleDisgustingTimer_ != INTPOISON &&
+            SpeedMultp_  != INTPOISON &&
+            MaxSpeedmlt_ != INTPOISON &&
+            pushka_ && pushka_->ifObjectIsReal()  );
+    }
+
 
 
 //-----------------------------------------------------------------------------
 void Steve::doAnimation () const
     {
+    ASSERT_OK();
+
     if (DoubleCompareWithZero (V_.x) != 0 && DoubleCompareWithZero (V_.y) != 0)
         {
         int t = Global_Timer.GetTime()/8;
@@ -464,6 +546,7 @@ void Steve::doAnimation () const
     else
         Picture_.Draw (pos_, AnimationNumber_, 0);
 
+    ASSERT_OK();
     }
 
 
@@ -472,7 +555,9 @@ void Steve::doAnimation () const
 //-----------------------------------------------------------------------------
 void Steve::Control (int KeyStopMove )
     {
-Vec VDist = Global_Mouse.GetClickPos() - pos_;
+    ASSERT_OK();
+
+    Vec VDist = Global_Mouse.GetClickPos() - pos_;
 
     if (VDist.Len() > 10)
         {
@@ -485,6 +570,8 @@ Vec VDist = Global_Mouse.GetClickPos() - pos_;
 
     if (GetAsyncKeyState ( KeyStopMove ))
         V_ = Vec (0, 0);
+
+    ASSERT_OK();
     }
 
 
@@ -493,12 +580,14 @@ Vec VDist = Global_Mouse.GetClickPos() - pos_;
 //-----------------------------------------------------------------------------
 void Steve::Logic ()
     {
+    ASSERT_OK();
+
     if (AppleDisgustingTimer_ >= 0) AppleDisgustingTimer_--;
     else SpeedMultp_ = 0;
 
     if (SpeedMultp_ > MaxSpeedmlt_) SpeedMultp_ = SpeedMultp_;
 
-
+    ASSERT_OK();
     }
 
 
@@ -510,22 +599,78 @@ void Steve::Logic ()
 //{Zombie::
 Zombie::Zombie (const char *Name, Image Picture, Vec pos, Vec V, const Hero *Steve) :
     Hero (Name, Picture, pos, V, NPC, Steve),
-    AnimationSpeedDivider (8),
-    ControlSpeedMultiplier (5),
+    AnimationSpeedDivider_ (8),
+    ControlSpeedMultiplier_ (5),
     AppleDisgustingTimer_ (0),
     SpeedMultp_ (0),
     MaxSpeedmlt_ (2)
-    {}
+    {
+    ASSERT_OK();
+    }
+
+
+//-----------------------------------------------------------------------------
+Zombie::~Zombie ()
+    {
+    ASSERT_OK();
+
+    AnimationSpeedDivider_ = INTPOISON;
+    ControlSpeedMultiplier_ = INTPOISON;
+    AppleDisgustingTimer_ = INTPOISON;
+    SpeedMultp_ = INTPOISON;
+    MaxSpeedmlt_ = INTPOISON;
+    }
+
+
+
+
+//-----------------------------------------------------------------------------
+void Zombie::Dump (int LeftSpace) const
+    {
+    bool is_ok = ifObjectIsReal();
+
+
+    txOutputDebugPrintf ("%*sZombie\n"                           , LeftSpace, "");
+    txOutputDebugPrintf ("%*s   {\n"                             , LeftSpace, "");
+    txOutputDebugPrintf ("%*s   %s\n"                            , LeftSpace, "", (is_ok)? "ok" : "ERROR");
+    Hero::Dump (LeftSpace + LFTSPC);
+    txOutputDebugPrintf ("%*s   AnimationSpeedDivider_   = %d\n" , LeftSpace, "", AnimationSpeedDivider_);
+    txOutputDebugPrintf ("%*s   ControlSpeedMultiplier_  = %d\n" , LeftSpace, "", ControlSpeedMultiplier_);
+    txOutputDebugPrintf ("%*s   AppleDisgustingTimer_    = %d\n" , LeftSpace, "",  AppleDisgustingTimer_);
+    txOutputDebugPrintf ("%*s   SpeedMultp_   = %d\n"            , LeftSpace, "", SpeedMultp_);
+    txOutputDebugPrintf ("%*s   MaxSpeedmlt_  = %d\n"            , LeftSpace, "", MaxSpeedmlt_);
+    txOutputDebugPrintf ("%*s   }\n\n"                           , LeftSpace, "");
+
+
+    }
+
+
+
+//-----------------------------------------------------------------------------
+bool Zombie::ifObjectIsReal () const
+    {
+    return (this &&
+            Hero::ifObjectIsReal() &&
+            AnimationSpeedDivider_  != INTPOISON &&
+            ControlSpeedMultiplier_ != INTPOISON &&
+            AppleDisgustingTimer_  != INTPOISON &&
+            SpeedMultp_  != INTPOISON &&
+            MaxSpeedmlt_ != INTPOISON );
+
+    }
 
 
 //-----------------------------------------------------------------------------
 void Zombie::doAnimation () const
- {
-    int t = Global_Timer.GetTime()/AnimationSpeedDivider;
+    {
+    ASSERT_OK();
+
+    int t = Global_Timer.GetTime()/AnimationSpeedDivider_;
     int ActiveDirection = (V_.x >= 0)?  1 : 0;
 
     Picture_.Draw (pos_, ActiveDirection, t);
 
+    ASSERT_OK();
     }
 
 
@@ -534,11 +679,13 @@ void Zombie::doAnimation () const
 //-----------------------------------------------------------------------------
 void Zombie::Control (int KeyStopMove)
     {
+    ASSERT_OK();
+
     Vec VDist = victim_->pos_ - pos_;
 
     if (VDist.Len() > 10)
         {
-        Vec shortVector = VDist.Normalize() * (ControlSpeedMultiplier)*(SpeedMultp_ + 1);     //  V_ = !(Vec (txMousePos()) - pos_) * 15   | где ! - оператор нормализации
+        Vec shortVector = VDist.Normalize() * (ControlSpeedMultiplier_)*(SpeedMultp_ + 1);     //  V_ = !(Vec (txMousePos()) - pos_) * 15   | где ! - оператор нормализации
         V_ = shortVector;
         }
     else
@@ -547,6 +694,8 @@ void Zombie::Control (int KeyStopMove)
 
     if (GetAsyncKeyState ( KeyStopMove ))
         V_ = Vec (0, 0);
+
+    ASSERT_OK();
     }
 
 
@@ -555,10 +704,14 @@ void Zombie::Control (int KeyStopMove)
 //-----------------------------------------------------------------------------
 void Zombie::Logic ()
     {
+    ASSERT_OK();
+
     if (AppleDisgustingTimer_ >= 0) AppleDisgustingTimer_--;
     else SpeedMultp_ = 0;
 
     if (SpeedMultp_ > MaxSpeedmlt_) SpeedMultp_ = SpeedMultp_;
+
+    ASSERT_OK();
     }
 
 
@@ -566,8 +719,12 @@ void Zombie::Logic ()
 //-----------------------------------------------------------------------------
 void Zombie::SpeedEff ()
     {
+    ASSERT_OK();
+
     AppleDisgustingTimer_ += 150;
     SpeedMultp_ += 1;
+
+    ASSERT_OK();
     }
 //}
 //-----------------------------------------------------------------------------
@@ -584,8 +741,14 @@ void gmMouse::doAnimation () const
 //-----------------------------------------------------------------------------
 void gmMouse::Control (int KeyStopMove)
     {
+    ASSERT_OK();
+
     pos_ = Global_Mouse.GetClickPos();
+
+    ASSERT_OK();
     }
+
+
 
 //}
 //-----------------------------------------------------------------------------
@@ -594,8 +757,10 @@ void gmMouse::Control (int KeyStopMove)
 FastZombie::FastZombie (const char *Name, Image Picture, Vec pos, Vec V, const Hero *Steve) :
     Zombie (Name, Picture, pos, V, Steve)
     {
-    AnimationSpeedDivider /= 4;
-    ControlSpeedMultiplier *= 1.5;
+    AnimationSpeedDivider_ /= 4;
+    ControlSpeedMultiplier_ *= 1.5;
+
+    ASSERT_OK();
     }
 
 
@@ -605,14 +770,20 @@ FastZombie::FastZombie (const char *Name, Image Picture, Vec pos, Vec V, const H
 //{Bullet::
 Bullet::Bullet (Vec pos, Vec V) :
     Hero ("Bullet", Image (), pos, V, BULLET)
-    {}
+    {
+    ASSERT_OK();
+    }
 
 //-----------------------------------------------------------------------------
 void Bullet::doAnimation () const
     {
+    ASSERT_OK();
+
     txSetColor (TX_BLACK);
     txSetFillColor (TX_GRAY);
     txCircle (pos_.x, pos_.y, 10);
+
+    ASSERT_OK();
     }
 
 //}
@@ -622,15 +793,21 @@ void Bullet::doAnimation () const
 
 Mina::Mina (Vec pos) :
     Hero ("Mina", Image (), pos, Vec (0, 0), MINA)
-    {}
+    {
+    ASSERT_OK();
+    }
 
 
 //-----------------------------------------------------------------------------
 void Mina::doAnimation () const
     {
+    ASSERT_OK();
+
     txSetColor (TX_GREEN);
     txSetFillColor (TX_GREEN);
     txRectangle (pos_.x - 13, pos_.y - 10, pos_.x + 13, pos_.y + 10);
+
+    ASSERT_OK();
     }
 
 //}
@@ -642,12 +819,62 @@ Gun::Gun (Engine* MrEngine, GunMode CurrentModeOfGun, Steve* steve) :
     CurrentModeOfGun_ (CurrentModeOfGun),
     MrMouse_ (dynamic_cast <gmMouse*> (MrEngine->GetMouse()) ),
     steve_(steve)
-    {}
+    {
+    ASSERT_OK();
+    }
 
 //-----------------------------------------------------------------------------
+Gun::~Gun ()
+    {
+    ASSERT_OK();
 
+    MrEngine_ = NULL;
+    CurrentModeOfGun_ = (GunMode) INTPOISON;
+    MrMouse_ = NULL;
+    steve_ = NULL;
+    }
+
+
+
+//-----------------------------------------------------------------------------
+void Gun::Dump (int LeftSpace) const
+{
+    bool is_ok = ifObjectIsReal();
+
+
+    txOutputDebugPrintf ("%*sGun\n"                       , LeftSpace, "");
+    txOutputDebugPrintf ("%*s   this = %p\n"              , LeftSpace, "", this);
+    txOutputDebugPrintf ("%*s   {\n"                      , LeftSpace, "");
+    txOutputDebugPrintf ("%*s   %s\n"                     , LeftSpace, "", (is_ok)? "ok" : "ERROR");
+    txOutputDebugPrintf ("%*s   CurrentModeOfGun_ = %d\n" , LeftSpace, "", CurrentModeOfGun_);
+    txOutputDebugPrintf ("%*s   MrEngine_ = %p\n"         , LeftSpace, "", MrEngine_);
+    txOutputDebugPrintf ("%*s   MrMouse_ = %p\n"          , LeftSpace, "", MrMouse_);
+    if (MrMouse_) MrMouse_->Dump (LFTSPC);
+    txOutputDebugPrintf ("%*s   steve_   = %p\n"          , LeftSpace, "", steve_);
+    txOutputDebugPrintf ("%*s   }\n\n"                    , LeftSpace, "");
+
+
+    }
+
+
+
+
+//-----------------------------------------------------------------------------
+bool Gun::ifObjectIsReal() const
+    {
+    return (this &&
+            CurrentModeOfGun_ != INTPOISON &&
+            MrEngine_ && /*MrEngine_->ifObjectIsReal() &&*/
+            steve_    &&    /*steve_->ifObjectIsReal() &&*/
+            MrMouse_  &&    MrMouse_->ifObjectIsReal() );
+    }
+
+
+//-----------------------------------------------------------------------------
 void Gun::shoot ()
     {
+    ASSERT_OK();
+
     assert (MrMouse_);
     if (!steve_)
         return;
@@ -667,12 +894,16 @@ void Gun::shoot ()
     if (CurrentModeOfGun_ == BAZOOKA)
         MrEngine_->add (new Mina (steve_->pos_));
 
+    ASSERT_OK();
     }
+
 
 
 //-----------------------------------------------------------------------------
 void Gun::Logic ()
     {
+    ASSERT_OK();
+
     if (GetAsyncKeyState ('1'))
         CurrentModeOfGun_ = PISTOL;
     if (GetAsyncKeyState ('2'))
@@ -680,6 +911,8 @@ void Gun::Logic ()
 
     if (!steve_)
         CurrentModeOfGun_ = DISABLED;
+
+    ASSERT_OK();
     }
 
 
@@ -702,11 +935,12 @@ void SteveAnimationNumber_and_Moving_Connecting (Hero *Steve)
     AnimationNumber =  round (AnimationNumber);
     Steve->SetAnimation (( (int) AnimationNumber + 18)%18);
 
-
     }
+
 //-----------------------------------------------------------------------------
 void GeneralControl (Hero *object, int KeyStopMove)
     {
+
     Vec VDist = object->victim_->pos_ - object->pos_;
 
     if (VDist.Len() > 10)
@@ -720,6 +954,7 @@ void GeneralControl (Hero *object, int KeyStopMove)
 
     if (GetAsyncKeyState ( KeyStopMove ))
         object->V_ = Vec (0, 0);
+
     }
 //-----------------------------------------------------------------------------
 
@@ -777,7 +1012,7 @@ void StartCom ()
     txSetColor         (RGB(0, 0, 0));
 
     txBegin ();
-    txDisableAutoPause();
+    //txDisableAutoPause();
     }
 
 //-----------------------------------------------------------------------------
