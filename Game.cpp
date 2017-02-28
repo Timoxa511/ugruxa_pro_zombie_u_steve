@@ -7,11 +7,23 @@
     if (!ok())                                          \
         {                                               \
         txSleep(50);                                    \
-        printf ("\nEEEERRRROOORRRRR\n");                    \
+        printf ("\nEEEERRRROOORRRRR\n");                \
         Dump ();                                        \
         txSleep(500);                                   \
         assert (0);                                     \
         }
+
+#define ASSERT_OBJ_OK(obj)                              \
+    if (!((obj) && (obj)->Hero::ok()))                  \
+        {                                               \
+        txOutputDebugPrintf("ERROR )*-*(  ");           \
+        txSleep(50);                                    \
+        printf ("\nEEEERRRROOORRRRR\n");                \
+        (obj)->Hero::Dump();                            \
+        txSleep(500);                                   \
+        assert (0);                                     \
+        }
+
 
 //-----------------------------------------------------------------------------
 enum {APPLE = Hero::FIRSTUSERTYPE, BULLET, MINA};
@@ -29,7 +41,6 @@ struct Textures
 
 struct Apple : public Hero
     {
-
     //-----------------------
     Apple (Image Picture, Vec pos);
     };
@@ -112,6 +123,7 @@ struct Gun
     Engine*  MrEngine_;
     gmMouse* MrMouse_;
     Steve*   steve_;
+    void* owner_;
     //-----------------------
    ~Gun ();
     void Dump (int LeftSpace = 0) const;
@@ -189,13 +201,22 @@ void GameProcces (const Textures *textures)
     gmMouse* mouse =  new gmMouse ("Mouse", Image (), Vec (),  Vec ());
     Engine MrEngine (mouse);
 
+
     Steve* steve   =  new Steve   ("Steve", textures->Steve,  Vec (500, 500), Vec (0, 0), &MrEngine);
+
+    steve->Dump();
 
     //Zombiezomb (&steve, &zombie);
 
 
     MrEngine.add (mouse);
-    MrEngine.add (steve);
+    MrEngine.add (steve, NET);
+    steve->Dump();
+
+    printf ("vladelec %p,   MrEngine%p\n", steve->owner_, MrEngine);
+    txSleep(0);
+    _getch();
+
     MrEngine.add (new Zombie ("Zombie", textures->Zombie, Vec (700, 700), Vec (0, 0), steve));
 
 
@@ -206,6 +227,8 @@ void GameProcces (const Textures *textures)
     int EndTime = 0;
     while (!GetAsyncKeyState (VK_ESCAPE))
         {
+
+
         MrEngine.Run();
         SteveAnimationNumber_and_Moving_Connecting (steve);
         if (StartTimer != true) Logic.ZombieSpawn (textures->Zombie);
@@ -222,9 +245,12 @@ void GameProcces (const Textures *textures)
         Logic.AppleSpawn (textures->Apple);
         Logic.GunZombieLogic ();
 
-        steve->pushka_->Logic();
 
-        if (/*!StartTimer && */GetAsyncKeyState(VK_TAB)) steve->pushka_->shoot ();
+        if (steve && steve->ok())
+            {
+            steve->pushka_->Logic();
+            if (/*!StartTimer && */GetAsyncKeyState(VK_TAB)) steve->pushka_->shoot ();
+            }
 
         if (StartTimer) Logic.EndScene ();
 
@@ -526,6 +552,7 @@ bool Steve::ifObjectIsReal () const
             AppleDisgustingTimer_ != INTPOISON &&
             SpeedMultp_  != INTPOISON &&
             MaxSpeedmlt_ != INTPOISON &&
+            owner_ == this &&
             pushka_ && pushka_->ifObjectIsReal()  );
     }
 
@@ -923,7 +950,7 @@ void Gun::Logic ()
 
 void SteveAnimationNumber_and_Moving_Connecting (Hero *Steve)
     {
-
+    ASSERT_OBJ_OK(Steve);
     //$ (Steve->GetV().Len()); $n;
     if (Steve->GetV().Len() <= DBL_EPSILON)
         {
@@ -933,13 +960,15 @@ void SteveAnimationNumber_and_Moving_Connecting (Hero *Steve)
 
     double AnimationNumber = (360 - (Steve->GetV().Angle() + 90) )/20;
     AnimationNumber =  round (AnimationNumber);
-    Steve->SetAnimation (( (int) AnimationNumber + 18)%18);
+        Steve->SetAnimation (( (int) AnimationNumber + 18)%18);
 
+    ASSERT_OBJ_OK(Steve);
     }
 
 //-----------------------------------------------------------------------------
 void GeneralControl (Hero *object, int KeyStopMove)
     {
+    ASSERT_OBJ_OK(object);
 
     Vec VDist = object->victim_->pos_ - object->pos_;
 
@@ -955,15 +984,18 @@ void GeneralControl (Hero *object, int KeyStopMove)
     if (GetAsyncKeyState ( KeyStopMove ))
         object->V_ = Vec (0, 0);
 
+    ASSERT_OBJ_OK(object);
     }
 //-----------------------------------------------------------------------------
 
 void NoAnimation (const Hero */*object*/)
-    {
-
-    }
+    {}
 //-----------------------------------------------------------------------------
 
+
+
+
+//-----------------------------------------------------------------------------
 
 //{ slaves::
 

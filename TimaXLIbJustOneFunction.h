@@ -1,7 +1,8 @@
 #include "TXlib.h"
 
 #define CAP(action) action
-
+#define DA  true
+#define NET false
 FILE* Log = fopen ("Log.txt", "w");//stdout;
 
 enum {NO = false, YES = true};
@@ -80,6 +81,7 @@ class Hero
 
     enum LifeStatus {DEAD, ALIVE};
     LifeStatus status_;
+    void* owner_;
 
     const Hero *victim_;
 
@@ -191,7 +193,7 @@ class Engine
     int   Get_KolBo_TypeObjects (int Type) const;
     int   Get_AllObjects_ofThe_Type (Hero* gmTypePointers [], int Type, int Start = 0);
 
-    void  add    (Hero *object);
+    void  add    (Hero *object, bool porabotit_ili_net_Bot_B_4em_Boproc = DA);
 
 
 
@@ -293,6 +295,7 @@ bool Engine::ifObjectIsReal()
 
 
 
+
 //-----------------------------------------------------------------------------
 Hero* Engine::GetMouse () const
     {
@@ -391,17 +394,16 @@ int Engine::Get_AllObjects_ofThe_Type (Hero* gmTypePointers [], int Type, int St
 
 
 //-----------------------------------------------------------------------------
-void Engine::add (Hero *object)
+void Engine::add (Hero *object, bool porabotit_ili_net_Bot_B_4em_Boproc)
     {
 
     assert (0 <= (Get_KolBo_OfObjects()) && (Get_KolBo_OfObjects()) < N_OBJECTS);
 
     objects_ [Get_KolBo_OfObjects()] = object;
 
-    if (object->Type_ == 4)
-                {
-                txOutputDebugPrintf ("%s: %p i=%2d ADD\n",__TX_FUNCTION__, object, Get_KolBo_OfObjects());
-                }
+
+    if (porabotit_ili_net_Bot_B_4em_Boproc == true) object->owner_ = this;
+
 
     freePlace_--;
 
@@ -417,7 +419,12 @@ void Engine::remoov (int numObj)
     assert (0 <= numObj && numObj < Get_KolBo_OfObjects());
 
 
-    delete objects_[numObj];
+    if (objects_[numObj]->owner_ == this)
+        {
+        printf ("YMIRAIU  Type %d, owner %p,   Engine %p\n", objects_[numObj]->Type_, objects_[numObj]->owner_, this);
+        delete objects_[numObj];
+         }
+
 
     objects_[numObj] = objects_[Get_KolBo_OfObjects() - 1];
     objects_[Get_KolBo_OfObjects() - 1] = NULL;
@@ -430,8 +437,8 @@ void Engine::remoov (int numObj)
 
 void Engine::Destruct ()
     {
-    for (int i = 0; i < N_OBJECTS; i++)
-        delete objects_[i];
+    for (int i = 0; i < Get_KolBo_OfObjects(); i++)
+        remoov (i);
     }
 
 
@@ -510,6 +517,7 @@ Hero::Hero () :
 
     AnimationNumber_ (0),
     Type_ (0),
+    owner_ (this),
 
     status_ (ALIVE),
     victim_ (NULL)
@@ -528,6 +536,7 @@ Hero::Hero (const char *Name, Image Picture, Vec pos, Vec V, int Type,
     V_ (V),
     AnimationNumber_ (AnimationNumber),
     Type_ (Type),
+    owner_ (this),
     victim_ (victim),
     status_ (ALIVE)
     {
@@ -541,6 +550,7 @@ Hero::~Hero ()
     AnimationNumber_ = INTPOISON;
     Type_ = INTPOISON;
     victim_ = NULL;
+    owner_  = NULL;
     status_ = (LifeStatus) INTPOISON;
     }
 
@@ -549,18 +559,21 @@ Hero::~Hero ()
 //-----------------------------------------------------------------------------
 void Hero::Dump (int LeftSpace) const
     {
-    bool is_ok = ifObjectIsReal();
+    txOutputDebugPrintf ("DUmpDumpDumpDumpdumpDUmppmDUmpDUmpDUmpDUpmDUMMMP");
+    bool is_ok = Hero::ifObjectIsReal();
 
     txOutputDebugPrintf ("%*sHero\n"                     , LeftSpace, "");
     txOutputDebugPrintf ("%*s   {\n"                     , LeftSpace, "");
     txOutputDebugPrintf ("%*s   %s\n"                    , LeftSpace, "", (is_ok)? "ok" : "ERROR");
-    txOutputDebugPrintf ("%*s   name = %s\n"             , LeftSpace, "", Name_);
-    txOutputDebugPrintf ("%*s   pos  = {%lg, %lg}\n"     , LeftSpace, "", pos_.x, pos_.y);
-    txOutputDebugPrintf ("%*s   v    = {%d, %d}\n"       , LeftSpace, "", V_.x, V_.y);
+    txOutputDebugPrintf ("%*s   this  = %p\n"            , LeftSpace, "", this);
+    txOutputDebugPrintf ("%*s   owner = %p\n"            , LeftSpace, "", owner_);
+    txOutputDebugPrintf ("%*s   name  = %s\n"            , LeftSpace, "", Name_);
+    txOutputDebugPrintf ("%*s   pos   = {%lg, %lg}\n"    , LeftSpace, "", pos_.x, pos_.y);
+    txOutputDebugPrintf ("%*s   v     = {%lg, %lg}\n"    , LeftSpace, "", V_.x, V_.y);
     txOutputDebugPrintf ("%*s   AnimationNumber_ = %d\n" , LeftSpace, "", AnimationNumber_);
-    txOutputDebugPrintf ("%*s   Type_   = %d\n"            , LeftSpace, "", Type_);
+    txOutputDebugPrintf ("%*s   Type_   = %d\n"          , LeftSpace, "", Type_);
     txOutputDebugPrintf ("%*s   status_ = %d\n"          , LeftSpace, "", status_);
-    txOutputDebugPrintf ("%*s   victim  = %p\n"           , LeftSpace, "", victim_);
+    txOutputDebugPrintf ("%*s   victim  = %p\n"          , LeftSpace, "", victim_);
     if (victim_) victim_->Dump (LeftSpace + LFTSPC);
     txOutputDebugPrintf ("%*s   }\n\n"                   , LeftSpace, "");
 
@@ -592,17 +605,22 @@ void Hero::die ()
     }
 
 
+
 //-----------------------------------------------------------------------------
 Vec Hero::GetV () const
     {
     return V_;
     }
+
+
 //-----------------------------------------------------------------------------
 
 void Hero::Move (double dt)
     {
     pos_ = pos_ + V_*dt;
     }
+
+
 
 //-----------------------------------------------------------------------------
 void Hero::Control (int /*KeyStopMove*/)

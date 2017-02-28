@@ -1,15 +1,16 @@
 #include "TXlib.h"
 
 #define CAP(action) action
-
-FILE* Log = stdout;//fopen ("Log.txt", "w");
+#define DA  true
+#define NET true
+FILE* Log = fopen ("Log.txt", "w");//stdout;
 
 enum {NO = false, YES = true};
 const double DT = 1.0;
 const int LFTSPC = 3;
 
 const int INTPOISON = -66666;
-const double DOUBLEPOISON = -17.903470087374;
+const double DOUBLEPOISON = -666.666666;
 
 //-----------------------------------------------------------------------------
 
@@ -80,6 +81,7 @@ class Hero
 
     enum LifeStatus {DEAD, ALIVE};
     LifeStatus status_;
+    void* owner_;
 
     const Hero *victim_;
 
@@ -96,7 +98,7 @@ class Hero
     Hero (const char *Name, Image Picture, Vec pos, Vec V, int Type,
           const Hero *victim = NULL, int AnimationNumber = 0);
 
-    virtual void Dump () const;
+    virtual void Dump (int LeftSpace = 0) const;
 
     virtual bool ifObjectIsReal () const;
     void Tag (LifeStatus status);
@@ -191,7 +193,7 @@ class Engine
     int   Get_KolBo_TypeObjects (int Type) const;
     int   Get_AllObjects_ofThe_Type (Hero* gmTypePointers [], int Type, int Start = 0);
 
-    void  add    (Hero *object);
+    void  add    (Hero *object, bool porabotit_ili_net_Bot_B_4em_Boproc = DA);
 
 
 
@@ -252,16 +254,16 @@ Engine::Engine (Hero* Mouse) :                                                  
 //-----------------------------------------------------------------------------
 void Engine::PrintfAllIncludes ()
     {
-    fprintf (Log, "Engine\n{\n");
-    fprintf (Log,"freePlace_ = %d\n", freePlace_);
-    fprintf (Log," N_OBJECTS = %d\n" , N_OBJECTS);
-    fprintf (Log,"  objects_ = 0x%p\n", objects_);
-    fprintf (Log,"    Mouse_ = 0x%p\n", Mouse_);
-    fprintf (Log,"}\n\n");
+    txOutputDebugPrintf ("Engine\n{\n");
+    txOutputDebugPrintf ("freePlace_ = %d\n", freePlace_);
+    txOutputDebugPrintf (" N_OBJECTS = %d\n" , N_OBJECTS);
+    txOutputDebugPrintf ("  objects_ = 0x%p\n", objects_);
+    txOutputDebugPrintf ("    Mouse_ = 0x%p\n", Mouse_);
+    txOutputDebugPrintf ("}\n\n");
 
     for (int i = 0; i < Get_KolBo_OfObjects (); i++)
         {
-        fprintf (Log, "i = %d, pointer = 0x%p\n", i, objects_[i]);
+        txOutputDebugPrintf ("i = %d, pointer = 0x%p\n", i, objects_[i]);
         if (objects_[i]) objects_[i]->Dump();
         }
     }
@@ -290,6 +292,7 @@ bool Engine::ifObjectIsReal()
 
     return true;
     }
+
 
 
 
@@ -391,17 +394,13 @@ int Engine::Get_AllObjects_ofThe_Type (Hero* gmTypePointers [], int Type, int St
 
 
 //-----------------------------------------------------------------------------
-void Engine::add (Hero *object)
+void Engine::add (Hero *object, bool porabotit_ili_net_Bot_B_4em_Boproc)
     {
 
     assert (0 <= (Get_KolBo_OfObjects()) && (Get_KolBo_OfObjects()) < N_OBJECTS);
 
     objects_ [Get_KolBo_OfObjects()] = object;
-
-    if (object->Type_ == 4)
-                {
-                fprintf (Log,"%s: %p i=%2d ADD\n",__TX_FUNCTION__, object, Get_KolBo_OfObjects());
-                }
+    if (porabotit_ili_net_Bot_B_4em_Boproc == true) object->owner_ = this;
 
     freePlace_--;
 
@@ -417,7 +416,12 @@ void Engine::remoov (int numObj)
     assert (0 <= numObj && numObj < Get_KolBo_OfObjects());
 
 
-    delete objects_[numObj];
+    if (objects_[numObj]->owner_ == this)
+        {
+        printf ("YMIRAIU %d  %p, Engine", objects_[numObj]->Type_, objects_[numObj]->owner_);
+        delete objects_[numObj];
+         }
+
 
     objects_[numObj] = objects_[Get_KolBo_OfObjects() - 1];
     objects_[Get_KolBo_OfObjects() - 1] = NULL;
@@ -457,6 +461,7 @@ void Engine::Run ()
         objects_[i]->Move (DT);
         objects_[i]->doAnimation ();
         objects_[i]->Logic ();
+        //objects_[i]->Dump ();
         }
     txSleep (20);
     Global_Mouse.Update();
@@ -481,7 +486,7 @@ void Engine::KillTheTagged ()
             $ (objects_[i]->Type_); $n;
             if (objects_[i]->Type_ == 4)
                 {
-                fprintf (Log,"%p i=%2d DELETE\n", objects_[i],i);
+                txOutputDebugPrintf ("%p i=%2d DELETE\n", objects_[i],i);
                 }
             remoov (i--);
             }
@@ -509,6 +514,7 @@ Hero::Hero () :
 
     AnimationNumber_ (0),
     Type_ (0),
+    owner_ (this),
 
     status_ (ALIVE),
     victim_ (NULL)
@@ -527,6 +533,7 @@ Hero::Hero (const char *Name, Image Picture, Vec pos, Vec V, int Type,
     V_ (V),
     AnimationNumber_ (AnimationNumber),
     Type_ (Type),
+    owner_ (this),
     victim_ (victim),
     status_ (ALIVE)
     {
@@ -540,6 +547,7 @@ Hero::~Hero ()
     AnimationNumber_ = INTPOISON;
     Type_ = INTPOISON;
     victim_ = NULL;
+    owner_  = NULL;
     status_ = (LifeStatus) INTPOISON;
     }
 
@@ -548,22 +556,23 @@ Hero::~Hero ()
 //-----------------------------------------------------------------------------
 void Hero::Dump (int LeftSpace) const
     {
-    bool is_ok = ifObjectIsReal();
+    txOutputDebugPrintf ("ERROEERROEROEOROREERRROORRREROORERRORERRORERRORERROREERROORREEEERRROOOR");
+    bool is_ok = Hero::ifObjectIsReal();
 
-    fprintf (Log, "%*sHero\n"
-                  "%*s   {\n"                     , LeftSpace, "",);
-    fprintf (Log, "%*s   %s\n"                    , LeftSpace, "", (is_ok)? "ok" : "ERROR");
-    fprintf (Log, "%*s   name = %s\n"             , LeftSpace, "", Name_);
-    fprintf (Log, "%*s   pos  = {%lg, %lg}\n"     , LeftSpace, "", pos_.x, pos_.y);
-    fprintf (Log, "%*s   v    = {%d, %d}\n"       , LeftSpace, "",  V_.x, V_.y);
-    fprintf (Log, "%*s   AnimationNumber_ = %d\n" , LeftSpace, "", AnimationNumber_);
-    fprintf (Log, "%*s   Type_ = %d\n"            , LeftSpace, "", Type_);
-    fprintf (Log, "%*s   status_ = %d\n"          , LeftSpace, "", status_);
-    fprintf (Log, "%*s   victim = %p\n"           , LeftSpace, ,  victim_);
+    txOutputDebugPrintf ("%*sHero\n"                     , LeftSpace, "");
+    txOutputDebugPrintf ("%*s   {\n"                     , LeftSpace, "");
+    txOutputDebugPrintf ("%*s   %s\n"                    , LeftSpace, "", (is_ok)? "ok" : "ERROR");
+    txOutputDebugPrintf ("%*s   name = %s\n"             , LeftSpace, "", Name_);
+    txOutputDebugPrintf ("%*s   pos  = {%lg, %lg}\n"     , LeftSpace, "", pos_.x, pos_.y);
+    txOutputDebugPrintf ("%*s   v    = {%lg, %lg}\n"     , LeftSpace, "", V_.x, V_.y);
+    txOutputDebugPrintf ("%*s   AnimationNumber_ = %d\n" , LeftSpace, "", AnimationNumber_);
+    txOutputDebugPrintf ("%*s   Type_   = %d\n"          , LeftSpace, "", Type_);
+    txOutputDebugPrintf ("%*s   status_ = %d\n"          , LeftSpace, "", status_);
+    txOutputDebugPrintf ("%*s   victim  = %p\n"          , LeftSpace, "", victim_);
     if (victim_) victim_->Dump (LeftSpace + LFTSPC);
-    fprintf (Log, "%*s   }\n\n"                   , LeftSpace, ,);
+    txOutputDebugPrintf ("%*s   }\n\n"                   , LeftSpace, "");
 
-    fflush (Log);
+
     }
 //-----------------------------------------------------------------------------
 bool Hero::ifObjectIsReal () const
@@ -591,17 +600,22 @@ void Hero::die ()
     }
 
 
+
 //-----------------------------------------------------------------------------
 Vec Hero::GetV () const
     {
     return V_;
     }
+
+
 //-----------------------------------------------------------------------------
 
 void Hero::Move (double dt)
     {
     pos_ = pos_ + V_*dt;
     }
+
+
 
 //-----------------------------------------------------------------------------
 void Hero::Control (int /*KeyStopMove*/)

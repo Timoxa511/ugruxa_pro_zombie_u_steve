@@ -6918,3 +6918,2504 @@ Run file:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie
 Directory:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0
 
 --------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe,
+
+ВНЕЗАПНО: signal (11, 0x00): SIGSEGV: Доступ по неверному указателю. Ставьте ассерты! 
+
+Нарушение доступа к памяти.
+
+Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу NULL. Попытка прочесть данные по адресу NULL. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FD2E0 (32-bit), Flags: CMdRe0, Thread: 0x1324 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00000000 [Неверный фрейм]
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in void Mouse::Update() at C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\TimaXLIbJustOneFunction.h (906):
+
+    904:         LastClickPos_ = GetPos();
+    905: 
+=>  906:     LastClickButtons_ = txMouseButtons ();
+    907:     }
+    908: 
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Program Files (x86)\TX\TXLib.h
+Compiled:	Feb 26 2017 20:08:51, GNU g++ 4.8.1, std=201103L, 32-bit, DEBUG
+Started:	Feb 26 2017 20:08:55
+
+Run file:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe
+Directory:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe,
+
+ВНЕЗАПНО: signal (11, 0x00): SIGSEGV: Доступ по неверному указателю. Ставьте ассерты! 
+
+Нарушение доступа к памяти.
+
+Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу NULL. Попытка прочесть данные по адресу NULL. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FD2E0 (32-bit), Flags: CMdRe0, Thread: 0xDE8 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00000000 [Неверный фрейм]
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in void Mouse::Update() at C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\TimaXLIbJustOneFunction.h (906):
+
+    904:         LastClickPos_ = GetPos();
+    905: 
+=>  906:     LastClickButtons_ = txMouseButtons ();
+    907:     }
+    908: 
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Program Files (x86)\TX\TXLib.h
+Compiled:	Feb 26 2017 20:10:05, GNU g++ 4.8.1, std=201103L, 32-bit, DEBUG
+Started:	Feb 26 2017 20:10:09
+
+Run file:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe
+Directory:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe,
+
+ВНЕЗАПНО: signal (11, 0x00): SIGSEGV: Доступ по неверному указателю. Ставьте ассерты! 
+
+Нарушение доступа к памяти.
+
+Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x00673958. Попытка записать данные по адресу NULL. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FD2E0 (32-bit), Flags: CMdRe0, Thread: 0xBA4 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00673958 in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe
+
+# 1 0x0042C25C in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe!ifObjectIsReal at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (872):
+
+    870:             MrEngine_ && /*MrEngine_->ifObjectIsReal() &&*/
+    871:             steve_    &&    /*steve_->ifObjectIsReal() &&*/
+=>  872:             MrMouse_  &&    MrMouse_->ifObjectIsReal() );
+    873:     }
+    874: 
+
+# 2 0x0042C7E3 in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe!Logic at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (908):
+
+    906: void Gun::Logic ()
+    907:     {
+=>  908:     ASSERT_OK();
+    909: 
+    910:     if (GetAsyncKeyState ('1'))
+
+# 3 0x00427EC2 in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe!GameProcces at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (228):
+
+    226:         if (steve && steve->ok())
+    227:             {
+=>  228:             steve->pushka_->Logic();
+    229:             if (/*!StartTimer && */GetAsyncKeyState(VK_TAB)) steve->pushka_->shoot ();
+    230:             }
+
+# 4 0x004278E6 in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe!main at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (175):
+
+    173:                          Image ("bloodtex1.bmp", {1, 1}), Image ("Apple.bmp", {1, 1})};
+    174: 
+=>  175:     GameProcces (&textures);
+    176: 
+    177:     textures.Steve.DeleteTex();
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in void Engine::add(Hero*) at C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\TimaXLIbJustOneFunction.h (403):
+
+    401:     if (object->Type_ == 4)
+    402:                 {
+=>  403:                 txOutputDebugPrintf ("%s: %p i=%2d ADD\n",__TX_FUNCTION__, object, Get_KolBo_OfObjects());
+    404:                 }
+    405: 
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Program Files (x86)\TX\TXLib.h
+Compiled:	Feb 26 2017 20:15:41, GNU g++ 4.8.1, std=201103L, 32-bit, DEBUG
+Started:	Feb 26 2017 20:15:47
+
+Run file:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe
+Directory:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe, файл: C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.cpp, строка: 940, функция: void SteveAnimationNumber_and_Moving_Connecting(Hero*),
+
+Сообщение: ВНЕЗАПНО: Логическая ошибка: Неверно, что "0".
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FE2E0 (32-bit), Flags: CMdRe0, Thread: 0x7A4 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x0042CACA in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe!SteveAnimationNumber_and_Moving_Connecting at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (940):
+
+    938: void SteveAnimationNumber_and_Moving_Connecting (Hero *Steve)
+    939:     {
+=>  940:     ASSERT_OBJ_OK(Steve);
+    941:     //$ (Steve->GetV().Len()); $n;
+    942:     if (Steve->GetV().Len() <= DBL_EPSILON)
+
+# 1 0x00427D3D in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe!GameProcces at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (221):
+
+    219:         {
+    220:         MrEngine.Run();
+=>  221:         SteveAnimationNumber_and_Moving_Connecting (steve);
+    222:         if (StartTimer != true) Logic.ZombieSpawn (textures->Zombie);
+    223:         if (Logic.ZombieAteUrBrains (textures, 30, 2) == LOSE) StartTimer = true;
+
+# 2 0x004278E6 in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe!main at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (186):
+
+    184:                          Image ("bloodtex1.bmp", {1, 1}), Image ("Apple.bmp", {1, 1})};
+    185: 
+=>  186:     GameProcces (&textures);
+    187: 
+    188:     textures.Steve.DeleteTex();
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Program Files (x86)\TX\TXLib.h
+Compiled:	Feb 26 2017 20:43:16, GNU g++ 4.8.1, std=201103L, 32-bit, DEBUG
+Started:	Feb 26 2017 20:43:22
+
+Run file:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe
+Directory:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe, файл: C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.cpp, строка: 940, функция: void SteveAnimationNumber_and_Moving_Connecting(Hero*),
+
+Сообщение: ВНЕЗАПНО: Логическая ошибка: Неверно, что "0".
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FE2E0 (32-bit), Flags: CMdRe0, Thread: 0x1014 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x0042CACA in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe!SteveAnimationNumber_and_Moving_Connecting at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (940):
+
+    938: void SteveAnimationNumber_and_Moving_Connecting (Hero *Steve)
+    939:     {
+=>  940:     ASSERT_OBJ_OK(Steve);
+    941:     //$ (Steve->GetV().Len()); $n;
+    942:     if (Steve->GetV().Len() <= DBL_EPSILON)
+
+# 1 0x00427D3D in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe!GameProcces at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (221):
+
+    219:         {
+    220:         MrEngine.Run();
+=>  221:         SteveAnimationNumber_and_Moving_Connecting (steve);
+    222:         if (StartTimer != true) Logic.ZombieSpawn (textures->Zombie);
+    223:         if (Logic.ZombieAteUrBrains (textures, 30, 2) == LOSE) StartTimer = true;
+
+# 2 0x004278E6 in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe!main at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (186):
+
+    184:                          Image ("bloodtex1.bmp", {1, 1}), Image ("Apple.bmp", {1, 1})};
+    185: 
+=>  186:     GameProcces (&textures);
+    187: 
+    188:     textures.Steve.DeleteTex();
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Program Files (x86)\TX\TXLib.h
+Compiled:	Feb 26 2017 20:43:48, GNU g++ 4.8.1, std=201103L, 32-bit, DEBUG
+Started:	Feb 26 2017 20:43:54
+
+Run file:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe
+Directory:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe, файл: C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.cpp, строка: 940, функция: void SteveAnimationNumber_and_Moving_Connecting(Hero*),
+
+Сообщение: ВНЕЗАПНО: Логическая ошибка: Неверно, что "0".
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FE2E0 (32-bit), Flags: CMdRe0, Thread: 0xCEC (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x0042CACA in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe!SteveAnimationNumber_and_Moving_Connecting at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (940):
+
+    938: void SteveAnimationNumber_and_Moving_Connecting (Hero *Steve)
+    939:     {
+=>  940:     ASSERT_OBJ_OK(Steve);
+    941:     //$ (Steve->GetV().Len()); $n;
+    942:     if (Steve->GetV().Len() <= DBL_EPSILON)
+
+# 1 0x00427D3D in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe!GameProcces at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (221):
+
+    219:         {
+    220:         MrEngine.Run();
+=>  221:         SteveAnimationNumber_and_Moving_Connecting (steve);
+    222:         if (StartTimer != true) Logic.ZombieSpawn (textures->Zombie);
+    223:         if (Logic.ZombieAteUrBrains (textures, 30, 2) == LOSE) StartTimer = true;
+
+# 2 0x004278E6 in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe!main at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (186):
+
+    184:                          Image ("bloodtex1.bmp", {1, 1}), Image ("Apple.bmp", {1, 1})};
+    185: 
+=>  186:     GameProcces (&textures);
+    187: 
+    188:     textures.Steve.DeleteTex();
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Program Files (x86)\TX\TXLib.h
+Compiled:	Feb 26 2017 20:46:42, GNU g++ 4.8.1, std=201103L, 32-bit, DEBUG
+Started:	Feb 26 2017 20:46:48
+
+Run file:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe
+Directory:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe, файл: C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.cpp, строка: 940, функция: void SteveAnimationNumber_and_Moving_Connecting(Hero*),
+
+Сообщение: ВНЕЗАПНО: Логическая ошибка: Неверно, что "0".
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FE2E0 (32-bit), Flags: CMdRe0, Thread: 0x1080 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x0042CACA in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe!SteveAnimationNumber_and_Moving_Connecting at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (940):
+
+    938: void SteveAnimationNumber_and_Moving_Connecting (Hero *Steve)
+    939:     {
+=>  940:     ASSERT_OBJ_OK(Steve);
+    941:     //$ (Steve->GetV().Len()); $n;
+    942:     if (Steve->GetV().Len() <= DBL_EPSILON)
+
+# 1 0x00427D3D in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe!GameProcces at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (221):
+
+    219:         {
+    220:         MrEngine.Run();
+=>  221:         SteveAnimationNumber_and_Moving_Connecting (steve);
+    222:         if (StartTimer != true) Logic.ZombieSpawn (textures->Zombie);
+    223:         if (Logic.ZombieAteUrBrains (textures, 30, 2) == LOSE) StartTimer = true;
+
+# 2 0x004278E6 in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe!main at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (186):
+
+    184:                          Image ("bloodtex1.bmp", {1, 1}), Image ("Apple.bmp", {1, 1})};
+    185: 
+=>  186:     GameProcces (&textures);
+    187: 
+    188:     textures.Steve.DeleteTex();
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Program Files (x86)\TX\TXLib.h
+Compiled:	Feb 26 2017 20:50:14, GNU g++ 4.8.1, std=201103L, 32-bit, DEBUG
+Started:	Feb 26 2017 20:50:20
+
+Run file:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe
+Directory:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe,
+
+ВНЕЗАПНО: signal (11, 0x00): SIGSEGV: Доступ по неверному указателю. Ставьте ассерты! 
+
+Нарушение доступа к памяти.
+
+Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу NULL. Попытка прочесть данные по адресу NULL. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FE2E0 (32-bit), Flags: CMdRe0, Thread: 0x3DC (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00000000 [Неверный фрейм]
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in void Mouse::Update() at C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\TimaXLIbJustOneFunction.h (906):
+
+    904:         LastClickPos_ = GetPos();
+    905: 
+=>  906:     LastClickButtons_ = txMouseButtons ();
+    907:     }
+    908: 
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Program Files (x86)\TX\TXLib.h
+Compiled:	Feb 26 2017 20:54:23, GNU g++ 4.8.1, std=201103L, 32-bit, DEBUG
+Started:	Feb 26 2017 20:54:29
+
+Run file:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe
+Directory:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe,
+
+ВНЕЗАПНО: signal (11, 0x00): SIGSEGV: Доступ по неверному указателю. Ставьте ассерты! 
+
+Нарушение доступа к памяти.
+
+Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу NULL. Попытка прочесть данные по адресу NULL. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FE2E0 (32-bit), Flags: CMdRe0, Thread: 0xE90 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00000000 [Неверный фрейм]
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in void Mouse::Update() at C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\TimaXLIbJustOneFunction.h (906):
+
+    904:         LastClickPos_ = GetPos();
+    905: 
+=>  906:     LastClickButtons_ = txMouseButtons ();
+    907:     }
+    908: 
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Program Files (x86)\TX\TXLib.h
+Compiled:	Feb 26 2017 20:55:01, GNU g++ 4.8.1, std=201103L, 32-bit, DEBUG
+Started:	Feb 26 2017 20:55:07
+
+Run file:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe
+Directory:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe,
+
+ВНЕЗАПНО: signal (11, 0x00): SIGSEGV: Доступ по неверному указателю. Ставьте ассерты! 
+
+Нарушение доступа к памяти.
+
+Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу NULL. Попытка прочесть данные по адресу NULL. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FE2E0 (32-bit), Flags: CMdRe0, Thread: 0xD34 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00000000 [Неверный фрейм]
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in void SteveAnimationNumber_and_Moving_Connecting(Hero*) at C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.cpp (940):
+
+    938: void SteveAnimationNumber_and_Moving_Connecting (Hero *Steve)
+    939:     {
+=>  940:     ASSERT_OBJ_OK(Steve);
+    941:     //$ (Steve->GetV().Len()); $n;
+    942:     if (Steve->GetV().Len() <= DBL_EPSILON)
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Program Files (x86)\TX\TXLib.h
+Compiled:	Feb 26 2017 20:57:51, GNU g++ 4.8.1, std=201103L, 32-bit, DEBUG
+Started:	Feb 26 2017 20:57:58
+
+Run file:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe
+Directory:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe,
+
+ВНЕЗАПНО: signal (11, 0x00): SIGSEGV: Доступ по неверному указателю. Ставьте ассерты! 
+
+Нарушение доступа к памяти.
+
+Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу NULL. Попытка прочесть данные по адресу NULL. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FE2E0 (32-bit), Flags: CMdRe0, Thread: 0x11A8 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00000000 [Неверный фрейм]
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in void SteveAnimationNumber_and_Moving_Connecting(Hero*) at C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.cpp (940):
+
+    938: void SteveAnimationNumber_and_Moving_Connecting (Hero *Steve)
+    939:     {
+=>  940:     ASSERT_OBJ_OK(Steve);
+    941:     //$ (Steve->GetV().Len()); $n;
+    942:     if (Steve->GetV().Len() <= DBL_EPSILON)
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Program Files (x86)\TX\TXLib.h
+Compiled:	Feb 26 2017 20:58:15, GNU g++ 4.8.1, std=201103L, 32-bit, DEBUG
+Started:	Feb 26 2017 20:58:21
+
+Run file:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe
+Directory:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe,
+
+ВНЕЗАПНО: signal (11, 0x00): SIGSEGV: Доступ по неверному указателю. Ставьте ассерты! 
+
+Нарушение доступа к памяти.
+
+Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу NULL. Попытка прочесть данные по адресу NULL. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FE2E0 (32-bit), Flags: CMdRe0, Thread: 0xB6C (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00000000 [Неверный фрейм]
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in void SteveAnimationNumber_and_Moving_Connecting(Hero*) at C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.cpp (940):
+
+    938: void SteveAnimationNumber_and_Moving_Connecting (Hero *Steve)
+    939:     {
+=>  940:     ASSERT_OBJ_OK(Steve);
+    941:     //$ (Steve->GetV().Len()); $n;
+    942:     if (Steve->GetV().Len() <= DBL_EPSILON)
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Program Files (x86)\TX\TXLib.h
+Compiled:	Feb 26 2017 20:58:36, GNU g++ 4.8.1, std=201103L, 32-bit, DEBUG
+Started:	Feb 26 2017 20:58:43
+
+Run file:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe
+Directory:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe,
+
+ВНЕЗАПНО: signal (11, 0x00): SIGSEGV: Доступ по неверному указателю. Ставьте ассерты! 
+
+Нарушение доступа к памяти.
+
+Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу NULL. Попытка прочесть данные по адресу NULL. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FD2E0 (32-bit), Flags: CMdRe0, Thread: 0xCD0 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00000000 [Неверный фрейм]
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in void SteveAnimationNumber_and_Moving_Connecting(Hero*) at C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.cpp (940):
+
+    938: void SteveAnimationNumber_and_Moving_Connecting (Hero *Steve)
+    939:     {
+=>  940:     ASSERT_OBJ_OK(Steve);
+    941:     //$ (Steve->GetV().Len()); $n;
+    942:     if (Steve->GetV().Len() <= DBL_EPSILON)
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Program Files (x86)\TX\TXLib.h
+Compiled:	Feb 26 2017 21:00:23, GNU g++ 4.8.1, std=201103L, 32-bit, DEBUG
+Started:	Feb 26 2017 21:00:29
+
+Run file:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe
+Directory:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe,
+
+ВНЕЗАПНО: signal (11, 0x00): SIGSEGV: Доступ по неверному указателю. Ставьте ассерты! 
+
+Нарушение доступа к памяти.
+
+Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу NULL. Попытка прочесть данные по адресу NULL. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FE2E0 (32-bit), Flags: CMdRe0, Thread: 0x11A4 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00000000 [Неверный фрейм]
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in void SteveAnimationNumber_and_Moving_Connecting(Hero*) at C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.cpp (941):
+
+    939: void SteveAnimationNumber_and_Moving_Connecting (Hero *Steve)
+    940:     {
+=>  941:     ASSERT_OBJ_OK(Steve);
+    942:     //$ (Steve->GetV().Len()); $n;
+    943:     if (Steve->GetV().Len() <= DBL_EPSILON)
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Program Files (x86)\TX\TXLib.h
+Compiled:	Feb 26 2017 21:02:33, GNU g++ 4.8.1, std=201103L, 32-bit, DEBUG
+Started:	Feb 26 2017 21:02:39
+
+Run file:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe
+Directory:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe,
+
+ВНЕЗАПНО: signal (11, 0x00): SIGSEGV: Доступ по неверному указателю. Ставьте ассерты! 
+
+Нарушение доступа к памяти.
+
+Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу NULL. Попытка прочесть данные по адресу NULL. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FF2E0 (32-bit), Flags: CMdRe0, Thread: 0x9CC (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00000000 [Неверный фрейм]
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in virtual void Hero::Dump(int) const at C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\TimaXLIbJustOneFunction.h (552):
+
+    550: void Hero::Dump (int LeftSpace) const
+    551:     {
+=>  552:     txOutputDebugPrintf ("ERROEERROEROEOROREERRROORRREROORERRORERRORERRORERROREERROORREEEERRROOOR");
+    553:     bool is_ok = ifObjectIsReal();
+    554: 
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Program Files (x86)\TX\TXLib.h
+Compiled:	Feb 26 2017 21:04:28, GNU g++ 4.8.1, std=201103L, 32-bit, DEBUG
+Started:	Feb 26 2017 21:04:34
+
+Run file:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe
+Directory:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe, файл: C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.cpp, строка: 941, функция: void SteveAnimationNumber_and_Moving_Connecting(Hero*),
+
+Сообщение: ВНЕЗАПНО: Логическая ошибка: Неверно, что "0".
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FF2E0 (32-bit), Flags: CMdRe0, Thread: 0x11B4 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x0042CB07 in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe!SteveAnimationNumber_and_Moving_Connecting at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (941):
+
+    939: void SteveAnimationNumber_and_Moving_Connecting (Hero *Steve)
+    940:     {
+=>  941:     ASSERT_OBJ_OK(Steve);
+    942:     //$ (Steve->GetV().Len()); $n;
+    943:     if (Steve->GetV().Len() <= DBL_EPSILON)
+
+# 1 0x00427D5D in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe!GameProcces at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (222):
+
+    220:         {
+    221:         MrEngine.Run();
+=>  222:         SteveAnimationNumber_and_Moving_Connecting (steve);
+    223:         if (StartTimer != true) Logic.ZombieSpawn (textures->Zombie);
+    224:         if (Logic.ZombieAteUrBrains (textures, 30, 2) == LOSE) StartTimer = true;
+
+# 2 0x00427906 in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe!main at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (187):
+
+    185:                          Image ("bloodtex1.bmp", {1, 1}), Image ("Apple.bmp", {1, 1})};
+    186: 
+=>  187:     GameProcces (&textures);
+    188: 
+    189:     textures.Steve.DeleteTex();
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Program Files (x86)\TX\TXLib.h
+Compiled:	Feb 26 2017 21:05:36, GNU g++ 4.8.1, std=201103L, 32-bit, DEBUG
+Started:	Feb 26 2017 21:05:42
+
+Run file:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe
+Directory:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe, файл: C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.cpp, строка: 941, функция: void SteveAnimationNumber_and_Moving_Connecting(Hero*),
+
+Сообщение: ВНЕЗАПНО: Логическая ошибка: Неверно, что "0".
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FF2E0 (32-bit), Flags: CMdRe0, Thread: 0xB80 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x0042CB21 in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe!SteveAnimationNumber_and_Moving_Connecting at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (941):
+
+    939: void SteveAnimationNumber_and_Moving_Connecting (Hero *Steve)
+    940:     {
+=>  941:     ASSERT_OBJ_OK(Steve);
+    942:     //$ (Steve->GetV().Len()); $n;
+    943:     if (Steve->GetV().Len() <= DBL_EPSILON)
+
+# 1 0x00427D77 in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe!GameProcces at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (222):
+
+    220:         {
+    221:         MrEngine.Run();
+=>  222:         SteveAnimationNumber_and_Moving_Connecting (steve);
+    223:         if (StartTimer != true) Logic.ZombieSpawn (textures->Zombie);
+    224:         if (Logic.ZombieAteUrBrains (textures, 30, 2) == LOSE) StartTimer = true;
+
+# 2 0x00427920 in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe!main at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (187):
+
+    185:                          Image ("bloodtex1.bmp", {1, 1}), Image ("Apple.bmp", {1, 1})};
+    186: 
+=>  187:     GameProcces (&textures);
+    188: 
+    189:     textures.Steve.DeleteTex();
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Program Files (x86)\TX\TXLib.h
+Compiled:	Feb 28 2017 20:22:33, GNU g++ 4.8.1, std=201103L, 32-bit, DEBUG
+Started:	Feb 28 2017 20:22:39
+
+Run file:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe
+Directory:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe, файл: C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.cpp, строка: 941, функция: void SteveAnimationNumber_and_Moving_Connecting(Hero*),
+
+Сообщение: ВНЕЗАПНО: Логическая ошибка: Неверно, что "0".
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FF2E0 (32-bit), Flags: CMdRe0, Thread: 0x584 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x0042CB39 in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe!SteveAnimationNumber_and_Moving_Connecting at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (941):
+
+    939: void SteveAnimationNumber_and_Moving_Connecting (Hero *Steve)
+    940:     {
+=>  941:     ASSERT_OBJ_OK(Steve);
+    942:     //$ (Steve->GetV().Len()); $n;
+    943:     if (Steve->GetV().Len() <= DBL_EPSILON)
+
+# 1 0x00427D67 in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe!GameProcces at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (222):
+
+    220:         {
+    221:         MrEngine.Run();
+=>  222:         SteveAnimationNumber_and_Moving_Connecting (steve);
+    223:         if (StartTimer != true) Logic.ZombieSpawn (textures->Zombie);
+    224:         if (Logic.ZombieAteUrBrains (textures, 30, 2) == LOSE) StartTimer = true;
+
+# 2 0x004278F8 in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe!main at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (187):
+
+    185:                          Image ("bloodtex1.bmp", {1, 1}), Image ("Apple.bmp", {1, 1})};
+    186: 
+=>  187:     GameProcces (&textures);
+    188: 
+    189:     textures.Steve.DeleteTex();
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Program Files (x86)\TX\TXLib.h
+Compiled:	Feb 28 2017 20:54:21, GNU g++ 4.8.1, std=201103L, 32-bit, DEBUG
+Started:	Feb 28 2017 20:54:28
+
+Run file:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe
+Directory:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe, файл: C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.cpp, строка: 941, функция: void SteveAnimationNumber_and_Moving_Connecting(Hero*),
+
+Сообщение: ВНЕЗАПНО: Логическая ошибка: Неверно, что "0".
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FF2E0 (32-bit), Flags: CMdRe0, Thread: 0xDDC (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x0042CB45 in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe!SteveAnimationNumber_and_Moving_Connecting at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (941):
+
+    939: void SteveAnimationNumber_and_Moving_Connecting (Hero *Steve)
+    940:     {
+=>  941:     ASSERT_OBJ_OK(Steve);
+    942:     //$ (Steve->GetV().Len()); $n;
+    943:     if (Steve->GetV().Len() <= DBL_EPSILON)
+
+# 1 0x00427D73 in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe!GameProcces at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (222):
+
+    220:         {
+    221:         MrEngine.Run();
+=>  222:         SteveAnimationNumber_and_Moving_Connecting (steve);
+    223:         if (StartTimer != true) Logic.ZombieSpawn (textures->Zombie);
+    224:         if (Logic.ZombieAteUrBrains (textures, 30, 2) == LOSE) StartTimer = true;
+
+# 2 0x00427904 in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe!main at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (187):
+
+    185:                          Image ("bloodtex1.bmp", {1, 1}), Image ("Apple.bmp", {1, 1})};
+    186: 
+=>  187:     GameProcces (&textures);
+    188: 
+    189:     textures.Steve.DeleteTex();
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Program Files (x86)\TX\TXLib.h
+Compiled:	Feb 28 2017 20:57:35, GNU g++ 4.8.1, std=201103L, 32-bit, DEBUG
+Started:	Feb 28 2017 20:57:41
+
+Run file:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe
+Directory:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe, файл: C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.cpp, строка: 941, функция: void SteveAnimationNumber_and_Moving_Connecting(Hero*),
+
+Сообщение: ВНЕЗАПНО: Логическая ошибка: Неверно, что "0".
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FF2E0 (32-bit), Flags: CMdRe0, Thread: 0x2F4 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x0042CB55 in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe!SteveAnimationNumber_and_Moving_Connecting at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (941):
+
+    939: void SteveAnimationNumber_and_Moving_Connecting (Hero *Steve)
+    940:     {
+=>  941:     ASSERT_OBJ_OK(Steve);
+    942:     //$ (Steve->GetV().Len()); $n;
+    943:     if (Steve->GetV().Len() <= DBL_EPSILON)
+
+# 1 0x00427D83 in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe!GameProcces at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (222):
+
+    220:         {
+    221:         MrEngine.Run();
+=>  222:         SteveAnimationNumber_and_Moving_Connecting (steve);
+    223:         if (StartTimer != true) Logic.ZombieSpawn (textures->Zombie);
+    224:         if (Logic.ZombieAteUrBrains (textures, 30, 2) == LOSE) StartTimer = true;
+
+# 2 0x00427914 in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe!main at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (187):
+
+    185:                          Image ("bloodtex1.bmp", {1, 1}), Image ("Apple.bmp", {1, 1})};
+    186: 
+=>  187:     GameProcces (&textures);
+    188: 
+    189:     textures.Steve.DeleteTex();
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Program Files (x86)\TX\TXLib.h
+Compiled:	Feb 28 2017 21:00:12, GNU g++ 4.8.1, std=201103L, 32-bit, DEBUG
+Started:	Feb 28 2017 21:00:18
+
+Run file:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe
+Directory:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe, файл: C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.cpp, строка: 941, функция: void SteveAnimationNumber_and_Moving_Connecting(Hero*),
+
+Сообщение: ВНЕЗАПНО: Логическая ошибка: Неверно, что "0".
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FF2E0 (32-bit), Flags: CMdRe0, Thread: 0x63C (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x0042CB65 in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe!SteveAnimationNumber_and_Moving_Connecting at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (941):
+
+    939: void SteveAnimationNumber_and_Moving_Connecting (Hero *Steve)
+    940:     {
+=>  941:     ASSERT_OBJ_OK(Steve);
+    942:     //$ (Steve->GetV().Len()); $n;
+    943:     if (Steve->GetV().Len() <= DBL_EPSILON)
+
+# 1 0x00427D93 in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe!GameProcces at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (222):
+
+    220:         {
+    221:         MrEngine.Run();
+=>  222:         SteveAnimationNumber_and_Moving_Connecting (steve);
+    223:         if (StartTimer != true) Logic.ZombieSpawn (textures->Zombie);
+    224:         if (Logic.ZombieAteUrBrains (textures, 30, 2) == LOSE) StartTimer = true;
+
+# 2 0x00427924 in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe!main at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (187):
+
+    185:                          Image ("bloodtex1.bmp", {1, 1}), Image ("Apple.bmp", {1, 1})};
+    186: 
+=>  187:     GameProcces (&textures);
+    188: 
+    189:     textures.Steve.DeleteTex();
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Program Files (x86)\TX\TXLib.h
+Compiled:	Feb 28 2017 21:01:37, GNU g++ 4.8.1, std=201103L, 32-bit, DEBUG
+Started:	Feb 28 2017 21:01:44
+
+Run file:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe
+Directory:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe,
+
+ВНЕЗАПНО: signal (11, 0x00): SIGSEGV: Доступ по неверному указателю. Ставьте ассерты! 
+
+Нарушение доступа к памяти.
+
+Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу NULL. Попытка прочесть данные по адресу NULL. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FF2E0 (32-bit), Flags: CMdRe0, Thread: 0xE80 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00000000 [Неверный фрейм]
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in void Controller::ZombieSpawn(Image) at C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.cpp (416):
+
+    414: void Controller::ZombieSpawn (Image texture)
+    415:     {
+=>  416:     if (txMouseButtons () == 2)
+    417:         {
+    418:         Zombie *zom = (rand()%100 > 30)? (new Zombie     ("Zomb",     texture, txMousePos(), Vec (0, 0), steve_)) :
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Program Files (x86)\TX\TXLib.h
+Compiled:	Feb 28 2017 21:04:31, GNU g++ 4.8.1, std=201103L, 32-bit, DEBUG
+Started:	Feb 28 2017 21:04:38
+
+Run file:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe
+Directory:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe,
+
+ВНЕЗАПНО: signal (11, 0x00): SIGSEGV: Доступ по неверному указателю. Ставьте ассерты! 
+
+Нарушение доступа к памяти.
+
+Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу NULL. Попытка прочесть данные по адресу NULL. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FF2E0 (32-bit), Flags: CMdRe0, Thread: 0x7E0 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00000000 [Неверный фрейм]
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in Image::Image(const char*, Vector<int>) at C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\TimaXLIbJustOneFunction.h (692):
+
+    690: 
+    691: Image::Image (const char FilePictureName [], Vector <int> nFrames) :
+=>  692:     Texture_ (txLoadImage (FilePictureName)),
+    693:     Len_     (),
+    694:     nFrames_ (nFrames)
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Program Files (x86)\TX\TXLib.h
+Compiled:	Feb 28 2017 21:04:55, GNU g++ 4.8.1, std=201103L, 32-bit, DEBUG
+Started:	Feb 28 2017 21:05:01
+
+Run file:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe
+Directory:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe,
+
+ВНЕЗАПНО: signal (11, 0x00): SIGSEGV: Доступ по неверному указателю. Ставьте ассерты! 
+
+Нарушение доступа к памяти.
+
+Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу NULL. Попытка прочесть данные по адресу NULL. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FF2E0 (32-bit), Flags: CMdRe0, Thread: 0xB48 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00000000 [Неверный фрейм]
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in Image::Image(const char*, Vector<int>) at C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\TimaXLIbJustOneFunction.h (692):
+
+    690: 
+    691: Image::Image (const char FilePictureName [], Vector <int> nFrames) :
+=>  692:     Texture_ (txLoadImage (FilePictureName)),
+    693:     Len_     (),
+    694:     nFrames_ (nFrames)
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Program Files (x86)\TX\TXLib.h
+Compiled:	Feb 28 2017 21:05:26, GNU g++ 4.8.1, std=201103L, 32-bit, DEBUG
+Started:	Feb 28 2017 21:05:33
+
+Run file:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe
+Directory:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe,
+
+ВНЕЗАПНО: signal (11, 0x00): SIGSEGV: Доступ по неверному указателю. Ставьте ассерты! 
+
+Нарушение доступа к памяти.
+
+Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу NULL. Попытка прочесть данные по адресу NULL. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FF2E0 (32-bit), Flags: CMdRe0, Thread: 0xB84 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00000000 [Неверный фрейм]
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in Image::Image(const char*, Vector<int>) at C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\TimaXLIbJustOneFunction.h (692):
+
+    690: 
+    691: Image::Image (const char FilePictureName [], Vector <int> nFrames) :
+=>  692:     Texture_ (txLoadImage (FilePictureName)),
+    693:     Len_     (),
+    694:     nFrames_ (nFrames)
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Program Files (x86)\TX\TXLib.h
+Compiled:	Feb 28 2017 21:05:26, GNU g++ 4.8.1, std=201103L, 32-bit, DEBUG
+Started:	Feb 28 2017 21:06:02
+
+Run file:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe
+Directory:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe,
+
+ВНЕЗАПНО: signal (11, 0x00): SIGSEGV: Доступ по неверному указателю. Ставьте ассерты! 
+
+Нарушение доступа к памяти.
+
+Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу NULL. Попытка прочесть данные по адресу NULL. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FF2E0 (32-bit), Flags: CMdRe0, Thread: 0x3B4 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00000000 [Неверный фрейм]
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in void GameProcces(const Textures*) at C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.cpp (212):
+
+    210:     MrEngine.add (steve, NET);
+    211:     printf ("vladelec %p\n, MrEngine%p\n", steve->owner_, MrEngine)       ;
+=>  212:     txSleep(0);
+    213:     _getch();
+    214:     MrEngine.add (new Zombie ("Zombie", textures->Zombie, Vec (700, 700), Vec (0, 0), steve));
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Program Files (x86)\TX\TXLib.h
+Compiled:	Feb 28 2017 21:06:08, GNU g++ 4.8.1, std=201103L, 32-bit, DEBUG
+Started:	Feb 28 2017 21:06:14
+
+Run file:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe
+Directory:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe,
+
+ВНЕЗАПНО: signal (11, 0x00): SIGSEGV: Доступ по неверному указателю. Ставьте ассерты! 
+
+Нарушение доступа к памяти.
+
+Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу NULL. Попытка прочесть данные по адресу NULL. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FF2E0 (32-bit), Flags: CMdRe0, Thread: 0xE8C (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00000000 [Неверный фрейм]
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in void Controller::ZombieSpawn(Image) at C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.cpp (419):
+
+    417: void Controller::ZombieSpawn (Image texture)
+    418:     {
+=>  419:     if (txMouseButtons () == 2)
+    420:         {
+    421:         Zombie *zom = (rand()%100 > 30)? (new Zombie     ("Zomb",     texture, txMousePos(), Vec (0, 0), steve_)) :
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Program Files (x86)\TX\TXLib.h
+Compiled:	Feb 28 2017 21:10:14, GNU g++ 4.8.1, std=201103L, 32-bit, DEBUG
+Started:	Feb 28 2017 21:10:21
+
+Run file:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe
+Directory:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe, файл: C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.cpp, строка: 946, функция: void SteveAnimationNumber_and_Moving_Connecting(Hero*),
+
+Сообщение: ВНЕЗАПНО: Логическая ошибка: Неверно, что "0".
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FF2E0 (32-bit), Flags: CMdRe0, Thread: 0x604 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x0042CBD1 in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe!SteveAnimationNumber_and_Moving_Connecting at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (946):
+
+    944: void SteveAnimationNumber_and_Moving_Connecting (Hero *Steve)
+    945:     {
+=>  946:     ASSERT_OBJ_OK(Steve);
+    947:     //$ (Steve->GetV().Len()); $n;
+    948:     if (Steve->GetV().Len() <= DBL_EPSILON)
+
+# 1 0x00427E00 in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe!GameProcces at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (227):
+
+    225:         {
+    226:         MrEngine.Run();
+=>  227:         SteveAnimationNumber_and_Moving_Connecting (steve);
+    228:         if (StartTimer != true) Logic.ZombieSpawn (textures->Zombie);
+    229:         if (Logic.ZombieAteUrBrains (textures, 30, 2) == LOSE) StartTimer = true;
+
+# 2 0x0042792A in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe!main at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (187):
+
+    185:                          Image ("bloodtex1.bmp", {1, 1}), Image ("Apple.bmp", {1, 1})};
+    186: 
+=>  187:     GameProcces (&textures);
+    188: 
+    189:     textures.Steve.DeleteTex();
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Program Files (x86)\TX\TXLib.h
+Compiled:	Feb 28 2017 21:11:17, GNU g++ 4.8.1, std=201103L, 32-bit, DEBUG
+Started:	Feb 28 2017 21:11:24
+
+Run file:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe
+Directory:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe,
+
+ВНЕЗАПНО: signal (11, 0x00): SIGSEGV: Доступ по неверному указателю. Ставьте ассерты! 
+
+Нарушение доступа к памяти.
+
+Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу NULL. Попытка прочесть данные по адресу NULL. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FF2E0 (32-bit), Flags: CMdRe0, Thread: 0xE28 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00000000 [Неверный фрейм]
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in void Controller::ZombieSpawn(Image) at C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.cpp (419):
+
+    417: void Controller::ZombieSpawn (Image texture)
+    418:     {
+=>  419:     if (txMouseButtons () == 2)
+    420:         {
+    421:         Zombie *zom = (rand()%100 > 30)? (new Zombie     ("Zomb",     texture, txMousePos(), Vec (0, 0), steve_)) :
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Program Files (x86)\TX\TXLib.h
+Compiled:	Feb 28 2017 21:14:47, GNU g++ 4.8.1, std=201103L, 32-bit, DEBUG
+Started:	Feb 28 2017 21:14:54
+
+Run file:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe
+Directory:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib предупреждает:
+
+Программа: C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe,
+
+ВНЕЗАПНО: Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x00287FAB. Попытка записать данные по адресу 0x0928EF11. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FF2F4 (32-bit), Flags: CMdRe0, Thread: 0xDCC (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 1 0x0042CB84 in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe: ifObjectIsReal() at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (889):
+
+    887:             MrEngine_ && /*MrEngine_->ifObjectIsReal() &&*/
+    888:             steve_    &&    /*steve_->ifObjectIsReal() &&*/
+=>  889:             MrMouse_  &&    MrMouse_->ifObjectIsReal() );
+    890:     }
+    891: 
+
+# 2 0x00429E4D in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe: ifObjectIsReal() at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (549):
+
+    547:             SpeedMultp_  != INTPOISON &&
+    548:             MaxSpeedmlt_ != INTPOISON &&
+=>  549:             pushka_ && pushka_->ifObjectIsReal()  );
+    550:     }
+    551: 
+
+# 3 0x00429A6B in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (510):
+
+    508: Steve::~Steve ()
+    509:     {
+=>  510:     ASSERT_OK();
+    511: 
+    512:     AppleDisgustingTimer_ = INTPOISON;
+
+# 4 0x00429B95 in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (516):
+
+    514:     MaxSpeedmlt_ = INTPOISON;
+    515:     pushka_ = NULL;
+=>  516:     }
+    517: 
+    518: 
+
+# 5 0x004268F4 in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe: Destruct() at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/TimaXLIbJustOneFunction.h (438):
+
+    436:     {
+    437:     for (int i = 0; i < N_OBJECTS; i++)
+=>  438:         delete objects_[i];
+    439:     }
+    440: 
+
+# 6 0x00428836 in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe: GameProcces() at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (256):
+
+    254: 
+    255: 
+=>  256:     MrEngine.Destruct ();
+    257:     }
+    258: 
+
+# 7 0x00428178 in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe: main() at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (187):
+
+    185:                          Image ("bloodtex1.bmp", {1, 1}), Image ("Apple.bmp", {1, 1})};
+    186: 
+=>  187:     GameProcces (&textures);
+    188: 
+    189:     textures.Steve.DeleteTex();
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in void Controller::ZombieSpawn(Image) at C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.cpp (419):
+
+    417: void Controller::ZombieSpawn (Image texture)
+    418:     {
+=>  419:     if (txMouseButtons () == 2)
+    420:         {
+    421:         Zombie *zom = (rand()%100 > 30)? (new Zombie     ("Zomb",     texture, txMousePos(), Vec (0, 0), steve_)) :
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Program Files (x86)\TX\TXLib.h
+Compiled:	Feb 28 2017 21:19:43, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Feb 28 2017 21:19:51
+
+Run file:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe
+Directory:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует:
+
+Программа: C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe,
+
+ВНЕЗАПНО: signal (11, 0x00): SIGSEGV: Доступ по неверному указателю. Ставьте ассерты! 
+
+Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x00287FAB. Попытка записать данные по адресу 0x0928EF11. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#2: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FF2F4 (32-bit), Flags: CMdRe0, Thread: 0xDCC (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 1 0x0042CB84 in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe: ifObjectIsReal() at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (889):
+
+    887:             MrEngine_ && /*MrEngine_->ifObjectIsReal() &&*/
+    888:             steve_    &&    /*steve_->ifObjectIsReal() &&*/
+=>  889:             MrMouse_  &&    MrMouse_->ifObjectIsReal() );
+    890:     }
+    891: 
+
+# 2 0x00429E4D in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe: ifObjectIsReal() at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (549):
+
+    547:             SpeedMultp_  != INTPOISON &&
+    548:             MaxSpeedmlt_ != INTPOISON &&
+=>  549:             pushka_ && pushka_->ifObjectIsReal()  );
+    550:     }
+    551: 
+
+# 3 0x00429A6B in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (510):
+
+    508: Steve::~Steve ()
+    509:     {
+=>  510:     ASSERT_OK();
+    511: 
+    512:     AppleDisgustingTimer_ = INTPOISON;
+
+# 4 0x00429B95 in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (516):
+
+    514:     MaxSpeedmlt_ = INTPOISON;
+    515:     pushka_ = NULL;
+=>  516:     }
+    517: 
+    518: 
+
+# 5 0x004268F4 in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe: Destruct() at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/TimaXLIbJustOneFunction.h (438):
+
+    436:     {
+    437:     for (int i = 0; i < N_OBJECTS; i++)
+=>  438:         delete objects_[i];
+    439:     }
+    440: 
+
+# 6 0x00428836 in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe: GameProcces() at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (256):
+
+    254: 
+    255: 
+=>  256:     MrEngine.Destruct ();
+    257:     }
+    258: 
+
+# 7 0x00428178 in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe: main() at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (187):
+
+    185:                          Image ("bloodtex1.bmp", {1, 1}), Image ("Apple.bmp", {1, 1})};
+    186: 
+=>  187:     GameProcces (&textures);
+    188: 
+    189:     textures.Steve.DeleteTex();
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in void Controller::ZombieSpawn(Image) at C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.cpp (419):
+
+    417: void Controller::ZombieSpawn (Image texture)
+    418:     {
+=>  419:     if (txMouseButtons () == 2)
+    420:         {
+    421:         Zombie *zom = (rand()%100 > 30)? (new Zombie     ("Zomb",     texture, txMousePos(), Vec (0, 0), steve_)) :
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Program Files (x86)\TX\TXLib.h
+Compiled:	Feb 28 2017 21:19:43, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Feb 28 2017 21:19:50
+
+Run file:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe
+Directory:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует:
+
+Программа: C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe,
+
+ВНЕЗАПНО: signal (11, 0x00): SIGSEGV: Доступ по неверному указателю. Ставьте ассерты! 
+
+Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу NULL. Попытка прочесть данные по адресу NULL. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FF2F4 (32-bit), Flags: CMdRe0, Thread: 0x1368 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 1 0x0042CB6C in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe: ifObjectIsReal() at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (889):
+
+    887:             MrEngine_ && /*MrEngine_->ifObjectIsReal() &&*/
+    888:             steve_    &&    /*steve_->ifObjectIsReal() &&*/
+=>  889:             MrMouse_  &&    MrMouse_->ifObjectIsReal() );
+    890:     }
+    891: 
+
+# 2 0x00429E35 in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe: ifObjectIsReal() at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (549):
+
+    547:             SpeedMultp_  != INTPOISON &&
+    548:             MaxSpeedmlt_ != INTPOISON &&
+=>  549:             pushka_ && pushka_->ifObjectIsReal()  );
+    550:     }
+    551: 
+
+# 3 0x00429A53 in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (510):
+
+    508: Steve::~Steve ()
+    509:     {
+=>  510:     ASSERT_OK();
+    511: 
+    512:     AppleDisgustingTimer_ = INTPOISON;
+
+# 4 0x00429B7D in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (516):
+
+    514:     MaxSpeedmlt_ = INTPOISON;
+    515:     pushka_ = NULL;
+=>  516:     }
+    517: 
+    518: 
+
+# 5 0x00426868 in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe: remoov() at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/TimaXLIbJustOneFunction.h (422):
+
+    420:         {
+    421:         printf ("YMIRAIU  Type %d, owner %p,   Engine %p\n", objects_[numObj]->Type_, objects_[numObj]->owner_, this);
+=>  422:         delete objects_[numObj];
+    423:          }
+    424: 
+
+# 6 0x004268DA in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe: Destruct() at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/TimaXLIbJustOneFunction.h (438):
+
+    436:     {
+    437:     for (int i = 0; i < N_OBJECTS; i++)
+=>  438:         remoov (i);
+    439:     }
+    440: 
+
+# 7 0x0042881E in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe: GameProcces() at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (256):
+
+    254: 
+    255: 
+=>  256:     MrEngine.Destruct ();
+    257:     }
+    258: 
+
+# 8 0x00428160 in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe: main() at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (187):
+
+    185:                          Image ("bloodtex1.bmp", {1, 1}), Image ("Apple.bmp", {1, 1})};
+    186: 
+=>  187:     GameProcces (&textures);
+    188: 
+    189:     textures.Steve.DeleteTex();
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in void Controller::ZombieSpawn(Image) at C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.cpp (419):
+
+    417: void Controller::ZombieSpawn (Image texture)
+    418:     {
+=>  419:     if (txMouseButtons () == 2)
+    420:         {
+    421:         Zombie *zom = (rand()%100 > 30)? (new Zombie     ("Zomb",     texture, txMousePos(), Vec (0, 0), steve_)) :
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Program Files (x86)\TX\TXLib.h
+Compiled:	Feb 28 2017 21:25:38, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Feb 28 2017 21:25:44
+
+Run file:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe
+Directory:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует:
+
+Программа: C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe, файл: C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\TimaXLIbJustOneFunction.h, строка: 450, функция: void Engine::Run(),
+
+Сообщение: ВНЕЗАПНО: Логическая ошибка: Неверно, что "0".
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FF2F4 (32-bit), Flags: CMdRe0, Thread: 0xFDC (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00426947 in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe: Run() at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/TimaXLIbJustOneFunction.h (450):
+
+    448:         {
+    449:         PrintfAllIncludes();
+=>  450:         assert (0);
+    451:         }
+    452: 
+
+# 1 0x0042862B in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe: GameProcces() at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (226):
+
+    224:     while (!GetAsyncKeyState (VK_ESCAPE))
+    225:         {
+=>  226:         MrEngine.Run();
+    227:         SteveAnimationNumber_and_Moving_Connecting (steve);
+    228:         if (StartTimer != true) Logic.ZombieSpawn (textures->Zombie);
+
+# 2 0x00428160 in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe: main() at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (187):
+
+    185:                          Image ("bloodtex1.bmp", {1, 1}), Image ("Apple.bmp", {1, 1})};
+    186: 
+=>  187:     GameProcces (&textures);
+    188: 
+    189:     textures.Steve.DeleteTex();
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Program Files (x86)\TX\TXLib.h
+Compiled:	Feb 28 2017 21:30:10, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Feb 28 2017 21:30:16
+
+Run file:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe
+Directory:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует:
+
+Программа: C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe, файл: C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\TimaXLIbJustOneFunction.h, строка: 450, функция: void Engine::Run(),
+
+Сообщение: ВНЕЗАПНО: Логическая ошибка: Неверно, что "0".
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FF2F4 (32-bit), Flags: CMdRe0, Thread: 0xB30 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00426947 in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe: Run() at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/TimaXLIbJustOneFunction.h (450):
+
+    448:         {
+    449:         PrintfAllIncludes();
+=>  450:         assert (0);
+    451:         }
+    452: 
+
+# 1 0x0042862B in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe: GameProcces() at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (228):
+
+    226: 
+    227: 
+=>  228:         MrEngine.Run();
+    229:         SteveAnimationNumber_and_Moving_Connecting (steve);
+    230:         if (StartTimer != true) Logic.ZombieSpawn (textures->Zombie);
+
+# 2 0x00428160 in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe: main() at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (187):
+
+    185:                          Image ("bloodtex1.bmp", {1, 1}), Image ("Apple.bmp", {1, 1})};
+    186: 
+=>  187:     GameProcces (&textures);
+    188: 
+    189:     textures.Steve.DeleteTex();
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Program Files (x86)\TX\TXLib.h
+Compiled:	Feb 28 2017 21:42:00, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Feb 28 2017 21:42:06
+
+Run file:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe
+Directory:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует:
+
+Программа: C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe, файл: C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\TimaXLIbJustOneFunction.h, строка: 450, функция: void Engine::Run(),
+
+Сообщение: ВНЕЗАПНО: Логическая ошибка: Неверно, что "0".
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FF2F4 (32-bit), Flags: CMdRe0, Thread: 0x11D0 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00426947 in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe: Run() at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/TimaXLIbJustOneFunction.h (450):
+
+    448:         {
+    449:         PrintfAllIncludes();
+=>  450:         assert (0);
+    451:         }
+    452: 
+
+# 1 0x0042867A in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe: GameProcces() at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (231):
+
+    229:         printf ("steve_kol = %d", MrEngine.Get_AllObjects_ofThe_Type (p, Hero::CHARACTER))  ;
+    230: 
+=>  231:         MrEngine.Run();
+    232:         SteveAnimationNumber_and_Moving_Connecting (steve);
+    233:         if (StartTimer != true) Logic.ZombieSpawn (textures->Zombie);
+
+# 2 0x00428160 in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe: main() at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (187):
+
+    185:                          Image ("bloodtex1.bmp", {1, 1}), Image ("Apple.bmp", {1, 1})};
+    186: 
+=>  187:     GameProcces (&textures);
+    188: 
+    189:     textures.Steve.DeleteTex();
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Program Files (x86)\TX\TXLib.h
+Compiled:	Feb 28 2017 21:42:28, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Feb 28 2017 21:42:34
+
+Run file:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe
+Directory:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует:
+
+Программа: C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe, файл: C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\TimaXLIbJustOneFunction.h, строка: 450, функция: void Engine::Run(),
+
+Сообщение: ВНЕЗАПНО: Логическая ошибка: Неверно, что "0".
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FF2F4 (32-bit), Flags: CMdRe0, Thread: 0xFF8 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00426947 in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe: Run() at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/TimaXLIbJustOneFunction.h (450):
+
+    448:         {
+    449:         PrintfAllIncludes();
+=>  450:         assert (0);
+    451:         }
+    452: 
+
+# 1 0x0042867A in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe: GameProcces() at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (231):
+
+    229:         printf ("steve_kol = %d", MrEngine.Get_AllObjects_ofThe_Type (p, Hero::CHARACTER))  ;
+    230: 
+=>  231:         MrEngine.Run();
+    232:         SteveAnimationNumber_and_Moving_Connecting (steve);
+    233:         if (StartTimer != true) Logic.ZombieSpawn (textures->Zombie);
+
+# 2 0x00428160 in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe: main() at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (187):
+
+    185:                          Image ("bloodtex1.bmp", {1, 1}), Image ("Apple.bmp", {1, 1})};
+    186: 
+=>  187:     GameProcces (&textures);
+    188: 
+    189:     textures.Steve.DeleteTex();
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Program Files (x86)\TX\TXLib.h
+Compiled:	Feb 28 2017 21:42:48, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Feb 28 2017 21:42:54
+
+Run file:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe
+Directory:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует:
+
+Программа: C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe, файл: C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\TimaXLIbJustOneFunction.h, строка: 450, функция: void Engine::Run(),
+
+Сообщение: ВНЕЗАПНО: Логическая ошибка: Неверно, что "0".
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FF2F4 (32-bit), Flags: CMdRe0, Thread: 0x109C (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00426947 in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe: Run() at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/TimaXLIbJustOneFunction.h (450):
+
+    448:         {
+    449:         PrintfAllIncludes();
+=>  450:         assert (0);
+    451:         }
+    452: 
+
+# 1 0x0042867A in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe: GameProcces() at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (231):
+
+    229:         printf ("steve_kol = %d", MrEngine.Get_AllObjects_ofThe_Type (p, Hero::CHARACTER))  ;
+    230: 
+=>  231:         MrEngine.Run();
+    232:         SteveAnimationNumber_and_Moving_Connecting (steve);
+    233:         if (StartTimer != true) Logic.ZombieSpawn (textures->Zombie);
+
+# 2 0x00428160 in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe: main() at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (187):
+
+    185:                          Image ("bloodtex1.bmp", {1, 1}), Image ("Apple.bmp", {1, 1})};
+    186: 
+=>  187:     GameProcces (&textures);
+    188: 
+    189:     textures.Steve.DeleteTex();
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Program Files (x86)\TX\TXLib.h
+Compiled:	Feb 28 2017 21:43:59, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Feb 28 2017 21:44:05
+
+Run file:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe
+Directory:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует:
+
+Программа: C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe, файл: C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\TimaXLIbJustOneFunction.h, строка: 450, функция: void Engine::Run(),
+
+Сообщение: ВНЕЗАПНО: Логическая ошибка: Неверно, что "0".
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FF2F4 (32-bit), Flags: CMdRe0, Thread: 0xD9C (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00426947 in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe: Run() at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/TimaXLIbJustOneFunction.h (450):
+
+    448:         {
+    449:         PrintfAllIncludes();
+=>  450:         assert (0);
+    451:         }
+    452: 
+
+# 1 0x004286FA in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe: GameProcces() at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (231):
+
+    229:         printf ("steve_kol = %d", MrEngine.Get_AllObjects_ofThe_Type (p, Hero::CHARACTER))  ;
+    230: 
+=>  231:         MrEngine.Run();
+    232:         SteveAnimationNumber_and_Moving_Connecting (steve);
+    233:         if (StartTimer != true) Logic.ZombieSpawn (textures->Zombie);
+
+# 2 0x004281E0 in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe: main() at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (187):
+
+    185:                          Image ("bloodtex1.bmp", {1, 1}), Image ("Apple.bmp", {1, 1})};
+    186: 
+=>  187:     GameProcces (&textures);
+    188: 
+    189:     textures.Steve.DeleteTex();
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Program Files (x86)\TX\TXLib.h
+Compiled:	Feb 28 2017 21:49:27, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Feb 28 2017 21:49:33
+
+Run file:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe
+Directory:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует:
+
+Программа: C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe, файл: C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\TimaXLIbJustOneFunction.h, строка: 450, функция: void Engine::Run(),
+
+Сообщение: ВНЕЗАПНО: Логическая ошибка: Неверно, что "0".
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FF2F4 (32-bit), Flags: CMdRe0, Thread: 0x1144 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00426946 in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe: Run() at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/TimaXLIbJustOneFunction.h (450):
+
+    448:         {
+    449:         PrintfAllIncludes();
+=>  450:         assert (0);
+    451:         }
+    452: 
+
+# 1 0x00428690 in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe: GameProcces() at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (231):
+
+    229:         printf ("steve_kol = %d", MrEngine.Get_AllObjects_ofThe_Type (p, Hero::CHARACTER))  ;
+    230: 
+=>  231:         MrEngine.Run();
+    232:         SteveAnimationNumber_and_Moving_Connecting (steve);
+    233:         if (StartTimer != true) Logic.ZombieSpawn (textures->Zombie);
+
+# 2 0x00428176 in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe: main() at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (187):
+
+    185:                          Image ("bloodtex1.bmp", {1, 1}), Image ("Apple.bmp", {1, 1})};
+    186: 
+=>  187:     GameProcces (&textures);
+    188: 
+    189:     textures.Steve.DeleteTex();
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Program Files (x86)\TX\TXLib.h
+Compiled:	Feb 28 2017 21:53:08, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Feb 28 2017 21:53:14
+
+Run file:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe
+Directory:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует:
+
+Программа: C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe, файл: C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\TimaXLIbJustOneFunction.h, строка: 450, функция: void Engine::Run(),
+
+Сообщение: ВНЕЗАПНО: Логическая ошибка: Неверно, что "0".
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FF2F4 (32-bit), Flags: CMdRe0, Thread: 0xEB4 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00426946 in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe: Run() at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/TimaXLIbJustOneFunction.h (450):
+
+    448:         {
+    449:         PrintfAllIncludes();
+=>  450:         assert (0);
+    451:         }
+    452: 
+
+# 1 0x00428690 in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe: GameProcces() at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (231):
+
+    229:         printf ("steve_kol = %d", MrEngine.Get_AllObjects_ofThe_Type (p, Hero::CHARACTER))  ;
+    230: 
+=>  231:         MrEngine.Run();
+    232:         SteveAnimationNumber_and_Moving_Connecting (steve);
+    233:         if (StartTimer != true) Logic.ZombieSpawn (textures->Zombie);
+
+# 2 0x00428176 in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe: main() at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (187):
+
+    185:                          Image ("bloodtex1.bmp", {1, 1}), Image ("Apple.bmp", {1, 1})};
+    186: 
+=>  187:     GameProcces (&textures);
+    188: 
+    189:     textures.Steve.DeleteTex();
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Program Files (x86)\TX\TXLib.h
+Compiled:	Feb 28 2017 21:53:08, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Feb 28 2017 21:53:32
+
+Run file:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe
+Directory:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует:
+
+Программа: C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe, файл: C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\TimaXLIbJustOneFunction.h, строка: 450, функция: void Engine::Run(),
+
+Сообщение: ВНЕЗАПНО: Логическая ошибка: Неверно, что "0".
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FF2F4 (32-bit), Flags: CMdRe0, Thread: 0x11A4 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00426947 in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe: Run() at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/TimaXLIbJustOneFunction.h (450):
+
+    448:         {
+    449:         PrintfAllIncludes();
+=>  450:         assert (0);
+    451:         }
+    452: 
+
+# 1 0x00428730 in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe: GameProcces() at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (235):
+
+    233:         printf ("steve_kol = %d", MrEngine.Get_AllObjects_ofThe_Type (p, Hero::CHARACTER))  ;
+    234: 
+=>  235:         MrEngine.Run();
+    236:         SteveAnimationNumber_and_Moving_Connecting (steve);
+    237:         if (StartTimer != true) Logic.ZombieSpawn (textures->Zombie);
+
+# 2 0x004281E0 in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe: main() at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (187):
+
+    185:                          Image ("bloodtex1.bmp", {1, 1}), Image ("Apple.bmp", {1, 1})};
+    186: 
+=>  187:     GameProcces (&textures);
+    188: 
+    189:     textures.Steve.DeleteTex();
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Program Files (x86)\TX\TXLib.h
+Compiled:	Feb 28 2017 21:56:38, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Feb 28 2017 21:56:44
+
+Run file:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe
+Directory:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует:
+
+Программа: C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe, файл: C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\TimaXLIbJustOneFunction.h, строка: 450, функция: void Engine::Run(),
+
+Сообщение: ВНЕЗАПНО: Логическая ошибка: Неверно, что "0".
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FF2F4 (32-bit), Flags: CMdRe0, Thread: 0x10F4 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00426947 in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe: Run() at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/TimaXLIbJustOneFunction.h (450):
+
+    448:         {
+    449:         PrintfAllIncludes();
+=>  450:         assert (0);
+    451:         }
+    452: 
+
+# 1 0x00428730 in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe: GameProcces() at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (235):
+
+    233:         printf ("steve_kol = %d", MrEngine.Get_AllObjects_ofThe_Type (p, Hero::CHARACTER))  ;
+    234: 
+=>  235:         MrEngine.Run();
+    236:         SteveAnimationNumber_and_Moving_Connecting (steve);
+    237:         if (StartTimer != true) Logic.ZombieSpawn (textures->Zombie);
+
+# 2 0x004281E0 in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe: main() at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (187):
+
+    185:                          Image ("bloodtex1.bmp", {1, 1}), Image ("Apple.bmp", {1, 1})};
+    186: 
+=>  187:     GameProcces (&textures);
+    188: 
+    189:     textures.Steve.DeleteTex();
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Program Files (x86)\TX\TXLib.h
+Compiled:	Feb 28 2017 21:58:04, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Feb 28 2017 21:58:10
+
+Run file:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe
+Directory:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует:
+
+Программа: C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe, файл: C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\TimaXLIbJustOneFunction.h, строка: 464, функция: void Engine::Run(),
+
+Сообщение: ВНЕЗАПНО: Логическая ошибка: Неверно, что "0".
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FF2F4 (32-bit), Flags: CMdRe0, Thread: 0x1208 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x004269ED in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe: Run() at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/TimaXLIbJustOneFunction.h (464):
+
+    462:         {
+    463:         PrintfAllIncludes();
+=>  464:         assert (0);
+    465:         }
+    466: 
+
+# 1 0x004287D6 in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe: GameProcces() at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (235):
+
+    233:         printf ("steve_kol = %d", MrEngine.Get_AllObjects_ofThe_Type (p, Hero::CHARACTER))  ;
+    234: 
+=>  235:         MrEngine.Run();
+    236:         SteveAnimationNumber_and_Moving_Connecting (steve);
+    237:         if (StartTimer != true) Logic.ZombieSpawn (textures->Zombie);
+
+# 2 0x00428286 in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe: main() at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (187):
+
+    185:                          Image ("bloodtex1.bmp", {1, 1}), Image ("Apple.bmp", {1, 1})};
+    186: 
+=>  187:     GameProcces (&textures);
+    188: 
+    189:     textures.Steve.DeleteTex();
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Program Files (x86)\TX\TXLib.h
+Compiled:	Feb 28 2017 22:04:55, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Feb 28 2017 22:05:02
+
+Run file:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe
+Directory:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует:
+
+Программа: C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe, файл: C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\TimaXLIbJustOneFunction.h, строка: 464, функция: void Engine::Run(),
+
+Сообщение: ВНЕЗАПНО: Логическая ошибка: Неверно, что "0".
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FF2F4 (32-bit), Flags: CMdRe0, Thread: 0xAD8 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x004269ED in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe: Run() at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/TimaXLIbJustOneFunction.h (464):
+
+    462:         {
+    463:         PrintfAllIncludes();
+=>  464:         assert (0);
+    465:         }
+    466: 
+
+# 1 0x004287D6 in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe: GameProcces() at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (235):
+
+    233:         printf ("steve_kol = %d", MrEngine.Get_AllObjects_ofThe_Type (p, Hero::CHARACTER))  ;
+    234: 
+=>  235:         MrEngine.Run();
+    236:         SteveAnimationNumber_and_Moving_Connecting (steve);
+    237:         if (StartTimer != true) Logic.ZombieSpawn (textures->Zombie);
+
+# 2 0x00428286 in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe: main() at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (187):
+
+    185:                          Image ("bloodtex1.bmp", {1, 1}), Image ("Apple.bmp", {1, 1})};
+    186: 
+=>  187:     GameProcces (&textures);
+    188: 
+    189:     textures.Steve.DeleteTex();
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Program Files (x86)\TX\TXLib.h
+Compiled:	Feb 28 2017 22:05:12, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Feb 28 2017 22:05:19
+
+Run file:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe
+Directory:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует:
+
+Программа: C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe, файл: C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\TimaXLIbJustOneFunction.h, строка: 430, функция: void Engine::remoov(int),
+
+Сообщение: ВНЕЗАПНО: Логическая ошибка: Неверно, что "0 <= numObj && numObj < Get_KolBo_OfObjects()".
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FF2F4 (32-bit), Flags: CMdRe0, Thread: 0xB0C (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00426865 in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe: remoov() at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/TimaXLIbJustOneFunction.h (430):
+
+    428: void Engine::remoov (int numObj)
+    429:     {
+=>  430:     assert (0 <= numObj && numObj < Get_KolBo_OfObjects());
+    431: 
+    432: 
+
+# 1 0x00426980 in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe: Destruct() at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/TimaXLIbJustOneFunction.h (452):
+
+    450:     {
+    451:     for (int i = 0; i < N_OBJECTS; i++)
+=>  452:         remoov (i);
+    453:     }
+    454: 
+
+# 2 0x004289C8 in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe: GameProcces() at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (265):
+
+    263: 
+    264: 
+=>  265:     MrEngine.Destruct ();
+    266:     }
+    267: 
+
+# 3 0x00428286 in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe: main() at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (187):
+
+    185:                          Image ("bloodtex1.bmp", {1, 1}), Image ("Apple.bmp", {1, 1})};
+    186: 
+=>  187:     GameProcces (&textures);
+    188: 
+    189:     textures.Steve.DeleteTex();
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Program Files (x86)\TX\TXLib.h
+Compiled:	Feb 28 2017 22:06:41, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Feb 28 2017 22:06:48
+
+Run file:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe
+Directory:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует:
+
+Программа: C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe, файл: C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\TimaXLIbJustOneFunction.h, строка: 430, функция: void Engine::remoov(int),
+
+Сообщение: ВНЕЗАПНО: Логическая ошибка: Неверно, что "0 <= numObj && numObj < Get_KolBo_OfObjects()".
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FF2F4 (32-bit), Flags: CMdRe0, Thread: 0xBC0 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00426865 in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe: remoov() at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/TimaXLIbJustOneFunction.h (430):
+
+    428: void Engine::remoov (int numObj)
+    429:     {
+=>  430:     assert (0 <= numObj && numObj < Get_KolBo_OfObjects());
+    431: 
+    432: 
+
+# 1 0x00426980 in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe: Destruct() at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/TimaXLIbJustOneFunction.h (452):
+
+    450:     {
+    451:     for (int i = 0; i < N_OBJECTS; i++)
+=>  452:         remoov (i);
+    453:     }
+    454: 
+
+# 2 0x004289C8 in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe: GameProcces() at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (265):
+
+    263: 
+    264: 
+=>  265:     MrEngine.Destruct ();
+    266:     }
+    267: 
+
+# 3 0x00428286 in C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe: main() at C:/Users/Тимофей/Desktop/информатика/Timoxa-s-game-2/ugruxa_pro_zombie_u_steve.2.0/Game.cpp (187):
+
+    185:                          Image ("bloodtex1.bmp", {1, 1}), Image ("Apple.bmp", {1, 1})};
+    186: 
+=>  187:     GameProcces (&textures);
+    188: 
+    189:     textures.Steve.DeleteTex();
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Program Files (x86)\TX\TXLib.h
+Compiled:	Feb 28 2017 22:07:12, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Feb 28 2017 22:07:19
+
+Run file:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0\Game.exe
+Directory:	C:\Users\Тимофей\Desktop\информатика\Timoxa-s-game-2\ugruxa_pro_zombie_u_steve.2.0
+
+--------------------------------------------------
